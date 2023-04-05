@@ -8,7 +8,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [1](https://github.com/dperezrom/proyecto/issues/1) |
 
 | **R2**     | **Código fuente**         |
 | --------------: | :------------------- |
@@ -17,7 +17,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [2](https://github.com/dperezrom/proyecto/issues/2) |
 
 | **R3**     | **Estilo del código**         |
 | --------------: | :------------------- |
@@ -26,7 +26,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [3](https://github.com/dperezrom/proyecto/issues/3) |
 
 | **R4**     | **Tres lanzamientos**         |
 | --------------: | :------------------- |
@@ -35,7 +35,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [4](https://github.com/dperezrom/proyecto/issues/4) |
 
 | **R5**     | **README.md**         |
 | --------------: | :------------------- |
@@ -44,7 +44,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [5](https://github.com/dperezrom/proyecto/issues/5) |
 
 | **R6**     | **Documentación**         |
 | --------------: | :------------------- |
@@ -53,7 +53,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [6](https://github.com/dperezrom/proyecto/issues/6) |
 
 | **R7**     | **Incidencias en GitHub**         |
 | --------------: | :------------------- |
@@ -62,7 +62,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [7](https://github.com/dperezrom/proyecto/issues/7) |
 
 | **R8**     | **Etiquetas e hitos**         |
 | --------------: | :------------------- |
@@ -71,7 +71,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [8](https://github.com/dperezrom/proyecto/issues/8) |
 
 | **R9**     | **Rama master**         |
 | --------------: | :------------------- |
@@ -80,7 +80,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [9](https://github.com/dperezrom/proyecto/issues/9) |
 
 | **R10**     | **Gestión del proyecto**         |
 | --------------: | :------------------- |
@@ -89,7 +89,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [10](https://github.com/dperezrom/proyecto/issues/10) |
 
 | **R11**     | **Final de cada iteración**         |
 | --------------: | :------------------- |
@@ -98,7 +98,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [11](https://github.com/dperezrom/proyecto/issues/11) |
 
 | **R12**     | **Validación de formularios**         |
 | --------------: | :------------------- |
@@ -107,7 +107,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [12](https://github.com/dperezrom/proyecto/issues/12) |
 
 | **R13**     | **Gestión de ventanas**         |
 | --------------: | :------------------- |
@@ -116,7 +116,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [13](https://github.com/dperezrom/proyecto/issues/13) |
 
 | **R14**     | **Manejo de eventos**         |
 | --------------: | :------------------- |
@@ -125,7 +125,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [14](https://github.com/dperezrom/proyecto/issues/14) |
 
 | **R15**     | **DOM**         |
 | --------------: | :------------------- |
@@ -134,7 +134,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [15](https://github.com/dperezrom/proyecto/issues/15) |
 
 | **R16**     | **Almacenamiento en el lado del cliente**         |
 | --------------: | :------------------- |
@@ -143,7 +143,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [16](https://github.com/dperezrom/proyecto/issues/16) |
 
 | **R17**     | **Alpine.js**         |
 | --------------: | :------------------- |
@@ -152,7 +152,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [17](https://github.com/dperezrom/proyecto/issues/17) |
 
 | **R18**     | **Utilización de AJAX**         |
 | --------------: | :------------------- |
@@ -161,7 +161,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [18](https://github.com/dperezrom/proyecto/issues/18) |
 
 | **R19**     | **ECMAScript2015 (ES6)**         |
 | --------------: | :------------------- |
@@ -170,7 +170,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [19](https://github.com/dperezrom/proyecto/issues/19) |
 
 | **R20**     | **PHP**         |
 | --------------: | :------------------- |
@@ -179,7 +179,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [20](https://github.com/dperezrom/proyecto/issues/20) |
 
 | **R21**     | **Laravel Framework**         |
 | --------------: | :------------------- |
@@ -188,7 +188,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [21](https://github.com/dperezrom/proyecto/issues/21) |
 
 | **R22**     | **PostgreSQL**         |
 | --------------: | :------------------- |
@@ -197,7 +197,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [22](https://github.com/dperezrom/proyecto/issues/22) |
 
 | **R23**     | **Cloud computing**         |
 | --------------: | :------------------- |
@@ -206,7 +206,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [23](https://github.com/dperezrom/proyecto/issues/23) |
 
 | **R24**     | **Pruebas funcionales**         |
 | --------------: | :------------------- |
@@ -215,7 +215,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [24](https://github.com/dperezrom/proyecto/issues/24) |
 
 | **R25**     | **Aplicación escalable**         |
 | --------------: | :------------------- |
@@ -224,7 +224,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [25](https://github.com/dperezrom/proyecto/issues/25) |
 
 | **R26**     | **Etiquetas semánticas de HTML5**         |
 | --------------: | :------------------- |
@@ -233,7 +233,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [26](https://github.com/dperezrom/proyecto/issues/26) |
 
 | **R27**     | **Presentación mediante CSS**         |
 | --------------: | :------------------- |
@@ -242,7 +242,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [27](https://github.com/dperezrom/proyecto/issues/27) |
 
 | **R28**     | **Diseño flexible**         |
 | --------------: | :------------------- |
@@ -251,7 +251,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [28](https://github.com/dperezrom/proyecto/issues/28) |
 
 | **R29**     | **Transiciones, transformaciones, animaciones y contenido multimedia**         |
 | --------------: | :------------------- |
@@ -260,7 +260,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [29](https://github.com/dperezrom/proyecto/issues/29) |
 
 | **R30**     | **Validación HTML5, CSS3 y accesibilidad**         |
 | --------------: | :------------------- |
@@ -269,7 +269,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [30](https://github.com/dperezrom/proyecto/issues/30) |
 
 | **R31**     | **Diseño para varias resoluciones**         |
 | --------------: | :------------------- |
@@ -278,7 +278,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [31](https://github.com/dperezrom/proyecto/issues/31) |
 
 | **R32**     | **Varios navegadores**         |
 | --------------: | :------------------- |
@@ -287,7 +287,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [32](https://github.com/dperezrom/proyecto/issues/32) |
 
 | **R33**     | **Acceso desde Cliente Virtual**         |
 | --------------: | :------------------- |
@@ -296,7 +296,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [33](https://github.com/dperezrom/proyecto/issues/33) |
 
 | **R34**     | **Despliegue en un servidor local**         |
 | --------------: | :------------------- |
@@ -305,7 +305,7 @@
 | **Tipo**        | Técnico                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [34](https://github.com/dperezrom/proyecto/issues/34) |
 
 | **R35**     | **Crear base de datos**         |
 | --------------: | :------------------- |
@@ -314,7 +314,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [35](https://github.com/dperezrom/proyecto/issues/35) |
 
 | **R36**     | **Registrarse**         |
 | --------------: | :------------------- |
@@ -323,7 +323,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [36](https://github.com/dperezrom/proyecto/issues/36) |
 
 | **R37**     | **Iniciar sesión**         |
 | --------------: | :------------------- |
@@ -332,7 +332,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [37](https://github.com/dperezrom/proyecto/issues/37) |
 
 | **R38**     | **Cerrar Sesión**         |
 | --------------: | :------------------- |
@@ -341,7 +341,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [38](https://github.com/dperezrom/proyecto/issues/38) |
 
 | **R39**     | **Ver categorías**         |
 | --------------: | :------------------- |
@@ -350,7 +350,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [39](https://github.com/dperezrom/proyecto/issues/39) |
 
 | **R40**     | **Filtrar categorías**         |
 | --------------: | :------------------- |
@@ -359,7 +359,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [40](https://github.com/dperezrom/proyecto/issues/40) |
 
 | **R41**     | **Añadir categoría**         |
 | --------------: | :------------------- |
@@ -368,7 +368,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [41](https://github.com/dperezrom/proyecto/issues/41) |
 
 | **R42**     | **Editar categoría**         |
 | --------------: | :------------------- |
@@ -377,7 +377,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [42](https://github.com/dperezrom/proyecto/issues/42) |
 
 | **R43**     | **Borrar categoría**         |
 | --------------: | :------------------- |
@@ -386,7 +386,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [43](https://github.com/dperezrom/proyecto/issues/43) |
 
 | **R44**     | **Ver productos**         |
 | --------------: | :------------------- |
@@ -395,7 +395,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [44](https://github.com/dperezrom/proyecto/issues/44) |
 
 | **R45**     | **Filtrar productos**         |
 | --------------: | :------------------- |
@@ -404,7 +404,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [45](https://github.com/dperezrom/proyecto/issues/45) |
 
 | **R46**     | **Añadir producto**         |
 | --------------: | :------------------- |
@@ -413,7 +413,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [46](https://github.com/dperezrom/proyecto/issues/46) |
 
 | **R47**     | **Editar producto**         |
 | --------------: | :------------------- |
@@ -422,7 +422,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [47](https://github.com/dperezrom/proyecto/issues/47) |
 
 | **R48**     | **Borrar producto**         |
 | --------------: | :------------------- |
@@ -431,7 +431,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [48](https://github.com/dperezrom/proyecto/issues/48) |
 
 | **R49**     | **Mostrar producto**         |
 | --------------: | :------------------- |
@@ -440,7 +440,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [49](https://github.com/dperezrom/proyecto/issues/49) |
 
 | **R50**     | **Ver usuarios**         |
 | --------------: | :------------------- |
@@ -449,7 +449,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [50](https://github.com/dperezrom/proyecto/issues/50) |
 
 | **R51**     | **Filtrar usuarios**         |
 | --------------: | :------------------- |
@@ -458,7 +458,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [51](https://github.com/dperezrom/proyecto/issues/51) |
 
 | **R52**     | **Añadir usuario**         |
 | --------------: | :------------------- |
@@ -467,7 +467,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [52](https://github.com/dperezrom/proyecto/issues/52) |
 
 | **R53**     | **Editar usuario**         |
 | --------------: | :------------------- |
@@ -476,7 +476,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [53](https://github.com/dperezrom/proyecto/issues/53) |
 
 | **R54**     | **Borrar usuario**         |
 | --------------: | :------------------- |
@@ -485,7 +485,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [54](https://github.com/dperezrom/proyecto/issues/54) |
 
 | **R55**     | **Mostrar usuario**         |
 | --------------: | :------------------- |
@@ -494,7 +494,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [55](https://github.com/dperezrom/proyecto/issues/55) |
 
 | **R56**     | **Ver valoración producto**         |
 | --------------: | :------------------- |
@@ -503,7 +503,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [56](https://github.com/dperezrom/proyecto/issues/56) |
 
 | **R57**     | **Ver comentarios producto admin**         |
 | --------------: | :------------------- |
@@ -512,7 +512,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [57](https://github.com/dperezrom/proyecto/issues/57) |
 
 | **R58**     | **Moderar comentario**         |
 | --------------: | :------------------- |
@@ -521,7 +521,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [58](https://github.com/dperezrom/proyecto/issues/58) |
 
 | **R59**     | **Eliminar comentario**         |
 | --------------: | :------------------- |
@@ -530,7 +530,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [59](https://github.com/dperezrom/proyecto/issues/59) |
 
 | **R60**     | **Ver direcciones admin**         |
 | --------------: | :------------------- |
@@ -539,7 +539,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [60](https://github.com/dperezrom/proyecto/issues/60) |
 
 | **R61**     | **Ver compras clientes**         |
 | --------------: | :------------------- |
@@ -548,7 +548,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v1             |
-
+| **Incidencia**  | [61](https://github.com/dperezrom/proyecto/issues/61) |
 
 | **R62**     | **Modificar perfil usuario**         |
 | --------------: | :------------------- |
@@ -557,7 +557,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [62](https://github.com/dperezrom/proyecto/issues/62) |
 
 | **R63**     | **Correo de confirmación de cuenta**         |
 | --------------: | :------------------- |
@@ -566,7 +566,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [63](https://github.com/dperezrom/proyecto/issues/63) |
 
 | **R64**     | **Recuperar contraseña**         |
 | --------------: | :------------------- |
@@ -575,7 +575,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [64](https://github.com/dperezrom/proyecto/issues/64) |
 
 | **R65**     | **Ver direcciones usuario**         |
 | --------------: | :------------------- |
@@ -584,7 +584,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [65](https://github.com/dperezrom/proyecto/issues/65) |
 
 | **R66**     | **Añadir dirección**         |
 | --------------: | :------------------- |
@@ -593,7 +593,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [66](https://github.com/dperezrom/proyecto/issues/66) |
 
 | **R67**     | **Modificar dirección**         |
 | --------------: | :------------------- |
@@ -602,7 +602,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [67](https://github.com/dperezrom/proyecto/issues/67) |
 
 | **R68**     | **Borrar dirección**         |
 | --------------: | :------------------- |
@@ -611,7 +611,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [68](https://github.com/dperezrom/proyecto/issues/68) |
 
 | **R69**     | **Ver catálogo**         |
 | --------------: | :------------------- |
@@ -620,7 +620,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [69](https://github.com/dperezrom/proyecto/issues/69) |
 
 | **R70**     | **Ordenar productos por precio**         |
 | --------------: | :------------------- |
@@ -629,7 +629,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [70](https://github.com/dperezrom/proyecto/issues/70) |
 
 | **R71**     | **Filtrar productos por categoría**         |
 | --------------: | :------------------- |
@@ -638,7 +638,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [71](https://github.com/dperezrom/proyecto/issues/71) |
 
 | **R72**     | **Filtrar productos por precio**         |
 | --------------: | :------------------- |
@@ -647,7 +647,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [72](https://github.com/dperezrom/proyecto/issues/72) |
 
 | **R73**     | **Filtrar productos por valoración**         |
 | --------------: | :------------------- |
@@ -656,7 +656,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [73](https://github.com/dperezrom/proyecto/issues/73) |
 
 | **R74**     | **Buscar producto por nombre**         |
 | --------------: | :------------------- |
@@ -665,7 +665,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [74](https://github.com/dperezrom/proyecto/issues/74) |
 
 | **R75**     | **Ver producto**         |
 | --------------: | :------------------- |
@@ -674,7 +674,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Fácil         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [75](https://github.com/dperezrom/proyecto/issues/75) |
 
 | **R76**     | **Añadir al carrito**         |
 | --------------: | :------------------- |
@@ -683,7 +683,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [76](https://github.com/dperezrom/proyecto/issues/76) |
 
 | **R77**     | **Ver carrito**         |
 | --------------: | :------------------- |
@@ -692,7 +692,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [77](https://github.com/dperezrom/proyecto/issues/77) |
 
 | **R78**     | **Eliminar producto carrito**         |
 | --------------: | :------------------- |
@@ -701,7 +701,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Media         |
 | **Entrega**     | v2             |
-
+| **Incidencia**  | [78](https://github.com/dperezrom/proyecto/issues/78) |
 
 | **R79**     | **Pago mediante Paypal**         |
 | --------------: | :------------------- |
@@ -710,7 +710,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [79](https://github.com/dperezrom/proyecto/issues/79) |
 
 | **R80**     | **Ver historial de compras**         |
 | --------------: | :------------------- |
@@ -719,7 +719,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [80](https://github.com/dperezrom/proyecto/issues/80) |
 
 | **R81**     | **Ver detalle de compra**         |
 | --------------: | :------------------- |
@@ -728,7 +728,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [81](https://github.com/dperezrom/proyecto/issues/81) |
 
 | **R82**     | **Valorar producto**         |
 | --------------: | :------------------- |
@@ -737,7 +737,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [82](https://github.com/dperezrom/proyecto/issues/82) |
 
 | **R83**     | **Modificar valoración**         |
 | --------------: | :------------------- |
@@ -746,7 +746,7 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [83](https://github.com/dperezrom/proyecto/issues/83) |
 
 | **R84**     | **Borrar valoración**         |
 | --------------: | :------------------- |
@@ -755,94 +755,94 @@
 | **Tipo**        | Funcional                |
 | **Complejidad** | Difícil         |
 | **Entrega**     | v3             |
-
+| **Incidencia**  | [84](https://github.com/dperezrom/proyecto/issues/84) |
 
 
 ## Cuadro resumen
 
-| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** |
-| :------------ | :-----------: | :------: | :-------------: | :---------: |
-| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | 
-| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | 
-| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | 
-| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | 
-| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | 
-| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | 
-| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | 
-| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | 
-| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | 
-| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | 
-| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | 
-| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | 
-| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | 
-| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | 
-| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | 
-| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | 
-| (**R17**) Alpine.js | Mínimo | Técnico | Fácil | v1 | 
-| (**R18**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | 
-| (**R19**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | 
-| (**R20**) PHP | Mínimo | Técnico | Fácil | v1 | 
-| (**R21**) Laravel Framework | Mínimo | Técnico | Fácil | v1 | 
-| (**R22**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | 
-| (**R23**) Cloud computing | Mínimo | Técnico | Fácil | v1 | 
-| (**R24**) Pruebas funcionales | Mínimo | Técnico | Fácil | v1 | 
-| (**R25**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | 
-| (**R26**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | 
-| (**R27**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | 
-| (**R28**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | 
-| (**R29**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | 
-| (**R30**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | 
-| (**R31**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | 
-| (**R32**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | 
-| (**R33**) Acceso desde Cliente Virtual | Mínimo | Técnico | Fácil | v1 | 
-| (**R34**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | 
-| (**R35**) Crear base de datos | Importante | Funcional | Fácil | v1 | 
-| (**R36**) Registrarse | Importante | Funcional | Fácil | v1 | 
-| (**R37**) Iniciar sesión | Importante | Funcional | Fácil | v1 | 
-| (**R38**) Cerrar Sesión | Importante | Funcional | Fácil | v1 | 
-| (**R39**) Ver categorías | Importante | Funcional | Fácil | v1 | 
-| (**R40**) Filtrar categorías | Importante | Funcional | Fácil | v1 | 
-| (**R41**) Añadir categoría | Importante | Funcional | Fácil | v1 | 
-| (**R42**) Editar categoría | Importante | Funcional | Fácil | v1 | 
-| (**R43**) Borrar categoría | Importante | Funcional | Fácil | v1 | 
-| (**R44**) Ver productos | Importante | Funcional | Fácil | v1 | 
-| (**R45**) Filtrar productos | Importante | Funcional | Fácil | v1 | 
-| (**R46**) Añadir producto | Importante | Funcional | Fácil | v1 | 
-| (**R47**) Editar producto | Importante | Funcional | Fácil | v1 | 
-| (**R48**) Borrar producto | Importante | Funcional | Fácil | v1 | 
-| (**R49**) Mostrar producto | Importante | Funcional | Fácil | v1 | 
-| (**R50**) Ver usuarios | Importante | Funcional | Fácil | v1 | 
-| (**R51**) Filtrar usuarios | Importante | Funcional | Fácil | v1 | 
-| (**R52**) Añadir usuario | Importante | Funcional | Fácil | v1 | 
-| (**R53**) Editar usuario | Importante | Funcional | Fácil | v1 | 
-| (**R54**) Borrar usuario | Importante | Funcional | Fácil | v1 | 
-| (**R55**) Mostrar usuario | Importante | Funcional | Fácil | v1 | 
-| (**R56**) Ver valoración producto | Importante | Funcional | Fácil | v1 | 
-| (**R57**) Ver comentarios producto admin | Importante | Funcional | Fácil | v1 | 
-| (**R58**) Moderar comentario | Importante | Funcional | Fácil | v1 | 
-| (**R59**) Eliminar comentario | Importante | Funcional | Fácil | v1 | 
-| (**R60**) Ver direcciones admin | Importante | Funcional | Fácil | v1 | 
-| (**R61**) Ver compras clientes | Importante | Funcional | Media | v1 | 
-| (**R62**) Modificar perfil usuario | Importante | Funcional | Fácil | v2 | 
-| (**R63**) Correo de confirmación de cuenta | Importante | Funcional | Media | v2 | 
-| (**R64**) Recuperar contraseña | Importante | Funcional | Media | v2 | 
-| (**R65**) Ver direcciones usuario | Importante | Funcional | Fácil | v2 | 
-| (**R66**) Añadir dirección | Importante | Funcional | Fácil | v2 | 
-| (**R67**) Modificar dirección | Importante | Funcional | Fácil | v2 | 
-| (**R68**) Borrar dirección | Importante | Funcional | Fácil | v2 | 
-| (**R69**) Ver catálogo | Importante | Funcional | Fácil | v2 | 
-| (**R70**) Ordenar productos por precio | Importante | Funcional | Fácil | v2 | 
-| (**R71**) Filtrar productos por categoría | Importante | Funcional | Fácil | v2 | 
-| (**R72**) Filtrar productos por precio | Importante | Funcional | Fácil | v2 | 
-| (**R73**) Filtrar productos por valoración | Importante | Funcional | Fácil | v2 | 
-| (**R74**) Buscar producto por nombre | Importante | Funcional | Fácil | v2 | 
-| (**R75**) Ver producto | Importante | Funcional | Fácil | v2 | 
-| (**R76**) Añadir al carrito | Importante | Funcional | Media | v2 | 
-| (**R77**) Ver carrito | Importante | Funcional | Media | v2 | 
-| (**R78**) Eliminar producto carrito | Importante | Funcional | Media | v2 | 
-| (**R79**) Pago mediante Paypal | Importante | Funcional | Difícil | v3 | 
-| (**R80**) Ver historial de compras | Importante | Funcional | Difícil | v3 | 
-| (**R81**) Ver detalle de compra | Importante | Funcional | Difícil | v3 | 
-| (**R82**) Valorar producto | Importante | Funcional | Difícil | v3 | 
-| (**R83**) Modificar valoración | Importante | Funcional | Difícil | v3 | 
-| (**R84**) Borrar valoración | Importante | Funcional | Difícil | v3 | 
+| **Requisito** | **Prioridad** | **Tipo** | **Complejidad** | **Entrega** | **Incidencia** |
+| :------------ | :-----------: | :------: | :-------------: | :---------: | :------------: |
+| (**R1**) Requisitos como incidencias | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [1](https://github.com/dperezrom/proyecto/issues/1) |
+| (**R2**) Código fuente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [2](https://github.com/dperezrom/proyecto/issues/2) |
+| (**R3**) Estilo del código | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [3](https://github.com/dperezrom/proyecto/issues/3) |
+| (**R4**) Tres lanzamientos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [4](https://github.com/dperezrom/proyecto/issues/4) |
+| (**R5**) README.md | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [5](https://github.com/dperezrom/proyecto/issues/5) |
+| (**R6**) Documentación | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [6](https://github.com/dperezrom/proyecto/issues/6) |
+| (**R7**) Incidencias en GitHub | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [7](https://github.com/dperezrom/proyecto/issues/7) |
+| (**R8**) Etiquetas e hitos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [8](https://github.com/dperezrom/proyecto/issues/8) |
+| (**R9**) Rama master | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [9](https://github.com/dperezrom/proyecto/issues/9) |
+| (**R10**) Gestión del proyecto | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [10](https://github.com/dperezrom/proyecto/issues/10) |
+| (**R11**) Final de cada iteración | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [11](https://github.com/dperezrom/proyecto/issues/11) |
+| (**R12**) Validación de formularios | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [12](https://github.com/dperezrom/proyecto/issues/12) |
+| (**R13**) Gestión de ventanas | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [13](https://github.com/dperezrom/proyecto/issues/13) |
+| (**R14**) Manejo de eventos | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [14](https://github.com/dperezrom/proyecto/issues/14) |
+| (**R15**) DOM | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [15](https://github.com/dperezrom/proyecto/issues/15) |
+| (**R16**) Almacenamiento en el lado del cliente | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [16](https://github.com/dperezrom/proyecto/issues/16) |
+| (**R17**) Alpine.js | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [17](https://github.com/dperezrom/proyecto/issues/17) |
+| (**R18**) Utilización de AJAX | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [18](https://github.com/dperezrom/proyecto/issues/18) |
+| (**R19**) ECMAScript2015 (ES6) | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [19](https://github.com/dperezrom/proyecto/issues/19) |
+| (**R20**) PHP | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [20](https://github.com/dperezrom/proyecto/issues/20) |
+| (**R21**) Laravel Framework | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [21](https://github.com/dperezrom/proyecto/issues/21) |
+| (**R22**) PostgreSQL | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [22](https://github.com/dperezrom/proyecto/issues/22) |
+| (**R23**) Cloud computing | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [23](https://github.com/dperezrom/proyecto/issues/23) |
+| (**R24**) Pruebas funcionales | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [24](https://github.com/dperezrom/proyecto/issues/24) |
+| (**R25**) Aplicación escalable | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [25](https://github.com/dperezrom/proyecto/issues/25) |
+| (**R26**) Etiquetas semánticas de HTML5 | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [26](https://github.com/dperezrom/proyecto/issues/26) |
+| (**R27**) Presentación mediante CSS | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [27](https://github.com/dperezrom/proyecto/issues/27) |
+| (**R28**) Diseño flexible | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [28](https://github.com/dperezrom/proyecto/issues/28) |
+| (**R29**) Transiciones, transformaciones, animaciones y contenido multimedia | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [29](https://github.com/dperezrom/proyecto/issues/29) |
+| (**R30**) Validación HTML5, CSS3 y accesibilidad | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [30](https://github.com/dperezrom/proyecto/issues/30) |
+| (**R31**) Diseño para varias resoluciones | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [31](https://github.com/dperezrom/proyecto/issues/31) |
+| (**R32**) Varios navegadores | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [32](https://github.com/dperezrom/proyecto/issues/32) |
+| (**R33**) Acceso desde Cliente Virtual | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [33](https://github.com/dperezrom/proyecto/issues/33) |
+| (**R34**) Despliegue en un servidor local | Mínimo | Técnico | Fácil | v1 | | **Incidencia**  | [34](https://github.com/dperezrom/proyecto/issues/34) |
+| (**R35**) Crear base de datos | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [35](https://github.com/dperezrom/proyecto/issues/35) |
+| (**R36**) Registrarse | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [36](https://github.com/dperezrom/proyecto/issues/36) |
+| (**R37**) Iniciar sesión | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [37](https://github.com/dperezrom/proyecto/issues/37) |
+| (**R38**) Cerrar Sesión | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [38](https://github.com/dperezrom/proyecto/issues/38) |
+| (**R39**) Ver categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [39](https://github.com/dperezrom/proyecto/issues/39) |
+| (**R40**) Filtrar categorías | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [40](https://github.com/dperezrom/proyecto/issues/40) |
+| (**R41**) Añadir categoría | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [41](https://github.com/dperezrom/proyecto/issues/41) |
+| (**R42**) Editar categoría | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [42](https://github.com/dperezrom/proyecto/issues/42) |
+| (**R43**) Borrar categoría | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [43](https://github.com/dperezrom/proyecto/issues/43) |
+| (**R44**) Ver productos | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [44](https://github.com/dperezrom/proyecto/issues/44) |
+| (**R45**) Filtrar productos | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [45](https://github.com/dperezrom/proyecto/issues/45) |
+| (**R46**) Añadir producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [46](https://github.com/dperezrom/proyecto/issues/46) |
+| (**R47**) Editar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [47](https://github.com/dperezrom/proyecto/issues/47) |
+| (**R48**) Borrar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [48](https://github.com/dperezrom/proyecto/issues/48) |
+| (**R49**) Mostrar producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [49](https://github.com/dperezrom/proyecto/issues/49) |
+| (**R50**) Ver usuarios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [50](https://github.com/dperezrom/proyecto/issues/50) |
+| (**R51**) Filtrar usuarios | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [51](https://github.com/dperezrom/proyecto/issues/51) |
+| (**R52**) Añadir usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [52](https://github.com/dperezrom/proyecto/issues/52) |
+| (**R53**) Editar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [53](https://github.com/dperezrom/proyecto/issues/53) |
+| (**R54**) Borrar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [54](https://github.com/dperezrom/proyecto/issues/54) |
+| (**R55**) Mostrar usuario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [55](https://github.com/dperezrom/proyecto/issues/55) |
+| (**R56**) Ver valoración producto | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [56](https://github.com/dperezrom/proyecto/issues/56) |
+| (**R57**) Ver comentarios producto admin | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [57](https://github.com/dperezrom/proyecto/issues/57) |
+| (**R58**) Moderar comentario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [58](https://github.com/dperezrom/proyecto/issues/58) |
+| (**R59**) Eliminar comentario | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [59](https://github.com/dperezrom/proyecto/issues/59) |
+| (**R60**) Ver direcciones admin | Importante | Funcional | Fácil | v1 | | **Incidencia**  | [60](https://github.com/dperezrom/proyecto/issues/60) |
+| (**R61**) Ver compras clientes | Importante | Funcional | Media | v1 | | **Incidencia**  | [61](https://github.com/dperezrom/proyecto/issues/61) |
+| (**R62**) Modificar perfil usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [62](https://github.com/dperezrom/proyecto/issues/62) |
+| (**R63**) Correo de confirmación de cuenta | Importante | Funcional | Media | v2 | | **Incidencia**  | [63](https://github.com/dperezrom/proyecto/issues/63) |
+| (**R64**) Recuperar contraseña | Importante | Funcional | Media | v2 | | **Incidencia**  | [64](https://github.com/dperezrom/proyecto/issues/64) |
+| (**R65**) Ver direcciones usuario | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [65](https://github.com/dperezrom/proyecto/issues/65) |
+| (**R66**) Añadir dirección | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [66](https://github.com/dperezrom/proyecto/issues/66) |
+| (**R67**) Modificar dirección | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [67](https://github.com/dperezrom/proyecto/issues/67) |
+| (**R68**) Borrar dirección | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [68](https://github.com/dperezrom/proyecto/issues/68) |
+| (**R69**) Ver catálogo | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [69](https://github.com/dperezrom/proyecto/issues/69) |
+| (**R70**) Ordenar productos por precio | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [70](https://github.com/dperezrom/proyecto/issues/70) |
+| (**R71**) Filtrar productos por categoría | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [71](https://github.com/dperezrom/proyecto/issues/71) |
+| (**R72**) Filtrar productos por precio | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [72](https://github.com/dperezrom/proyecto/issues/72) |
+| (**R73**) Filtrar productos por valoración | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [73](https://github.com/dperezrom/proyecto/issues/73) |
+| (**R74**) Buscar producto por nombre | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [74](https://github.com/dperezrom/proyecto/issues/74) |
+| (**R75**) Ver producto | Importante | Funcional | Fácil | v2 | | **Incidencia**  | [75](https://github.com/dperezrom/proyecto/issues/75) |
+| (**R76**) Añadir al carrito | Importante | Funcional | Media | v2 | | **Incidencia**  | [76](https://github.com/dperezrom/proyecto/issues/76) |
+| (**R77**) Ver carrito | Importante | Funcional | Media | v2 | | **Incidencia**  | [77](https://github.com/dperezrom/proyecto/issues/77) |
+| (**R78**) Eliminar producto carrito | Importante | Funcional | Media | v2 | | **Incidencia**  | [78](https://github.com/dperezrom/proyecto/issues/78) |
+| (**R79**) Pago mediante Paypal | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [79](https://github.com/dperezrom/proyecto/issues/79) |
+| (**R80**) Ver historial de compras | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [80](https://github.com/dperezrom/proyecto/issues/80) |
+| (**R81**) Ver detalle de compra | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [81](https://github.com/dperezrom/proyecto/issues/81) |
+| (**R82**) Valorar producto | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [82](https://github.com/dperezrom/proyecto/issues/82) |
+| (**R83**) Modificar valoración | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [83](https://github.com/dperezrom/proyecto/issues/83) |
+| (**R84**) Borrar valoración | Importante | Funcional | Difícil | v3 | | **Incidencia**  | [84](https://github.com/dperezrom/proyecto/issues/84) |
