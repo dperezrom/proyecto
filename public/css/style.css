@@ -1,0 +1,18 @@
+/* CSS Personalizado */
+
+/* Mensaje de error */
+.error {
+    color: rgb(239 68 68);
+
+}
+
+/* Logo */
+.logo {
+    animation-name: logo;
+    animation-duration: 2s;
+}
+
+@keyframes logo {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

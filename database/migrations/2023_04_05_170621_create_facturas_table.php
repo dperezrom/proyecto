@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamp('fecha');
-            $table->decimal('descuento', 6, 2);
             $table->timestamps();
         });
     }

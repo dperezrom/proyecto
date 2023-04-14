@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('comentario');
             $table->timestamps();
+            $table->unique(['user_id', 'producto_id']);
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('valoracions');
+        Schema::dropIfExists('valoraciones');
     }
 };

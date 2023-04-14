@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('direcciones', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('nombre');
-            $table->string('lugar');
-            $table->string('telefono');
-            $table->string('cp');
-            $table->string('ciudad');
-            $table->string('provincia');
+            $table->string('nombre', 35);
+            $table->string('calle');
+            $table->string('telefono', 9);
+            $table->string('cp', 5);
+            $table->string('ciudad', 35);
+            $table->string('provincia', 35);
             $table->text('instruccion')->nullable();
             $table->timestamps();
         });
