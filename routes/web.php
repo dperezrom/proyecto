@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Controladores añadidos
+use \App\Http\Controllers\CategoriasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +32,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Modo admin
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    // Rutas Categoria
+    Route::resource('categorias', CategoriasController::class);
+
+});
