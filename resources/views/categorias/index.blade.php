@@ -1,38 +1,112 @@
 <x-app-layout>
-    <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5">
+    <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
         <!-- Añadir categoría -->
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
-                <h1 class="text-2xl font-semibold px-3 text-gray-800">Categorías</h1>
-                <a href="/categorias/create"
-                    class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
-                    <i class="fa-regular fa-square-plus"></i>
-                </a>
+            <h1 class="text-2xl font-semibold px-3 text-gray-800">Categorías</h1>
+            <a href="/categorias/create"
+                class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
+                <i class="fa-regular fa-square-plus"></i>
+            </a>
+        </div>
+
+        <!-- Buscador -->
+        <div x-data="{ open: localStorage.getItem('menu_filtro') }" >
+            <div x-on:click="open = (open == 'true') ? 'false':'true'; localStorage.setItem('menu_filtro', open);"
+                class="bg-gray-800 text-emerald-400 px-5 py-2 cursor-pointer">
+                <button><i class="fa-solid fa-filter pr-2"></i>Filtros</button>
+            </div>
+
+            <div x-show="open == 'true'" x-cloak x-transition class="px-5 pt-3">
+                <form action="/categorias" method="GET">
+                    <!-- Orden -->
+                    <input type="hidden" name="orden" value="{{ old('orden') }}">
+
+                    <!-- Nombre -->
+                    <div class="mb-2">
+                        <label for="nombre" class="text-sm font-medium text-gray-900 mr-3 w-20 inline-block">
+                            Nombre:
+                        </label>
+
+                        <input type="text" name="nombre" id="nombre"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80"
+                            value="{{ request()->query('nombre') }}">
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="mb-2">
+                        <label for="descripcion" class="text-sm font-medium text-gray-900 mr-3 w-20 inline-block">
+                            Descripción:
+                        </label>
+                        <input type="text" name="descripcion" id="descripcion"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80"
+                            value="{{ request()->query('descripcion') }}">
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="flex justify-between mt-5">
+                        <button type="submit"
+                            class="text-white bg-emerald-500 hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-300 font-medium rounded-md px-2 py-1 text-center"><i
+                                class="fa-solid fa-magnifying-glass pr-2"></i>Buscar</button>
+
+                        <button
+                            class="bg-gray-500 hover:bg-gray-700 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1 border">
+                            <a href="/categorias"><i class="fa-solid fa-xmark pr-2"></i>Limpiar</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <!-- Resultados -->
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:mx-5 my-5">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
                 <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
+
+                    @php
+                        // Filtrado
+                        $nombre = request()->get('nombre');
+                        $descripcion = request()->get('descripcion');
+                        $link = e('nombre=' . $nombre . '&descripcion=' . $descripcion);
+
+                        // Orden
+                        $orden = request()->get('orden');
+                        $torden = request()->get('torden');
+                        $torden = !$torden || $torden == 'ASC' ? 'DESC' : 'ASC';
+
+                        // Iconos orden
+                        $estiloAsc = '&#xf15d;';
+                        $estiloDesc = '&#xf881;';
+
+                        // Orden columna1
+                        $estiloNombre = '';
+                        $tOrdenNombre = '';
+                        if ($orden == 'nombre') {
+                            $estiloNombre = $torden == 'DESC' ? $estiloAsc : $estiloDesc;
+                            $tOrdenNombre = '&torden=' . $torden;
+                        }
+
+                        // Orden columna2
+                        $estiloDescripcion = '';
+                        $tOrdenDescripcion = '';
+                        if ($orden == 'descripcion') {
+                            $estiloDescripcion = $torden == 'DESC' ? $estiloAsc : $estiloDesc;
+                            $tOrdenDescripcion = '&torden=' . $torden;
+                        }
+
+                    @endphp
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Nombre
-                                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
-                                        aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                        <path
-                                            d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                    </svg></a>
-                            </div>
+                            <a href="/categorias?orden=nombre&{!! $link . $tOrdenNombre !!}" class="flex items-center">
+                                <span>Nombre</span>
+                                <span class="text-lg"><i class='fas'>{!! $estiloNombre !!}</i></span>
+                            </a>
                         </th>
+
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Descripción
-                                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1"
-                                        aria-hidden="true" fill="currentColor" viewBox="0 0 320 512">
-                                        <path
-                                            d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                    </svg></a>
-                            </div>
+                            <a href="/categorias?orden=descripcion&{!! $link . $tOrdenDescripcion !!}" class="flex items-center">
+                                <span>Descripción</span>
+                                <span class="text-lg"><i class='fas'>{!! $estiloDescripcion !!}</i></span>
+                            </a>
                         </th>
 
                         <th scope="col" class="px-6 py-3">
@@ -43,7 +117,7 @@
                 <tbody>
                     @foreach ($categorias as $categoria)
                         <tr
-                            class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                            class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $categoria->nombre }}
@@ -64,8 +138,8 @@
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('¿Quieres eliminar la categoría seleccionada?')"
-                                            class="text-xl text-red-400 " type="submit"><i
-                                                class="fa-solid fa-trash"></i></button>
+                                            class="text-xl text-red-400" type="submit">
+                                            <i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </div>
                             </td>
