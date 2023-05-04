@@ -97,4 +97,19 @@ class CategoriasController extends Controller
         return redirect()->route('categorias.index')->with('success', 'Categoría actualizada');
     }
 
+    // Borrar categoría
+    public function destroy(Categoria $categoria)
+    {
+        if ($categoria->productos->isNotEmpty()) {
+            return redirect('/categorias')
+                ->with('error', 'La categoría contiene productos.');
+        }
+
+        $categoria->delete();
+
+        return redirect('/categorias')
+            ->with('success', 'Categoría eliminada con éxito.');
+
+    }
+
 }
