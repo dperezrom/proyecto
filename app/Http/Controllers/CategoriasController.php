@@ -59,6 +59,7 @@ class CategoriasController extends Controller
         return $validados;
     }
 
+    // Crear categoría
     public function create()
     {
         $categoria = new Categoria();
@@ -78,5 +79,22 @@ class CategoriasController extends Controller
         return redirect()->route('categorias.index')->with('success', 'Categoría creada con éxito.');
     }
 
+    // Editar categoría
+    public function edit(Categoria $categoria)
+    {
+        return view('categorias.edit', ['categoria' => $categoria]);
+    }
+
+    public function update(Categoria $categoria)
+    {
+        $validados = $this->validar();
+
+        $categoria->nombre = ucfirst(trim($validados['nombre']));
+        $categoria->descripcion = ucfirst(trim($validados['descripcion']));
+
+        $categoria->save();
+
+        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada');
+    }
 
 }
