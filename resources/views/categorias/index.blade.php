@@ -1,4 +1,19 @@
 <x-app-layout>
+    <!-- Mensaje de éxito -->
+    <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+        @if (session()->has('success'))
+            <div class="p-3 text-green-700 bg-green-300 rounded mb-4 px-5">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="p-3 text-red-700 bg-red-300 rounded mb-4 px-5">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+    </div>
+    
     <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
         <!-- Añadir categoría -->
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
@@ -10,7 +25,7 @@
         </div>
 
         <!-- Buscador -->
-        <div x-data="{ open: localStorage.getItem('menu_filtro') }" >
+        <div x-data="{ open: localStorage.getItem('menu_filtro') }">
             <div x-on:click="open = (open == 'true') ? 'false':'true'; localStorage.setItem('menu_filtro', open);"
                 class="bg-gray-800 text-emerald-400 px-5 py-2 cursor-pointer">
                 <button><i class="fa-solid fa-filter pr-2"></i>Filtros</button>

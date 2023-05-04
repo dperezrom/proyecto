@@ -1,3 +1,6 @@
+/* Para AlpineJS */
+[x-cloak] { display: none !important; }
+
 /* CSS Personalizado */
 
 /* Mensaje de error */
@@ -8,14 +11,16 @@
 
 /* Logo */
 .logo {
-    animation-name: logo;
+    animation-name: mi-opacidad;
     animation-duration: 2s;
 }
 
-@keyframes logo {
+.mi-opacidad {
+    animation-name: mi-opacidad;
+    animation-duration: 1s;
+}
+
+@keyframes mi-opacidad {
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
-/* Para AlpineJS */
-[x-cloak] { display: none !important; }
