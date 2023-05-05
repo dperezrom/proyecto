@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controladores añadidos
 use \App\Http\Controllers\CategoriasController;
+use \App\Http\Controllers\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,8 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     // Rutas Categoria
     Route::resource('categorias', CategoriasController::class);
+
+    // Rutas Productos
+    Route::resource('productos', ProductosController::class);
 
 });
