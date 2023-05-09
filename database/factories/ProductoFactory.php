@@ -21,7 +21,7 @@ class ProductoFactory extends Factory
             'descripcion' => 'Descripción genérica',
             'precio' => rand(1, 100),
             'iva' => 21,
-            'activo' => true,
+            'activo' => 't',
             'stock' => 10,
             'descuento' => 0,
             'categoria_id' => fake()->randomElement([1,2,3,4]),

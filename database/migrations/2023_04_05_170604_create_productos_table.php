@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('precio', 6, 2);
             $table->integer('iva');
             $table->integer('stock');
-            $table->boolean('activo');
+            $table->string('activo');
             $table->integer('descuento');
             $table->string('imagen')->nullable();
             $table->foreignId('categoria_id')->constrained('categorias');
