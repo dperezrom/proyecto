@@ -163,7 +163,6 @@ class ProductosController extends Controller
     }
 
     // Editar producto
-
     public function edit(Producto $producto)
     {
         $categorias = Categoria::all();
@@ -199,6 +198,20 @@ class ProductosController extends Controller
         $producto->save();
 
         return redirect()->route('productos.index')->with('success', 'Producto actualizado');
+    }
+
+    // Borrar producto
+
+    public function destroy(Producto $producto)
+    {
+        //Borrar imagen del disco
+        $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
+        ($producto->imagen) ? unlink($url) : '';
+
+        //Borra el producto completo
+        $producto->delete();
+
+        return redirect('/productos')->with('success', 'Producto eliminado con éxito.');
     }
 
 

@@ -340,7 +340,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            onclick="return confirm('¿Quieres eliminar la categoría seleccionada?')"
+                                            onclick="return confirm('¿Quieres eliminar el producto seleccionado?')"
                                             class="text-xl text-red-400" type="submit">
                                             <i class="fa-solid fa-trash"></i></button>
                                     </form>
