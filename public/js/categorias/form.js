@@ -30,7 +30,7 @@ function validaNombre() {
     return true;
 }
 
-// Validar nombre
+// Validar Descripción
 function validaDescripcion() {
     let elemento = document.categoria_form.descripcion;
     borrarError(elemento);

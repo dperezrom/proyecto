@@ -13,7 +13,7 @@
             </div>
         @endif
     </div>
-    
+
     <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
         <!-- Añadir categoría -->
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
@@ -31,14 +31,14 @@
                 <button><i class="fa-solid fa-filter pr-2"></i>Filtros</button>
             </div>
 
-            <div x-show="open == 'true'" x-cloak x-transition class="px-5 pt-3">
+            <div x-show="open == 'true'" x-cloak x-transition class="px-5 py-3 text-white bg-gray-700 rounded-b-lg border-b-8 border-gray-900">
                 <form action="/categorias" method="GET">
                     <!-- Orden -->
                     <input type="hidden" name="orden" value="{{ old('orden') }}">
 
                     <!-- Nombre -->
                     <div class="mb-2">
-                        <label for="nombre" class="text-sm font-medium text-gray-900 mr-3 w-20 inline-block">
+                        <label for="nombre" class="text-sm font-medium text-gray-100 mr-3 w-20 inline-block">
                             Nombre:
                         </label>
 
@@ -49,7 +49,7 @@
 
                     <!-- Descripción -->
                     <div class="mb-2">
-                        <label for="descripcion" class="text-sm font-medium text-gray-900 mr-3 w-20 inline-block">
+                        <label for="descripcion" class="text-sm font-medium text-gray-100 mr-3 w-20 inline-block">
                             Descripción:
                         </label>
                         <input type="text" name="descripcion" id="descripcion"
@@ -64,7 +64,7 @@
                                 class="fa-solid fa-magnifying-glass pr-2"></i>Buscar</button>
 
                         <button
-                            class="bg-gray-500 hover:bg-gray-700 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1 border">
+                            class="bg-gray-400 hover:bg-gray-500 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1">
                             <a href="/categorias"><i class="fa-solid fa-xmark pr-2"></i>Limpiar</a>
                         </button>
                     </div>
@@ -73,6 +73,11 @@
         </div>
 
         <!-- Resultados -->
+        @if(count($categorias) < 1)
+        <div class="my-4 mx-2 px-6 py-4 bg-gray-800 text-white">
+            <span >No se han encontrado resultados.</span>
+        </div>
+        @else
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:mx-5 my-5">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
                 <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
@@ -168,6 +173,7 @@
                 </tbody>
             </table>
         </div>
+        @endif
     </div>
 
 </x-app-layout>

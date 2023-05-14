@@ -31,7 +31,7 @@
                 <button><i class="fa-solid fa-filter pr-2"></i>Filtros</button>
             </div>
 
-            <div x-show="open == 'true'" x-cloak x-transition class="px-5 pt-3">
+            <div x-show="open == 'true'" x-cloak x-transition class="px-5 py-3 text-white bg-gray-700 rounded-b-lg border-b-8 border-gray-900">
                 <form action="/productos" method="GET">
 
                     <!-- Orden -->
@@ -40,7 +40,7 @@
                     <div class="flex flex-wrap flex-row">
                         <!-- Denopminación -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="denominacion" class="text-sm font-medium text-gray-900 mr-3 w-24">
+                            <label for="denominacion" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 Denominación:
                             </label>
 
@@ -51,7 +51,7 @@
 
                         <!-- Descripción -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="descripcion" class="text-sm font-medium text-gray-900 mr-3 w-24">
+                            <label for="descripcion" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 Descripción:
                             </label>
 
@@ -62,7 +62,7 @@
 
                         <!-- Categoría -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="categoria_id" class="text-sm font-medium text-gray-900 mr-3 w-24">
+                            <label for="categoria_id" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 Categoría:
                             </label>
 
@@ -82,7 +82,7 @@
 
                         <!-- Activo -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="activo" class="text-sm font-medium text-gray-900 mr-3 w-24">
+                            <label for="activo" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 Activo:
                             </label>
 
@@ -98,7 +98,7 @@
                         <!-- Precio -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
                             <label for="precio"
-                                class="text-sm font-medium text-gray-900 mr-3 w-24 sm:w-full inline-block">
+                                class="text-sm font-medium text-gray-100 mr-3 w-24 sm:w-full inline-block">
                                 Precio:
                             </label>
 
@@ -118,7 +118,7 @@
 
                         <!-- IVA -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="iva" class="text-sm font-medium text-gray-900 mr-3 w-24">
+                            <label for="iva" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 IVA:
                             </label>
 
@@ -134,7 +134,7 @@
                         <!--  Stock -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
                             <label for="stock"
-                                class="text-sm font-medium text-gray-900 mr-3 w-24 sm:w-full inline-block">
+                                class="text-sm font-medium text-gray-100 mr-3 w-24 sm:w-full inline-block">
                                 Stock:
                             </label>
                             <select name="stock_signo" id="stock_signo"
@@ -152,7 +152,7 @@
 
                         <!-- Descuento -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="descuento" class="text-sm font-medium text-gray-900 mr-3 w-24 sm:w-full inline-block">
+                            <label for="descuento" class="text-sm font-medium text-gray-100 mr-3 w-24 sm:w-full inline-block">
                                 Descuento:
                             </label>
 
@@ -178,7 +178,7 @@
                                 class="fa-solid fa-magnifying-glass pr-2"></i>Buscar</button>
 
                         <button
-                            class="bg-gray-500 hover:bg-gray-700 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1 border">
+                            class="bg-gray-400 hover:bg-gray-500 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1">
                             <a href="/productos"><i class="fa-solid fa-xmark pr-2"></i>Limpiar</a>
                         </button>
                     </div>
@@ -193,8 +193,7 @@
         </div>
         @else
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-1 sm:mx-5 my-5">
-
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate table-auto">
                 <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
                     @php
                         // Filtrado campos
@@ -229,6 +228,10 @@
 
                     @endphp
                     <tr>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="px-6 w-40">Imagen</span>
+                        </th>
+
                         <th scope="col" class="px-6 py-3">
                             <a href="/productos?orden=denominacion{!! $tOrdenDenominacion. $link !!}" class="flex items-center">
                                 <span>Denominación</span>
@@ -282,6 +285,12 @@
                     @foreach ($productos as $producto)
                         <tr
                             class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
+                            <td class="px-6 py-4">
+                                <img src="/images/productos/{{ old('imagen', $producto->imagen) ?: 'default.png' }}"
+                                    alt="{{ $producto->denominacion }}"
+                                    class="object-contain h-28 w-28">
+                            </td>
+
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $producto->denominacion }}
@@ -316,7 +325,7 @@
                             </td>
 
                             <td class="px-6 py-4">
-                                {{ $producto->descuento }}
+                                {{ $producto->descuento . '%' }}
                             </td>
 
                             <td class="px-6 py-4 text-right flex items-center">
