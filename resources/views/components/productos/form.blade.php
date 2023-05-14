@@ -157,7 +157,7 @@
 
             <label class="inline-flex content-center relative cursor-pointer">
                 <input type="checkbox" name="activo" value="t" class="sr-only peer w-full"
-                    {{ old('activo', $producto->activo) ? 'checked' : '' }}>
+                    {{ old('activo', $producto->activo) == 't' ? 'checked' : '' }}>
                 <div
                     class="w-11 h-6 bg-gray-200 rounded-full peer dark:peer-focus:ring-teal-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-400">
                 </div>
@@ -221,6 +221,28 @@
                 </p>
             </div>
         @enderror
+
+        @if ($producto->created_at != null)
+        <!-- Fecha creación -->
+        <div class="mb-2 p-2 sm:flex sm:items-center">
+            <label class="text-sm font-bold text-white mr-3 w-28 inline-block">
+                Creado en:
+            </label>
+            <div class="p-2 bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80">
+                {{ $producto->created_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+            </div>
+        </div>
+
+        <!-- Fecha actualización -->
+        <div class="mb-2 p-2 sm:flex sm:items-center">
+            <label class="text-sm font-bold text-white mr-3 w-28 inline-block">
+                Modificado en:
+            </label>
+            <div class="p-2 bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80">
+                {{ $producto->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+            </div>
+        </div>
+        @endif
     </div>
 
     <!-- Botones -->

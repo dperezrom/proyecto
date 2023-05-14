@@ -123,7 +123,7 @@ class ProductosController extends Controller
         return $validados;
     }
 
-    // Crear categoría
+    // Crear producto
     public function create()
     {
         $producto = new Producto();
@@ -161,4 +161,45 @@ class ProductosController extends Controller
 
         return redirect()->route('productos.index')->with('success', 'Producto creado con éxito.');
     }
+
+    // Editar producto
+
+    public function edit(Producto $producto)
+    {
+        $categorias = Categoria::all();
+        return view('productos.edit', ['producto' => $producto, 'categorias' => $categorias]);
+    }
+
+    public function update(Request $request, Producto $producto)
+    {
+        $validados = $this->validar();
+        $producto->denominacion = ucfirst(trim($validados['denominacion']));
+        $producto->descripcion = ucfirst(trim($validados['descripcion']));
+        $producto->precio = $validados['precio'];
+        $producto->iva = $validados['iva'];
+        $producto->stock = $validados['stock'];
+        $producto->activo = !empty($validados['activo']) ? 't': 'f';
+        $producto->descuento = $validados['descuento'];
+        $producto->categoria_id = $validados['categoria_id'];
+
+        if ($request->file('imagen')) {
+            $file = $request->file('imagen');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path(self::RUTA_IMG_PRODUCTOS), $filename);
+
+            if ($producto->imagen) {
+                $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
+                if (file_exists($url)) {
+                    unlink($url);
+                }
+            }
+            $producto['imagen'] = $filename;
+        }
+
+        $producto->save();
+
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado');
+    }
+
+
 }

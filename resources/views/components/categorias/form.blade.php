@@ -38,6 +38,28 @@
                 </p>
             @enderror
         </div>
+
+        @if ($categoria->created_at != null)
+        <!-- Fecha creación -->
+        <div class="mb-2 p-2 sm:flex sm:items-center">
+            <label class="text-sm font-bold text-white mr-3 w-28 inline-block">
+                Creado en:
+            </label>
+            <div class="p-2 bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80">
+                {{ $categoria->created_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+            </div>
+        </div>
+
+        <!-- Fecha actualización -->
+        <div class="mb-2 p-2 sm:flex sm:items-center">
+            <label class="text-sm font-bold text-white mr-3 w-28 inline-block">
+                Modificado en:
+            </label>
+            <div class="p-2 bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80">
+                {{ $categoria->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+            </div>
+        </div>
+        @endif
     </div>
 
     <!-- Botones -->
