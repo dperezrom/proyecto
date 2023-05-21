@@ -18,7 +18,7 @@
         <!-- Añadir categoría -->
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Categorías</h1>
-            <a href="/categorias/create"
+            <a href="{{ route('admin.categorias.create') }}"
                 class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
                 <i class="fa-regular fa-square-plus"></i>
             </a>
@@ -32,7 +32,7 @@
             </div>
 
             <div x-show="open == 'true'" x-cloak x-transition class="px-5 py-3 text-white bg-gray-700 rounded-b-lg border-b-8 border-gray-900">
-                <form action="/categorias" method="GET">
+                <form action="{{ route('admin.categorias') }}" method="GET">
                     <!-- Orden -->
                     <input type="hidden" name="orden" value="{{ old('orden') }}">
 
@@ -65,7 +65,7 @@
 
                         <button
                             class="bg-gray-400 hover:bg-gray-500 text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-md px-2 py-1">
-                            <a href="/categorias"><i class="fa-solid fa-xmark pr-2"></i>Limpiar</a>
+                            <a href="{{ route('admin.categorias') }}"><i class="fa-solid fa-xmark pr-2"></i>Limpiar</a>
                         </button>
                     </div>
                 </form>
@@ -116,14 +116,14 @@
                     @endphp
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            <a href="/categorias?orden=nombre&{!! $link . $tOrdenNombre !!}" class="flex items-center">
+                            <a href="{{ route('admin.categorias') }}?orden=nombre&{!! $link . $tOrdenNombre !!}" class="flex items-center">
                                 <span>Nombre</span>
                                 <span class="text-lg"><i class='fas'>{!! $estiloNombre !!}</i></span>
                             </a>
                         </th>
 
                         <th scope="col" class="px-6 py-3">
-                            <a href="/categorias?orden=descripcion&{!! $link . $tOrdenDescripcion !!}" class="flex items-center">
+                            <a href="{{ route('admin.categorias') }}?orden=descripcion&{!! $link . $tOrdenDescripcion !!}" class="flex items-center">
                                 <span>Descripción</span>
                                 <span class="text-lg"><i class='fas'>{!! $estiloDescripcion !!}</i></span>
                             </a>
@@ -149,12 +149,12 @@
                             <td class="px-6 py-4 text-right flex items-center">
 
                                 <div>
-                                    <a href="/categorias/{{ $categoria->id }}/edit" class="text-xl text-blue-400"><i
+                                    <a href="{{ route('admin.categorias.edit', $categoria) }}" class="text-xl text-blue-400"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <span class="px-1 text-gray-400 select-none">|</span>
                                 <div>
-                                    <form action="/categorias/{{ $categoria->id }}" method="POST">
+                                    <form action="{{ route('admin.categorias.destroy', $categoria) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('¿Quieres eliminar la categoría seleccionada?')"

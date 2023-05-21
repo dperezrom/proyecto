@@ -67,7 +67,7 @@
         <button type="submit"
             class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 font-medium rounded-md px-2 py-1 text-center"><i class="fa-solid fa-floppy-disk pr-1"></i>Guardar</button>
 
-        <a href="/categorias"
+        <a href="{{ route('admin.categorias') }}"
             class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1"><i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver</a>
 
     </div>

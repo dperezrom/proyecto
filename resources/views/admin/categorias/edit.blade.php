@@ -3,7 +3,7 @@
         <x-slot name="header">
             <h1 class="text-2xl font-semibold bg-emerald-800 dark:bg-emerald-500 py-3 px-3 text-white text-center">EDITAR CATEGORÍA</h1>
         </x-slot>
-        <form action="{{ route('categorias.update', $categoria) }}" method="POST" name="categoria_form">
+        <form action="{{ route('admin.categorias.update', $categoria) }}" method="POST" name="categoria_form">
             @method('PUT')
             <x-categorias.form :categoria="$categoria"/>
 

@@ -19,8 +19,7 @@ class IsAdmin
     {
         if (Auth::user()->rol == 'admin'){
             return $next($request);
-          } else {
-            return redirect('/dashboard');
-          }
+        }
+        return redirect('/dashboard');
     }
 }

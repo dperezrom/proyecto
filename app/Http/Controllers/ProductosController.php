@@ -77,7 +77,7 @@ class ProductosController extends Controller
 
         ));
 
-        return view('productos.index', [
+        return view('admin.productos.index', [
             'productos' => $paginador,
             'categorias' => Categoria::all(),
             'campos' => $campos,
@@ -96,7 +96,7 @@ class ProductosController extends Controller
             'descuento' => 'required|integer|between:0,100',
             'activo' => 'in:t,f',
             'categoria_id' => 'required|integer',
-            'imagen' => 'mimes:jpeg,bmp,png',
+            'imagen' => 'mimes:jpeg,png',
         ], [
             'denominacion.required' => 'El campo «Denominación» es obligatorio',
             'denominacion.max' => 'El campo «Denominación» solo permite hasta 30 caracteres',
@@ -117,7 +117,7 @@ class ProductosController extends Controller
             'activo.in' => 'El campo «Activo» contiene un valor incorrecto',
             'categoria_id.required' => 'El campo «Categoría» es obligatorio',
             'categoria_id.integer' => 'El campo «Categoría» debe ser un número entero',
-            'imagen.mimes' => 'Solo se aceptan imágenes jpeg, bmp y png',
+            'imagen.mimes' => 'Solo se aceptan imágenes jpeg y png',
         ]);
 
         return $validados;
@@ -128,7 +128,7 @@ class ProductosController extends Controller
     {
         $producto = new Producto();
 
-        return view('productos.create', [
+        return view('admin.productos.create', [
             'producto' => $producto,
             'categorias' => Categoria::all(),
         ]);
@@ -144,29 +144,20 @@ class ProductosController extends Controller
         $producto->precio = $validados['precio'];
         $producto->iva = $validados['iva'];
         $producto->stock = $validados['stock'];
-        $producto->activo = !empty($validados['activo']) ? 't': 'f';
+        $producto->activo = !empty($validados['activo']) ? 't' : 'f';
         $producto->descuento = $validados['descuento'];
         $producto->categoria_id = $validados['categoria_id'];
-
-
-        //Imagen
-        if ($request->file('imagen')) {
-            $file = $request->file('imagen');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path(self::RUTA_IMG_PRODUCTOS), $filename);
-            $producto['imagen'] = $filename;
-        }
-
+        $producto['imagen'] = $this->insert_directory_image($request->file('imagen')); //New image
         $producto->save();
 
-        return redirect()->route('productos.index')->with('success', 'Producto creado con éxito.');
+        return redirect()->route('admin.productos')->with('success', 'Producto creado con éxito.');
     }
 
     // Editar producto
     public function edit(Producto $producto)
     {
         $categorias = Categoria::all();
-        return view('productos.edit', ['producto' => $producto, 'categorias' => $categorias]);
+        return view('admin.productos.edit', ['producto' => $producto, 'categorias' => $categorias]);
     }
 
     public function update(Request $request, Producto $producto)
@@ -177,27 +168,50 @@ class ProductosController extends Controller
         $producto->precio = $validados['precio'];
         $producto->iva = $validados['iva'];
         $producto->stock = $validados['stock'];
-        $producto->activo = !empty($validados['activo']) ? 't': 'f';
+        $producto->activo = !empty($validados['activo']) ? 't' : 'f';
         $producto->descuento = $validados['descuento'];
         $producto->categoria_id = $validados['categoria_id'];
 
+        // Añadir imagen por primera vez o sustituir imagen nueva
         if ($request->file('imagen')) {
-            $file = $request->file('imagen');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path(self::RUTA_IMG_PRODUCTOS), $filename);
+            $this->delete_directory_image($producto->imagen);
+            $producto['imagen'] = $this->insert_directory_image($request->file('imagen'));
+        }
 
-            if ($producto->imagen) {
-                $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
-                if (file_exists($url)) {
-                    unlink($url);
-                }
-            }
-            $producto['imagen'] = $filename;
+        // No subir imagen y borrar imagen guardada
+        if (!$request->file('imagen') && $request->get('eliminarimg') == 't') {
+            $this->delete_directory_image($producto->imagen);
+            $producto['imagen'] = null;
         }
 
         $producto->save();
 
-        return redirect()->route('productos.index')->with('success', 'Producto actualizado');
+        return redirect()->route('admin.productos')->with('success', 'Producto actualizado');
+    }
+
+    private function insert_directory_image($file)
+    {
+        if($file){
+            do{
+                $filename = date('YmdHisu') .'_'. str_replace(' ', '_',$file->getClientOriginalName());
+                $url = self::RUTA_IMG_PRODUCTOS . '/' . $filename;
+
+            } while(file_exists($url) && is_file($url));
+
+            $file->move(public_path(self::RUTA_IMG_PRODUCTOS), $filename);
+            return $filename;
+        }
+        return null;
+    }
+
+    private function delete_directory_image($imagen)
+    {
+        if ($imagen) {
+            $url = self::RUTA_IMG_PRODUCTOS . '/' . $imagen;
+            if (file_exists($url) && is_file($url)) {
+                unlink($url);
+            }
+        }
     }
 
     // Borrar producto
@@ -211,8 +225,12 @@ class ProductosController extends Controller
         //Borra el producto completo
         $producto->delete();
 
-        return redirect('/productos')->with('success', 'Producto eliminado con éxito.');
+        return back()->with('success', 'Producto eliminado con éxito.');
     }
 
-
+    // Mostrar
+    public function show(Producto $producto)
+    {
+        return view('admin.productos.show', ['producto' => $producto,]);
+    }
 }

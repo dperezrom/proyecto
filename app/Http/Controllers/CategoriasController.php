@@ -34,7 +34,7 @@ class CategoriasController extends Controller
             'torden'
         ));
 
-        return view('categorias.index', [
+        return view('admin.categorias.index', [
             'categorias' => $paginador
         ]);
 
@@ -63,7 +63,7 @@ class CategoriasController extends Controller
     public function create()
     {
         $categoria = new Categoria();
-        return view('categorias.create', ['categoria' => $categoria,]);
+        return view('admin.categorias.create', ['categoria' => $categoria,]);
     }
 
     public function store()
@@ -76,13 +76,13 @@ class CategoriasController extends Controller
 
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría creada con éxito.');
+        return redirect()->route('admin.categorias')->with('success', 'Categoría creada con éxito.');
     }
 
     // Editar categoría
     public function edit(Categoria $categoria)
     {
-        return view('categorias.edit', ['categoria' => $categoria]);
+        return view('admin.categorias.edit', ['categoria' => $categoria]);
     }
 
     public function update(Categoria $categoria)
@@ -94,21 +94,19 @@ class CategoriasController extends Controller
 
         $categoria->save();
 
-        return redirect()->route('categorias.index')->with('success', 'Categoría actualizada');
+        return redirect()->route('admin.categorias')->with('success', 'Categoría actualizada');
     }
 
     // Borrar categoría
     public function destroy(Categoria $categoria)
     {
         if ($categoria->productos->isNotEmpty()) {
-            return redirect('/categorias')
-                ->with('error', 'La categoría contiene productos.');
+            return redirect()->route('admin.categorias')->with('error', 'La categoría contiene productos.');
         }
 
         $categoria->delete();
 
-        return redirect('/categorias')
-            ->with('success', 'Categoría eliminada con éxito.');
+        return redirect()->route('admin.categorias')->with('success', 'Producto eliminado con éxito.');
 
     }
 

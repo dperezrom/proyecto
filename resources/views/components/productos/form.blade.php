@@ -10,7 +10,17 @@
                     imageUrl: img,
 
                     fileChosen(event) {
-                        this.fileToDataUrl(event, src => this.imageUrl = src)
+	                    let archivoRuta = document.getElementById('imagen').value;;
+	                    let extPermitidas = /(.jpeg|.jpg|.png)$/i;
+                        if(!extPermitidas.exec(archivoRuta)){
+		                    alert('Solo acepta formato jpeg y png');
+                            return false;
+                        }
+                        if(document.getElementById('imagen').files[0].size > 5000000){
+                            alert('El archivo supera los 5Mb.');
+                        } else {
+                            this.fileToDataUrl(event, src => this.imageUrl = src)
+                        }
                     },
 
                     fileToDataUrl(event, callback) {
@@ -21,6 +31,10 @@
 
                         reader.readAsDataURL(file)
                         reader.onload = e => callback(e.target.result)
+                    },
+                    clearImg(){
+                        document.getElementById('imagen').value = '';
+                        document.getElementById('eliminarimg').value = 't';
                     },
                 }
             }
@@ -33,17 +47,28 @@
             </template>
 
             <template x-if="!imageUrl">
-                <div class="border rounded border-gray-200 bg-gray-100" style="width: 150px; height: 150px;"></div>
+                <div class="object-contain h-80 w-full"></div>
             </template>
 
             <!-- Input imagen -->
-            <input name="imagen" id="imagen" type="file" accept="image/*" @change="fileChosen" class="hidden">
-            <div class="w-full flex justify-center">
-                <label for="imagen"
-                    class="inline-flex justify-self-center items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 cursor-pointer">
-                    Añadir foto
+            <input name="imagen" id="imagen" type="file" accept="image/png, image/jpeg" @change="fileChosen" class="hidden" value="">
+            <input type="hidden" name="eliminarimg" id="eliminarimg" value="" />
+
+            <div class="flex justify-center items-center space-x-4 pt-3">
+                <label for="imagen" class="font-semibold cursor-pointer px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded-lg">
+                    AÑADIR FOTO
                 </label>
+                <div id="borrar-imagen" x-on:click="imageUrl='/images/productos/default.png';clearImg()" class="bg-red-500 text-white hover:bg-red-700 font-semibold px-3 py-1 rounded-lg cursor-pointer">
+                    <i class="fa-solid fa-x"></i>
+                </div>
             </div>
+        </div>
+        <div>
+            @error('imagen')
+                <p class="text-red-500 text-sm mb-5 border-y-4 text-center">
+                    {{ $message }}
+                </p>
+            @enderror
         </div>
 
         <!-- Denominación -->
@@ -151,12 +176,12 @@
 
         <!-- Activo -->
         <div class="mb-2 p-2 flex items-center justify-items-start">
-            <label id="label_activo" for="activo" class="text-sm font-bold text-white mr-3 sm:w-28 inline-block">
+            <div id="label_activo" for="activo" class="text-sm font-bold text-white mr-3 sm:w-28 inline-block">
                 Activo:
-            </label>
+            </div>
 
             <label class="inline-flex content-center relative cursor-pointer">
-                <input type="checkbox" name="activo" value="t" class="sr-only peer w-full"
+                <input type="checkbox" name="activo" id="activo" value="t" class="sr-only peer w-full"
                     {{ old('activo', $producto->activo) == 't' ? 'checked' : '' }}>
                 <div
                     class="w-11 h-6 bg-gray-200 rounded-full peer dark:peer-focus:ring-teal-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-400">
@@ -251,7 +276,7 @@
             class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 font-medium rounded-md px-2 py-1 text-center"><i
                 class="fa-solid fa-floppy-disk pr-1"></i>Guardar</button>
 
-        <a href="/productos"
+        <a href="{{ route('admin.productos') }}"
             class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1"><i
                 class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver</a>
 

@@ -237,4 +237,3 @@ function deleteCheckInput(elemento) {
 
 }
 
-
