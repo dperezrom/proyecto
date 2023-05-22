@@ -14,13 +14,45 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('name');
+        // Campos buscador
+        $campos = [
+            'name',
+            'email',
+            'telefono',
+            'rol',
+        ];
+
+        foreach ($campos as $campo) {
+            ${$campo} = request()->query($campo);
+        }
+
+        $orden = request()->query('orden') ?: 'name';
+        abort_unless(in_array($orden, $campos), 404);
+        $torden = request()->query('torden') ?: 'ASC';
+
+        $users = User::orderBy($orden, $torden);
+
+        foreach ($campos as $campo) {
+            if ((request()->query($campo)) !== null) {
+                $users->where($campo, 'ilike', '%' . request()->query($campo) . '%');
+            }
+        }
+
         // Paginador
         $paginador = $users->paginate(10);
-
+        $paginador->appends(compact(
+            'orden',
+            'torden',
+            'name',
+            'email',
+            'telefono',
+            'rol',
+        ));
 
         return view('admin.users.index', [
-            'users' => $paginador,]);
+            'users' => $paginador,
+            'campos' => $campos,
+        ]);
     }
 
     /**
