@@ -187,7 +187,7 @@
                 </li>
 
                 <li>
-                    <a href="#"
+                    <a href="{{ route('admin.users') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white
                         {{ request()->routeIs('admin.users') ? 'bg-emerald-400 dark:text-gray-900 font-bold' : 'hover:bg-gray-100 dark:hover:bg-gray-700' }}">
                         <svg aria-hidden="true"
