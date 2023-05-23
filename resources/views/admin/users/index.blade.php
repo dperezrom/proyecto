@@ -204,7 +204,7 @@
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div>
-                                            <a href="#" class="text-xl text-blue-400"><i
+                                            <a href="{{ route('admin.users.edit', $user) }}" class="text-xl text-blue-400"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
                                         <span class="px-1 text-gray-400 select-none">|</span>

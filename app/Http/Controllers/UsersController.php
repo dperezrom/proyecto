@@ -60,11 +60,13 @@ class UsersController extends Controller
     }
 
      // Validación
-     public function validar()
+     public function validar(User $user)
      {
+        $userId = empty($user->id) ? '' : ','.$user->id;
+
          $validados = request()->validate([
              'name' => ['required', 'string','min:2', 'max:35'],
-             'email' => ['required', 'string', 'email', 'max:50', 'unique:'.User::class],
+             'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'.$userId],
              'telefono' => ['required', 'digits:9'],
              'rol' => ['required','in:usuario,admin'],
 
@@ -105,9 +107,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $validados = $this->validar();
-
         $user = new User();
+        $validados = $this->validar($user);
         $user->name = ucfirst(trim($validados['name']));
         $user->email = trim(mb_strtolower($validados['email']));
         $pass = Str::random(10);
@@ -116,7 +117,10 @@ class UsersController extends Controller
         $user->rol = $validados['rol'];
 
         $user->save();
-        Mail::to($user->email)->send(new NotificarPassword($user, $pass));
+        // MODO PRODUCCIÓN
+        //Mail::to($user->email)->send(new NotificarPassword($user, $pass));
+        // MODO PRUEBAS
+        Mail::to('danieldeveloper95@gmail.com')->send(new NotificarPassword($user, $pass));
 
         return redirect()->route('admin.users')->with('success', 'Usuario creado con éxito.');
     }
@@ -135,12 +139,12 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', ['user' => $user,]);
     }
 
     /**
@@ -150,9 +154,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validados = $this->validar($user);
+        $user->name = ucfirst(trim($validados['name']));
+        $user->email = trim(mb_strtolower($validados['email']));
+        $user->telefono = $validados['telefono'];
+        $user->rol = $validados['rol'];
+
+        $user->save();
+
+        return redirect()->route('admin.users')->with('success', 'Usuario actualizado');
     }
 
     /**
