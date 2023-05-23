@@ -73,6 +73,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     // Rutas Usuario
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users/create', [UsersController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users', [UsersController::class, 'store'])->name('admin.users.store');
 
 
 });

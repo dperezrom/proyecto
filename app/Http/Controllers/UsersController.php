@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificarPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -55,6 +59,32 @@ class UsersController extends Controller
         ]);
     }
 
+     // Validación
+     public function validar()
+     {
+         $validados = request()->validate([
+             'name' => ['required', 'string','min:2', 'max:35'],
+             'email' => ['required', 'string', 'email', 'max:50', 'unique:'.User::class],
+             'telefono' => ['required', 'digits:9'],
+             'rol' => ['required','in:usuario,admin'],
+
+         ], [
+             'name.required' => 'El campo «Nombre» es obligatorio',
+             'name.min' => 'El campo «Nombre» necesita al menos 2 caracteres',
+             'name.max' => 'El campo «Nombre» solo permite hasta 30 caracteres',
+             'email.required' => 'El campo «Email» es obligatorio',
+             'email.email' => 'El campo «Email» debe contener el formato adecuado',
+             'email.max' => 'El campo «Email» solo permite hasta 50 caracteres',
+             'email.unique' => 'El email ya existe ',
+             'telefono.required' => 'El campo «Teléfono» es obligatorio',
+             'telefono.digits' => 'El campo «Teléfono» debe contener 9 dígitos',
+             'rol.required' => 'El campo «Rol» es obligatorio',
+             'rol.in' => 'El campo «Rol» contiene un valor incorrecto',
+         ]);
+
+         return $validados;
+     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,7 +92,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create', [
+            'user' => new User(),
+        ]);
     }
 
     /**
@@ -73,7 +105,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validados = $this->validar();
+
+        $user = new User();
+        $user->name = ucfirst(trim($validados['name']));
+        $user->email = trim(mb_strtolower($validados['email']));
+        $pass = Str::random(10);
+        $user->password = Hash::make($pass);
+        $user->telefono = $validados['telefono'];
+        $user->rol = $validados['rol'];
+
+        $user->save();
+        Mail::to($user->email)->send(new NotificarPassword($user, $pass));
+
+        return redirect()->route('admin.users')->with('success', 'Usuario creado con éxito.');
     }
 
     /**

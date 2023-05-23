@@ -1,13 +1,15 @@
-// Formulario de categoría
+// Formulario de producto
 
-// Event listeners
-document.querySelector('#nombre').addEventListener('keyup', validaNombre);
-document.querySelector('#descripcion').addEventListener('keyup', validaDescripcion);
-document.categoria_form.addEventListener('submit', validaSubmit);
+// // Event listeners
+document.querySelector('#name').addEventListener('keyup', validaNombre);
+document.querySelector('#telefono').addEventListener('keyup', validaTelefono);
+document.querySelector('#email').addEventListener('keyup', validaEmail);
+document.querySelector('#rol').addEventListener('change', validaRol);
+document.user_form.addEventListener('submit', validaSubmit);
 
-// Validar nombre
+// Validar Nombre
 function validaNombre() {
-    let elemento = document.categoria_form.nombre;
+    let elemento = document.user_form.name;
     borrarError(elemento);
 
     if (!elemento.checkValidity()) {
@@ -16,7 +18,7 @@ function validaNombre() {
 
         }
         if (elemento.validity.patternMismatch) {
-            elemento.setCustomValidity("* Formato de nombre incorrecto.");
+            elemento.setCustomValidity("* Formato de Nombre incorrecto.");
         }
 
         if (elemento.validity.tooLong) {
@@ -31,22 +33,78 @@ function validaNombre() {
     return true;
 }
 
-// Validar Descripción
-function validaDescripcion() {
-    let elemento = document.categoria_form.descripcion;
+// Validar Teléfono
+function validaTelefono() {
+    let elemento = document.user_form.telefono;
     borrarError(elemento);
 
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
-            elemento.setCustomValidity("* El campo Descripción no puede estar vacío.");
+            elemento.setCustomValidity("* El campo Teléfono no puede estar vacío.");
 
         }
         if (elemento.validity.patternMismatch) {
-            elemento.setCustomValidity("* Formato de Descripción incorrecto.");
+            elemento.setCustomValidity("* Formato de Teléfono incorrecto.");
         }
 
         if (elemento.validity.tooLong) {
-            elemento.setCustomValidity("* El campo Descripción es demasiado largo.");
+            elemento.setCustomValidity("* El Teléfono es demasiado largo.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+// Validar Email
+function validaEmail() {
+    let elemento = document.user_form.email;
+    borrarError(elemento);
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("* El campo Email no puede estar vacío.");
+
+        }
+        if (elemento.validity.typeMismatch) {
+            elemento.setCustomValidity("* Formato de Email incorrecto.");
+        }
+
+        if (elemento.validity.tooLong) {
+            elemento.setCustomValidity("* El Email es demasiado largo.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+// Validar Rol
+function validaRol() {
+    let elemento = document.user_form.rol;
+    const options = ['usuario', 'admin'];
+    borrarError(elemento);
+
+    if (!options.includes(elemento.value)){
+        elemento.setCustomValidity("* El campo Rol contiene un valor incorrecto.");
+        error(elemento);
+        deleteCheckInput(elemento);
+        return false;
+    }
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("* El campo Rol no puede estar vacío.");
         }
 
         error(elemento);
@@ -59,13 +117,12 @@ function validaDescripcion() {
 
 // Validar Submit
 function validaSubmit(e) {
-    if(validaNombre() && validaDescripcion()){
+    if(validaNombre() && validaEmail() && validaTelefono() && validaRol()){
         return true;
     }
     e.preventDefault();
     return false;
 }
-
 
 // ERROR
 function error(elemento) {
@@ -122,3 +179,4 @@ function deleteCheckInput(elemento) {
     }
 
 }
+

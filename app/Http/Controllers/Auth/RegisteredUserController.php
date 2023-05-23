@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
             'telefono' => ['required', 'digits:9'],
         ], [
             'name.required' => 'El campo «Nombre» es obligatorio',
-            'name.min' => 'La nombre necesita al menos 2 caracteres',
+            'name.min' => 'El campo «Nombre» necesita al menos 2 caracteres',
             'name.max' => 'El campo «Nombre» solo permite hasta 35 caracteres',
             'email.required' => 'El campo «Email» es obligatorio',
             'email.email' => 'El campo «Email» debe contener el formato adecuado',

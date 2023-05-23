@@ -1,15 +1,16 @@
 // Formulario de producto
 
 // // Event listeners
-document.querySelector('#denominacion').addEventListener('keyup', valida_denominacion);
-document.querySelector('#descripcion').addEventListener('keyup', valida_descripcion);
-document.querySelector('#precio').addEventListener('keyup', valida_precio);
-document.querySelector('#stock').addEventListener('keyup', valida_stock);
-document.querySelector('#descuento').addEventListener('keyup', valida_descuento);
-document.querySelector('#categoria_id').addEventListener('keyup', valida_categoria);
+document.querySelector('#denominacion').addEventListener('keyup', validaDenominacion);
+document.querySelector('#descripcion').addEventListener('keyup', validaDescripcion);
+document.querySelector('#precio').addEventListener('keyup', validaPrecio);
+document.querySelector('#stock').addEventListener('keyup', validaStock);
+document.querySelector('#descuento').addEventListener('keyup', validaDescuento);
+document.querySelector('#categoria_id').addEventListener('keyup', validaCategoria);
+document.producto_form.addEventListener('submit', validaSubmit);
 
 // Validar Denominación
-function valida_denominacion() {
+function validaDenominacion() {
     let elemento = document.producto_form.denominacion;
     borrarError(elemento);
 
@@ -35,7 +36,7 @@ function valida_denominacion() {
 }
 
 // Validar Descripción
-function valida_descripcion() {
+function validaDescripcion() {
     let elemento = document.producto_form.descripcion;
     borrarError(elemento);
 
@@ -61,7 +62,7 @@ function valida_descripcion() {
 }
 
 // Validar Precio
-function valida_precio() {
+function validaPrecio() {
     let elemento = document.producto_form.precio;
     borrarError(elemento);
 
@@ -96,7 +97,7 @@ function valida_precio() {
 }
 
 // Validar Stock
-function valida_stock() {
+function validaStock() {
     let elemento = document.producto_form.stock;
     borrarError(elemento);
 
@@ -130,7 +131,7 @@ function valida_stock() {
 }
 
 // Validar Descuento
-function valida_descuento() {
+function validaDescuento() {
     let elemento = document.producto_form.descuento;
     borrarError(elemento);
 
@@ -164,7 +165,7 @@ function valida_descuento() {
 }
 
 // Validar Categoría
-function valida_categoria() {
+function validaCategoria() {
     let elemento = document.producto_form.categoria_id;
     borrarError(elemento);
 
@@ -179,6 +180,15 @@ function valida_categoria() {
     }
     addCheckInput(elemento);
     return true;
+}
+
+// Validar Submit
+function validaSubmit(e) {
+    if(validaDenominacion() && validaDescripcion() && validaPrecio() && validaStock() && validaDescuento() && validaCategoria()){
+        return true;
+    }
+    e.preventDefault();
+    return false;
 }
 
 // ERROR

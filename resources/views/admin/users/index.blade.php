@@ -18,7 +18,7 @@
         <!-- Añadir usuario -->
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Usuarios</h1>
-            <a href="#"
+            <a href="{{ route('admin.users.create') }}"
                 class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
                 <i class="fa-regular fa-square-plus"></i>
             </a>
