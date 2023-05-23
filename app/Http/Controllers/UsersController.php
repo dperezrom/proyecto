@@ -173,8 +173,21 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if ($user->direcciones->isNotEmpty()) {
+            return redirect()->route('admin.users')->with('error', 'El usuario contiene direcciones.');
+        }
+
+        if ($user->facturas->isNotEmpty()) {
+            return redirect()->route('admin.users')->with('error', 'El usuario contiene facturas.');
+        }
+
+        if ($user->valoraciones->isNotEmpty()) {
+            return redirect()->route('admin.users')->with('error', 'El usuario contiene valoraciones.');
+        }
+        $user->delete();
+
+        return redirect()->route('admin.users')->with('success', 'Usuario eliminado con éxito.');
     }
 }

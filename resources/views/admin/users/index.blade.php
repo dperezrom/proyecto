@@ -209,7 +209,7 @@
                                         </div>
                                         <span class="px-1 text-gray-400 select-none">|</span>
                                         <div>
-                                            <form action="#" method="POST">
+                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button
