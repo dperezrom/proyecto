@@ -231,6 +231,21 @@ class ProductosController extends Controller
     // Mostrar
     public function show(Producto $producto)
     {
-        return view('admin.productos.show', ['producto' => $producto,]);
+        $valoraciones = array_column($producto->valoraciones->toArray(), 'puntuacion');
+        $totalValoraciones = count($valoraciones);
+        $valoracionMedia = $totalValoraciones ? (array_sum($valoraciones) / $totalValoraciones) : 0;
+        $agrupacionValoraciones = array_count_values($valoraciones);
+
+        $porcentajeValoraciones = array();
+        for ($i = 5; $i >= 1; $i--) {
+            $porcentajeValoraciones[$i] = array_key_exists($i, $agrupacionValoraciones) ? round(((float)$agrupacionValoraciones[$i] * 100) / $totalValoraciones, 0) : 0;
+        }
+
+        return view('admin.productos.show', [
+            'producto' => $producto,
+            'valoracionMedia' => number_format($valoracionMedia, 1),
+            'totalValoraciones' => $totalValoraciones,
+            'porcentajeValoraciones' => $porcentajeValoraciones,
+        ]);
     }
 }

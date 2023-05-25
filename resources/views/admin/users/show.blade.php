@@ -23,20 +23,20 @@
                 <!-- Teléfono -->
                 <div class="text-gray-800 py-2 border-b-2 border-gray-300">
                     <span class="text-sm text-gray-500">Teléfono:</span>
-                    <p>- {{ $user->telefono }}</p>
+                    <p>{{ $user->telefono }}</p>
                 </div>
 
                 <!-- Creado -->
-                <div class="text-gray-800">
+                <div class="text-gray-800 py-2 border-b-2 border-gray-300">
                     <span class="text-sm text-gray-500">Fecha de creación:</span>
-                    <p>- {{ $user->created_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+                    <p>{{ $user->created_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
                     </p>
                 </div>
 
                 <!-- Actualizado -->
-                <div class="text-gray-800">
+                <div class="text-gray-800 py-2 ">
                     <span class="text-sm text-gray-500">Última actualización:</span>
-                    <p>- {{ $user->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+                    <p>{{ $user->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
                     </p>
                 </div>
             </div>
@@ -47,15 +47,15 @@
                     <h2 class="font-bold text-4xl text-gray-800">Otros datos</h2>
                 </div>
                 <div class="text-gray-800 py-2">
-                    <span class="text-sm text-gray-500">- Valoraciones realizadas:</span>
+                    <span class="text-sm text-gray-500">Valoraciones realizadas:</span>
                     <span>({{ $user->valoraciones->count() }})</span>
                 </div>
                 <div class="text-gray-800 py-2">
-                    <span class="text-sm text-gray-500">- Compras realizadas:</span>
+                    <span class="text-sm text-gray-500">Compras realizadas:</span>
                     <span>({{ $user->facturas->count() }})</span>
                 </div>
                 <div class="text-gray-800 py-2">
-                    <span class="text-sm text-gray-500">- Direcciones creadas:</span>
+                    <span class="text-sm text-gray-500">Direcciones creadas:</span>
                     <span>({{ $user->direcciones->count() }})</span>
                 </div>
             </div>
