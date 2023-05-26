@@ -62,6 +62,14 @@ class ValoracionesController extends Controller
 
         $valoracion->save();
 
-        return redirect()->route('admin.valoraciones.ver-valoraciones', $valoracion->producto_id)->with('success', 'Valoración modificada');
+        return redirect()->route('admin.valoraciones.ver-valoraciones', $valoracion->producto_id)->with('success', 'Valoración modificada con éxito.');
+    }
+
+    // Borrar
+    public function destroy(Valoracion $valoracion)
+    {
+        $valoracion->delete();
+
+        return redirect()->back()->with('success', 'Valoración eliminada con éxito.');
     }
 }

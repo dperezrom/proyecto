@@ -1,5 +1,19 @@
 <x-app-layout>
     @section('title', 'Ver valoraciones - ' . $producto->denominacion)
+    <!-- Mensaje de éxito -->
+    <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
+        @if (session()->has('success'))
+            <div class="p-3 text-green-700 bg-green-300 rounded mb-4 px-5">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="p-3 text-red-700 bg-red-300 rounded mb-4 px-5">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+    </div>
     <div class="w-full">
         <!-- Volver -->
         <div class="w-full flex justify-center mb-5 pt-5">
@@ -71,7 +85,7 @@
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
 
-                                    <form action="#" method="POST">
+                                    <form action="{{ route('admin.valoraciones.destroy', $valoracion) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button
