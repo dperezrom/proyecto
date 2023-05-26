@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', 'Ver producto - ' . $producto->denominacion)
     <div class="w-full sm:flex sm:flex-wrap sm:justify-center">
         <!-- Volver -->
         <div class="w-full flex justify-center pt-5">

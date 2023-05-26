@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', 'Usuarios')
     <!-- Mensaje de éxito -->
     <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
         @if (session()->has('success'))

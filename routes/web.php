@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ValoracionesController;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
@@ -70,6 +71,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('/admin/productos/{producto}/edit', [ProductosController::class, 'update'])->name('admin.productos.update');
     Route::delete('/admin/productos/{producto}', [ProductosController::class, 'destroy'])->name('admin.productos.destroy');
     Route::get('/admin/productos/{producto}', [ProductosController::class, 'show'])->name('admin.productos.show');
+
+    // Comentarios Productos
+    Route::get('/admin/productos/{producto}/valoraciones', [ValoracionesController::class, 'ver_valoraciones'])->name('admin.valoraciones.ver-valoraciones');
 
     // Rutas Usuario
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');

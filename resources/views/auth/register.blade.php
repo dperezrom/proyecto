@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @section('title', 'Registro')
     <script type="text/javascript" src="{{ asset('js/register.js')}}" defer></script>
 
     <form method="POST" action="{{ route('register') }}" >

@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', 'Ver usuario - ' . $user->name)
     <div class="w-full flex flex-wrap justify-center">
         <!-- Volver -->
         <div class="w-full flex justify-center pt-5">

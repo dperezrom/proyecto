@@ -80,7 +80,7 @@
 
             <input type="text" name="denominacion" id="denominacion"
                 class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full sm:w-80"
-                required maxlength="30" pattern="^([a-zA-ZáéíóúÁÉÍÓÚñÑ]+\s?)+"
+                required maxlength="100" pattern="^([a-zA-ZáéíóúÁÉÍÓÚñÑ]+\s?)+"
                 value="{{ old('denominacion', $producto->denominacion) }}">
         </div>
         <div>

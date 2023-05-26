@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', 'Productos')
     <!-- Mensaje de éxito -->
     <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
         @if (session()->has('success'))
@@ -316,7 +317,7 @@
                                 </td>
 
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-6 py-4 font-medium text-gray-900 dark:text-white">
                                     <a
                                         href="{{ route('admin.productos.show', $producto) }}">{{ $producto->denominacion }}</a>
                                 </th>
@@ -355,6 +356,12 @@
 
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
+                                        <div>
+                                            <a href="{{ route('admin.valoraciones.ver-valoraciones', $producto) }}"
+                                                class="text-xl text-green-400">
+                                                <i class="fa-solid fa-comment"></i>
+                                        </div>
+                                        <span class="px-1 text-gray-400 select-none">|</span>
                                         <div>
                                             <a href="{{ route('admin.productos.edit', $producto) }}"
                                                 class="text-xl text-blue-400"><i

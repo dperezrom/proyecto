@@ -11,7 +11,7 @@
                 </a>
             @endif
 
-            <span class="text-gray-800 text-sm font-medium">
+            <span class="text-gray-800 dark:text-white text-sm font-medium">
                 Pág. {{ $paginator->currentPage() }} de {{ $paginator->lastPage() }}
             </span>
             @if ($paginator->hasMorePages())
@@ -27,12 +27,12 @@
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
-                <p class="text-sm text-gray-700 leading-5">
+                <p class="text-sm text-gray-700 dark:text-white leading-5">
                     {!! __('Mostrando') !!}
                     @if ($paginator->firstItem())
-                        <span class="text-gray-800 font-medium text-sm">{{ $paginator->firstItem() }}</span>
+                        <span class="font-medium">{{ $paginator->firstItem() }}</span>
                         {!! __('a') !!}
-                        <span class="text-gray-800 font-medium text-sm">{{ $paginator->lastItem() }}</span>
+                        <span class="font-medium">{{ $paginator->lastItem() }}</span>
                     @else
                         {{ $paginator->count() }}
                     @endif

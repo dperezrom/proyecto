@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('producto_id')->constrained('productos');
             $table->integer('puntuacion');
-            $table->string('titulo');
-            $table->string('comentario');
+            $table->string('titulo', 50);
+            $table->text('comentario');
             $table->timestamps();
             $table->unique(['user_id', 'producto_id']);
         });

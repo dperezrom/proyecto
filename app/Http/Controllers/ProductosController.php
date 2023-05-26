@@ -88,7 +88,7 @@ class ProductosController extends Controller
     public function validar()
     {
         $validados = request()->validate([
-            'denominacion' => 'required|string|max:30',
+            'denominacion' => 'required|string|max:100',
             'descripcion' => 'required|max:255',
             'precio' => 'required|numeric|regex:/^[\d]{0,4}(\.[\d]{1,2})?$/',
             'iva' => 'required|integer|between:0,100',
@@ -99,7 +99,7 @@ class ProductosController extends Controller
             'imagen' => 'mimes:jpeg,png',
         ], [
             'denominacion.required' => 'El campo «Denominación» es obligatorio',
-            'denominacion.max' => 'El campo «Denominación» solo permite hasta 30 caracteres',
+            'denominacion.max' => 'El campo «Denominación» solo permite hasta 100 caracteres',
             'descripcion.required' => 'El campo «Descripción» es obligatorio',
             'descripcion.max' => 'El campo «Descripción» solo permite hasta 255 caracteres',
             'precio.required' => 'El campo «Precio» es obligatorio',
