@@ -74,6 +74,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     // Comentarios Productos
     Route::get('/admin/productos/{producto}/valoraciones', [ValoracionesController::class, 'ver_valoraciones'])->name('admin.valoraciones.ver-valoraciones');
+    Route::get('/admin/valoraciones/{valoracion}/edit', [ValoracionesController::class, 'edit'])->name('admin.valoraciones.edit');
+    Route::put('/admin/valoracion/{valoracion}/edit', [ValoracionesController::class, 'update'])->name('admin.valoraciones.update');
+
 
     // Rutas Usuario
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');

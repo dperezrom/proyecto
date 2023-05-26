@@ -66,7 +66,7 @@
 
                             <aside>
                                 <div class="flex items-center mt-3 space-x-3">
-                                    <a href="#"
+                                    <a href="{{ route('admin.valoraciones.edit', $valoracion) }}"
                                         class="px-4 py-1 text-sm text-white bg-yellow-400 hover:bg-yellow-500 rounded">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
