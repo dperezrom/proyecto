@@ -8,6 +8,7 @@ use \App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ValoracionesController;
+use App\Http\Controllers\DireccionesController;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
@@ -87,5 +88,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::delete('/admin/users/{user}', [UsersController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/admin/users/{user}', [UsersController::class, 'show'])->name('admin.users.show');
 
+    // Rutas Direcciones
+    Route::get('/admin/users/{user}/direcciones', [DireccionesController::class, 'ver_direcciones'])->name('admin.direcciones.ver-direcciones');
 
 });

@@ -205,6 +205,12 @@
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div>
+                                            <a href="{{ route('admin.direcciones.ver-direcciones', $user) }}" class="text-xl text-emerald-400">
+                                                <i class="fa-solid fa-address-book"></i>
+                                            </a>
+                                        </div>
+                                        <span class="px-1 text-gray-400 select-none">|</span>
+                                        <div>
                                             <a href="{{ route('admin.users.edit', $user) }}" class="text-xl text-blue-400"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
