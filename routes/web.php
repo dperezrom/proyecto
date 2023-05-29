@@ -9,6 +9,8 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ValoracionesController;
 use App\Http\Controllers\DireccionesController;
+use App\Http\Controllers\FacturasController;
+use App\Http\Controllers\LineasController;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
@@ -90,5 +92,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
     // Rutas Direcciones
     Route::get('/admin/users/{user}/direcciones', [DireccionesController::class, 'ver_direcciones'])->name('admin.direcciones.ver-direcciones');
+
+    // Rutas Facturas
+    Route::get('/admin/users/{user}/facturas', [FacturasController::class, 'ver_facturas'])->name('admin.facturas.ver-facturas');
+
+    // Rutas Lineas
+    Route::get('/admin/facturas/{factura}/lineas', [LineasController::class, 'ver_lineas'])->name('admin.lineas.ver-lineas');
 
 });

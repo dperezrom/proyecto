@@ -17,7 +17,7 @@ class ValoracionesController extends Controller
         abort_unless(in_array($orden, ['asc', 'desc']), 404);
 
         $valoraciones = $producto->valoraciones()->orderBy('created_at', $orden);
-        $paginador = $valoraciones->paginate(2);
+        $paginador = $valoraciones->paginate(10);
         $paginador->appends(compact(
             'orden',
         ));

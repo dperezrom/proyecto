@@ -218,13 +218,20 @@ class ProductosController extends Controller
 
     public function destroy(Producto $producto)
     {
-        //Borrar imagen del disco
-        $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
-        ($producto->imagen) ? unlink($url) : '';
+        if ($producto->lineas->isNotEmpty()) {
+            return redirect()->route('admin.productos')->with('error', 'El producto contiene lineas de detalle.');
 
-        //Borra el producto completo
-        $producto->delete();
+        } else if ($producto->valoraciones->isNotEmpty()) {
+            return redirect()->route('admin.productos')->with('error', 'El producto contiene valoraciones.');
+            
+        } else {
+            //Borrar imagen del disco
+            $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
+            ($producto->imagen) ? unlink($url) : '';
 
+            //Borra el producto completo
+            $producto->delete();
+        }
         return back()->with('success', 'Producto eliminado con éxito.');
     }
 

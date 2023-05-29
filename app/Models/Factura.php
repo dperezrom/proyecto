@@ -9,6 +9,8 @@ class Factura extends Model
 {
     use HasFactory;
 
+    protected $dates = ['fecha'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('factura_id')->constrained('facturas');
             $table->foreignId('producto_id')->constrained('productos');
             $table->integer('cantidad');
-            $table->decimal('precio', 6, 2);
+            $table->decimal('precio', 7, 2);
+            $table->integer('iva');
             $table->integer('descuento');
             $table->timestamps();
         });

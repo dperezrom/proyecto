@@ -79,7 +79,7 @@
             <span >No se han encontrado resultados.</span>
         </div>
         @else
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:mx-5 my-5">
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-1 sm:mx-5 my-5">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
                 <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
 
@@ -166,7 +166,7 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr class="bg-slate-300">
+                    <tr class="bg-slate-300 dark:bg-gray-800">
                         <td colspan="4" class="px-6 py-4">
                             {{ $categorias->links('vendor.pagination.tailwind') }}
                         </td>

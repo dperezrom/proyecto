@@ -214,7 +214,7 @@
                 <span>No se han encontrado resultados.</span>
             </div>
         @else
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-1 py-5 sm:mx-5 my-5">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-1 sm:mx-5 my-5">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
                     <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
                         @php
@@ -316,10 +316,8 @@
                                         alt="{{ $producto->denominacion }}" class="object-contain h-28 w-28">
                                 </td>
 
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                    <a
-                                        href="{{ route('admin.productos.show', $producto) }}">{{ $producto->denominacion }}</a>
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    <a href="{{ route('admin.productos.show', $producto) }}">{{ $producto->denominacion }}</a>
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $producto->descripcion }}
@@ -387,7 +385,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-slate-300 px-6 py-4 w-full">
+            <div class="bg-slate-300 dark:bg-gray-800 px-6 py-4 w-full">
                 {{ $productos->links('vendor.pagination.tailwind') }}
             </div>
         @endif

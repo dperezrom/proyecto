@@ -211,6 +211,12 @@
                                         </div>
                                         <span class="px-1 text-gray-400 select-none">|</span>
                                         <div>
+                                            <a href="{{ route('admin.facturas.ver-facturas', $user) }}" class="text-xl text-yellow-400">
+                                                <i class="fa-solid fa-bag-shopping"></i>
+                                            </a>
+                                        </div>
+                                        <span class="px-1 text-gray-400 select-none">|</span>
+                                        <div>
                                             <a href="{{ route('admin.users.edit', $user) }}" class="text-xl text-blue-400"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>
                                         </div>
@@ -233,7 +239,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-slate-300 px-6 py-4 w-full">
+            <div class="bg-slate-300 dark:bg-gray-800 px-6 py-4 w-full">
                 {{ $users->links('vendor.pagination.tailwind') }}
             </div>
         @endif

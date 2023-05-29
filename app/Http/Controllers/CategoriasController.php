@@ -25,7 +25,7 @@ class CategoriasController extends Controller
             $categorias->where('descripcion', 'ilike', "%$descripcion%");
         }
 
-        $paginador = $categorias->paginate(5);
+        $paginador = $categorias->paginate(10);
 
         $paginador->appends(compact(
             'nombre',
