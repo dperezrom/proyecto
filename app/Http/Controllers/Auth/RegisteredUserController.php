@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
             'email.email' => 'El campo «Email» debe contener el formato adecuado',
             'email.max' => 'El campo «Email» solo permite hasta 50 caracteres',
             'email.unique' => 'El email ya existe ',
+            'password.required' => 'La contraseña es obligatoria',
             'password.min' => 'La contraseña necesita al menos 8 caracteres',
             'password.confirmed' => 'Ambas contraseñas deben coincidir',
             'telefono.required' => 'El campo «Teléfono» es obligatorio',
