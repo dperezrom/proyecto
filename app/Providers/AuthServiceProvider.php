@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +27,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return (new MailMessage)
+                ->greeting('¡Hola!')
+                ->subject('Verificar la dirección de correo electrónico')
+                ->line('Haga clic en el botón de abajo para verificar su dirección de correo electrónico')
+                ->action('Verificar la dirección de correo electrónico', $url)
+                ->line('Saludos,')
+                ->salutation('Doñana SHOP');
+        });
     }
 }
