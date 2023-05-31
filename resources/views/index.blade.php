@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-guest-layout>
 <!-- Inicio -->
-PÁGINA PRINCIPAL
-</x-app-layout>
+<p class="text-gray-800 dark:text-white">PÁGINA PRINCIPAL</p>
+
+</x-guest-layout>

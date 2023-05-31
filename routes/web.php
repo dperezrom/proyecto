@@ -48,6 +48,12 @@ Route::get('/email/verify', function () {
 
 require __DIR__.'/auth.php';
 
+// Modo usuario
+Route::middleware('auth')->group(function () {
+    Route::get('/direcciones', [DireccionesController::class, 'ver_mis_direcciones'])->name('direcciones.mis-direcciones');
+});
+
+
 // Modo admin
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     // Admin Dashboard
