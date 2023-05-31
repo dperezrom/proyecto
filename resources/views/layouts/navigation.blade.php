@@ -38,6 +38,11 @@
                             <i class="fa-solid fa-gear pr-1"></i>{{ __('Ajustes') }}
                         </x-dropdown-link>
 
+                        <!-- Direcciones -->
+                        <x-dropdown-link :href="route('direcciones.mis-direcciones')">
+                            <i class="fa-solid fa-address-book pr-1"></i>{{ __('Direcciones') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -82,6 +87,11 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     <i class="fa-solid fa-gear pr-1"></i>{{ __('Ajustes') }}
+                </x-responsive-nav-link>
+
+                <!-- Direcciones -->
+                <x-responsive-nav-link :href="route('direcciones.mis-direcciones')">
+                    <i class="fa-solid fa-address-book pr-1"></i>{{ __('Direcciones') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

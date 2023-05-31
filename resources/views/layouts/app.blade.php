@@ -23,12 +23,13 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            {{-- @include('layouts.navigation') --}}
-            @include('layouts.admin-navigation')
+
+            @includeWhen(Auth::user()->rol == 'usuario','layouts.navigation')
+            @includeWhen(Auth::user()->rol == 'admin','layouts.admin-navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow sm:ml-64 mt-4 sm:mt-16">
+                <header class="bg-white dark:bg-gray-800 shadow {{ (Auth::user()->rol == 'admin') ? 'sm:ml-64 mt-4 sm:mt-16' : '' }}">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -36,7 +37,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="sm:ml-64 mt-4 sm:mt-16">
+            <main class="{{ (Auth::user()->rol == 'admin') ? 'sm:ml-64 mt-4 sm:mt-16' : '' }}">
                 {{ $slot }}
             </main>
         </div>
