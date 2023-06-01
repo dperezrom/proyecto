@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="flex mt-3 space-x-3 w-full">
-                    <a href="#"
+                    <a href="{{route('direcciones.edit', $direccion)}}"
                         class="px-4 py-1 text-sm text-white bg-blue-400 hover:bg-blue-500 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>

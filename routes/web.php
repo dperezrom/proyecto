@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/direcciones', [DireccionesController::class, 'ver_mis_direcciones'])->name('direcciones.mis-direcciones');
     Route::get('/direcciones/create', [DireccionesController::class, 'create'])->name('direcciones.create');
     Route::post('/direcciones', [DireccionesController::class, 'store'])->name('direcciones.store');
+    Route::get('/direcciones/{direccion}/edit', [DireccionesController::class, 'edit'])->name('direcciones.edit');
+    Route::put('/direcciones/{direccion}/edit', [DireccionesController::class, 'update'])->name('direcciones.update');
 });
 
 
