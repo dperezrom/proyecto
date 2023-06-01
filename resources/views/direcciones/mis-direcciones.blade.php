@@ -32,7 +32,7 @@
         <!-- Botón añadir -->
         <div class="flex flex-col justify-center items-center text-sm bg-white dark:bg-gray-700 dark:text-white m-5 p-5 sm:p-10 text-gray-800 rounded-lg shadow-lg w-full sm:w-80">
             <div class="flex justify-center">
-                <a href="#" class="text-5xl text-teal-500 hover:text-teal-600">
+                <a href="{{ route('direcciones.create') }}" class="text-5xl text-teal-500 hover:text-teal-600">
                     <i class="fa-solid fa-square-plus"></i>
                 </a>
             </div>

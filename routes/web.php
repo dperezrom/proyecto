@@ -51,6 +51,8 @@ require __DIR__.'/auth.php';
 // Modo usuario
 Route::middleware('auth')->group(function () {
     Route::get('/direcciones', [DireccionesController::class, 'ver_mis_direcciones'])->name('direcciones.mis-direcciones');
+    Route::get('/direcciones/create', [DireccionesController::class, 'create'])->name('direcciones.create');
+    Route::post('/direcciones', [DireccionesController::class, 'store'])->name('direcciones.store');
 });
 
 
