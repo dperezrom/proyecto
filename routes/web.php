@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/direcciones', [DireccionesController::class, 'store'])->name('direcciones.store');
     Route::get('/direcciones/{direccion}/edit', [DireccionesController::class, 'edit'])->name('direcciones.edit');
     Route::put('/direcciones/{direccion}/edit', [DireccionesController::class, 'update'])->name('direcciones.update');
+    Route::delete('/direcciones/{direccion}', [DireccionesController::class, 'destroy'])->name('direcciones.destroy');
 });
 
 

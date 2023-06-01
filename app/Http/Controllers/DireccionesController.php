@@ -60,7 +60,9 @@ class DireccionesController extends Controller
     // Página editar dirección usuario
     public function edit(Direccion $direccion)
     {
-        if(Auth::id() != $direccion->user_id){abort(404);}
+        if(Auth::id() != $direccion->user_id) {
+            abort(404);
+        }
 
         return view('direcciones.edit', ['direccion' => $direccion]);
     }
@@ -68,7 +70,9 @@ class DireccionesController extends Controller
     // Editar dirección
     public function update(Direccion $direccion)
     {
-        if(Auth::id() != $direccion->user_id){abort(404);}
+        if(Auth::id() != $direccion->user_id) {
+            abort(404);
+        }
 
         $validados = $this->validar();
         $direccion->nombre = mb_convert_case(trim($validados['nombre']), MB_CASE_TITLE, 'UTF-8');
@@ -82,6 +86,18 @@ class DireccionesController extends Controller
         $direccion->save();
 
         return redirect()->route('direcciones.mis-direcciones')->with('success', 'Dirección actualizada con éxito');
+    }
+
+    // Borrar dirección
+    public function destroy(Direccion $direccion)
+    {
+        if(Auth::id() != $direccion->user_id) {
+            abort(404);
+        }
+
+        $direccion->delete();
+
+        return back()->with('success', 'Dirección eliminada con éxito.');
     }
 
     // Validación

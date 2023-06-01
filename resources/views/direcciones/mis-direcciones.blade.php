@@ -79,12 +79,12 @@
                 </div>
 
                 <div class="flex mt-3 space-x-3 w-full">
-                    <a href="{{route('direcciones.edit', $direccion)}}"
+                    <a href="{{ route('direcciones.edit', $direccion) }}"
                         class="px-4 py-1 text-sm text-white bg-blue-400 hover:bg-blue-500 rounded">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
 
-                    <form action="#" method="POST">
+                    <form action="{{ route('direcciones.destroy', $direccion) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('¿Quieres eliminar la dirección seleccionada?')"
