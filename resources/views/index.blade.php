@@ -62,8 +62,8 @@
                         @foreach ($categorias as $categoria)
                             <li class="py-1">
                                 <label class="text-gray-700 dark:text-white cursor-pointer flex items-center space-x-1">
-                                    <input type="checkbox" name="categorias[]" @change="form_filtro.submit()"
-                                           {{ in_array($categoria->id, $categoriaSeleccionadas) ?'checked' : ''}}
+                                    <input type="checkbox" name="categoria_seleccionadas[]" @change="form_filtro.submit()"
+                                           {{ in_array($categoria->id, $categoria_seleccionadas) ?'checked' : ''}}
                                            class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
                                            value="{{ $categoria->id }}">
                                     <span>{{ $categoria->nombre }}</span>
