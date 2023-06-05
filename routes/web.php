@@ -28,9 +28,9 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -47,6 +47,9 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 require __DIR__.'/auth.php';
+
+// Catálogo
+Route::get('/', [ProductosController::class, 'ver_catalogo'])->name('catalogo');
 
 // Modo usuario
 Route::middleware('auth')->group(function () {

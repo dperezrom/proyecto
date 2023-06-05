@@ -223,7 +223,7 @@ class ProductosController extends Controller
 
         } else if ($producto->valoraciones->isNotEmpty()) {
             return redirect()->route('admin.productos')->with('error', 'El producto contiene valoraciones.');
-            
+
         } else {
             //Borrar imagen del disco
             $url = self::RUTA_IMG_PRODUCTOS . '/' . $producto->imagen;
@@ -253,6 +253,20 @@ class ProductosController extends Controller
             'valoracionMedia' => number_format($valoracionMedia, 1),
             'totalValoraciones' => $totalValoraciones,
             'porcentajeValoraciones' => $porcentajeValoraciones,
+        ]);
+    }
+
+    // Ver Catálogo
+    public function ver_catalogo()
+    {
+        $categorias = Categoria::all()->sortBy('nombre');
+        $productos = Producto::where('activo', '=', 't');
+        $paginador = $productos->paginate(10);
+
+
+        return view('index', [
+            'productos' => $paginador,
+            'categorias' => $categorias,
         ]);
     }
 }
