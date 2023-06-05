@@ -52,22 +52,21 @@
                                 class="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md px-2 focus:ring-2 focus:ring-gray-500 focus:outline-none h-8 my-1">
                             Ir
                         </button>
-
                     </div>
                 </div>
 
                 <!-- Filtro categorías -->
-                <div class="mb-3">
+                <div x-data class="mb-3">
                     <span class="font-bold">POR CATEGORÍA</span>
                     <ul>
                         @foreach ($categorias as $categoria)
-                            <li class="py-1 flex items-center space-x-1">
-                                <input type="checkbox" name="{{ 'categoria' . $categoria->id }}"
-                                       class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
-                                       id="{{ 'categoria' . $categoria->id }}" value="{{ $categoria->id }}">
-                                <label for="{{ 'categoria' . $categoria->id }}"
-                                       class="text-gray-700 dark:text-white cursor-pointer">
-                                    {{ $categoria->nombre }}
+                            <li class="py-1">
+                                <label class="text-gray-700 dark:text-white cursor-pointer flex items-center space-x-1">
+                                    <input type="checkbox" name="categorias[]" @change="form_filtro.submit()"
+                                           {{ in_array($categoria->id, $categoriaSeleccionadas) ?'checked' : ''}}
+                                           class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
+                                           value="{{ $categoria->id }}">
+                                    <span>{{ $categoria->nombre }}</span>
                                 </label>
                             </li>
                         @endforeach

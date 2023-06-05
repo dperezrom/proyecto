@@ -269,20 +269,27 @@ class ProductosController extends Controller
         if($precio_max = request()->query('precio_max')){
             $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) <= ?', [$precio_max]);
         }
+
+        if($categoriaSeleccionadas = request()->query('categorias')){
+            $productos->whereIn('categoria_id',$categoriaSeleccionadas);
+        } else {
+            $categoriaSeleccionadas= [];
+        }
+
         $precio_orden = request()->query('precio_orden') ?: 'asc';
         $productos = $productos->orderBy('precio', $precio_orden);
 
-        $paginador = $productos->paginate(1);
+        $paginador = $productos->paginate(10);
         $paginador->appends(compact(
             'precio_orden',
             'precio_min',
             'precio_max',
         ));
-
-
+        
         return view('index', [
             'productos' => $paginador,
             'categorias' => $categorias,
+            'categoriaSeleccionadas' => $categoriaSeleccionadas
         ]);
     }
 }
