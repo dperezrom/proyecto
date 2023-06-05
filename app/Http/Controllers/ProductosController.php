@@ -288,6 +288,11 @@ class ProductosController extends Controller
             $productos->whereRaw('productos.id IN (SELECT producto_id FROM valoraciones GROUP BY producto_id HAVING AVG(puntuacion) >= ?)', [$stars]);
         }
 
+        // Filtro nombre
+        if ($producto = request()->query('producto')) {
+            $productos->where('productos.denominacion', 'ilike', "%$producto%");
+        }
+
         $precio_orden = in_array(request()->query('precio_orden'),['asc', 'desc'])
             ? request()->query('precio_orden')
             : 'asc';
@@ -301,6 +306,7 @@ class ProductosController extends Controller
             'precio_max',
             'categoria_seleccionadas',
             'stars',
+            'producto',
         ));
 
         return view('index', [

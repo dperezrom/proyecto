@@ -19,7 +19,8 @@
                         </li>
                         @for ($i = 4; $i >= 1; $i--)
                             <li class="py-1 flex items-center">
-                                <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}" @change="form_filtro.submit()"
+                                <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}"
+                                       @change="form_filtro.submit()"
                                        {{ request()->query('stars') == $i ? 'checked' : '' }}
                                        class="mr-1 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
                                 @for ($j = 1; $j <= 5; $j++)
@@ -64,7 +65,8 @@
                         @foreach ($categorias as $categoria)
                             <li class="py-1">
                                 <label class="text-gray-700 dark:text-white cursor-pointer flex items-center space-x-1">
-                                    <input type="checkbox" name="categoria_seleccionadas[]" @change="form_filtro.submit()"
+                                    <input type="checkbox" name="categoria_seleccionadas[]"
+                                           @change="form_filtro.submit()"
                                            {{ in_array($categoria->id, $categoria_seleccionadas) ? 'checked' : ''}}
                                            class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
                                            value="{{ $categoria->id }}">
@@ -78,25 +80,24 @@
         </aside>
         <section class="w-full">
             <!-- Buscador -->
-            <form>
-                <div class="flex px-8 pt-5">
-                    <div class="relative w-full lg:w-1/2">
-                        <label for="producto" class="sr-only">Producto</label>
-                        <input type="search" id="producto" name="producto"
-                               class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg rounded-l-lg border-l border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-emerald-500"
-                               placeholder="Busca un producto" required>
-                        <button type="submit"
-                                class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-emerald-700 rounded-r-lg border border-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">
-                            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
-                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                            <span class="sr-only">Search</span>
-                        </button>
-                    </div>
+            <div x-data class="flex px-8 pt-5">
+                <div class="relative w-full lg:w-1/2">
+                    <label for="producto" class="sr-only">Producto</label>
+                    <input type="search" id="producto" name="producto" form="form_filtro"
+                           value="{{request()->query('producto')}}"
+                           class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg rounded-l-lg border-l border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-emerald-500"
+                           placeholder="Busca un producto" required>
+                    <button type="submit" @click="form_filtro.submit()"
+                            class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-emerald-700 rounded-r-lg border border-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
+                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <span class="sr-only">Search</span>
+                    </button>
                 </div>
-            </form>
+            </div>
 
             <!-- Ordenar por precio -->
             <div x-data class="p-5 mx-3">
@@ -175,12 +176,14 @@
                         </div>
                     </div>
                 @endforeach
+                @if(count($productos) == 0)
+                    <div class="my-4 mx-2 px-6 py-4 bg-slate-500 dark:bg-gray-800 text-white">
+                        <span>No se han encontrado resultados.</span>
+                    </div>
+                @endif
                 <div class="bg-slate-300 dark:bg-gray-800 px-6 my-5 py-4 w-full">
                     {{ $productos->links('vendor.pagination.tailwind') }}
                 </div>
-                @if(count($productos) == 0)
-                    NO EXISTEN DATOS PARA LOS CRITERIOS DE FILTRADO SELECCIONADOS!!!
-                @endif
             </div>
 
         </section>
