@@ -264,22 +264,34 @@ class ProductosController extends Controller
         $productos = Producto::where('activo', '=', 't');
 
         // Filtro precio mínimo
-        if($precio_min = request()->query('precio_min')){
+        $precio_min = request()->query('precio_min');
+        if($precio_min && is_numeric($precio_min)){
             $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) >= ?', [$precio_min]);
         }
         // Filtro precio máximo
-        if($precio_max = request()->query('precio_max')){
+        $precio_max = request()->query('precio_max');
+        if($precio_max && is_numeric($precio_max)){
             $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) <= ?', [$precio_max]);
         }
 
         // Filtro categorías
-        if($categoria_seleccionadas = request()->query('categoria_seleccionadas')){
+        $categoria_seleccionadas = request()->query('categoria_seleccionadas');
+        if($categoria_seleccionadas && empty(preg_grep("/\D/", $categoria_seleccionadas))){
             $productos->whereIn('categoria_id',$categoria_seleccionadas);
         } else {
             $categoria_seleccionadas= [];
         }
 
-        $precio_orden = request()->query('precio_orden') ?: 'asc';
+        // Filtro valoraciones
+        $stars = request()->query('stars');
+        if($stars && is_numeric($stars)){
+            $productos->whereRaw('productos.id IN (SELECT producto_id FROM valoraciones GROUP BY producto_id HAVING AVG(puntuacion) >= ?)', [$stars]);
+        }
+
+        $precio_orden = in_array(request()->query('precio_orden'),['asc', 'desc'])
+            ? request()->query('precio_orden')
+            : 'asc';
+
         $productos = $productos->orderBy('precio', $precio_orden);
 
         $paginador = $productos->paginate(1);
@@ -288,6 +300,7 @@ class ProductosController extends Controller
             'precio_min',
             'precio_max',
             'categoria_seleccionadas',
+            'stars',
         ));
 
         return view('index', [

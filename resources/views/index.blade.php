@@ -7,18 +7,20 @@
             <!-- Filtros -->
             <form action="/" name="form_filtro" method="GET" id="form_filtro">
                 <!-- Filtro valoraciones -->
-                <div class="mb-4">
+                <div x-data class="mb-4">
                     <span class="font-bold">POR VALORACIÓN</span>
                     <ul>
                         <li class="pt-1 flex items-center">
-                            <input type="radio" name="stars" value="" id="stars-todo"
+                            <input type="radio" name="stars" value="" id="stars-todo" @change="form_filtro.submit()"
+                                   {{ request()->query('stars') == '' ? 'checked' : '' }}
                                    class="mr-2 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
                             <label for="stars-todo" class="text-gray-700 dark:text-white cursor-pointer">Ver
                                 todo</label>
                         </li>
                         @for ($i = 4; $i >= 1; $i--)
                             <li class="py-1 flex items-center">
-                                <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}"
+                                <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}" @change="form_filtro.submit()"
+                                       {{ request()->query('stars') == $i ? 'checked' : '' }}
                                        class="mr-1 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
                                 @for ($j = 1; $j <= 5; $j++)
                                     <label for="{{ $i . '-star' }}" class="cursor-pointer">
@@ -63,7 +65,7 @@
                             <li class="py-1">
                                 <label class="text-gray-700 dark:text-white cursor-pointer flex items-center space-x-1">
                                     <input type="checkbox" name="categoria_seleccionadas[]" @change="form_filtro.submit()"
-                                           {{ in_array($categoria->id, $categoria_seleccionadas) ?'checked' : ''}}
+                                           {{ in_array($categoria->id, $categoria_seleccionadas) ? 'checked' : ''}}
                                            class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
                                            value="{{ $categoria->id }}">
                                     <span>{{ $categoria->nombre }}</span>
@@ -176,6 +178,9 @@
                 <div class="bg-slate-300 dark:bg-gray-800 px-6 my-5 py-4 w-full">
                     {{ $productos->links('vendor.pagination.tailwind') }}
                 </div>
+                @if(count($productos) == 0)
+                    NO EXISTEN DATOS PARA LOS CRITERIOS DE FILTRADO SELECCIONADOS!!!
+                @endif
             </div>
 
         </section>
