@@ -22,7 +22,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="bg-gray-100 dark:bg-gray-900">
 
             @includeWhen(!Auth::check(),'layouts.guest-navigation')
             @includeWhen(Auth::check() && Auth::user()->rol != 'admin','layouts.navigation')

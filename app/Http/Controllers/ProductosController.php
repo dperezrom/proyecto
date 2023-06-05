@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
@@ -191,12 +192,12 @@ class ProductosController extends Controller
 
     private function insert_directory_image($file)
     {
-        if($file){
-            do{
-                $filename = date('YmdHisu') .'_'. str_replace(' ', '_',$file->getClientOriginalName());
+        if ($file) {
+            do {
+                $filename = date('YmdHisu') . '_' . str_replace(' ', '_', $file->getClientOriginalName());
                 $url = self::RUTA_IMG_PRODUCTOS . '/' . $filename;
 
-            } while(file_exists($url) && is_file($url));
+            } while (file_exists($url) && is_file($url));
 
             $file->move(public_path(self::RUTA_IMG_PRODUCTOS), $filename);
             return $filename;
@@ -261,7 +262,22 @@ class ProductosController extends Controller
     {
         $categorias = Categoria::all()->sortBy('nombre');
         $productos = Producto::where('activo', '=', 't');
-        $paginador = $productos->paginate(10);
+
+        if($precio_min = request()->query('precio_min')){
+            $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) >= ?', [$precio_min]);
+        }
+        if($precio_max = request()->query('precio_max')){
+            $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) <= ?', [$precio_max]);
+        }
+        $precio_orden = request()->query('precio_orden') ?: 'asc';
+        $productos = $productos->orderBy('precio', $precio_orden);
+
+        $paginador = $productos->paginate(1);
+        $paginador->appends(compact(
+            'precio_orden',
+            'precio_min',
+            'precio_max',
+        ));
 
 
         return view('index', [

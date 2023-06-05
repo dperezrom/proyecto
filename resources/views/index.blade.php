@@ -4,80 +4,82 @@
     <div class="sm:flex">
         <aside
             class="bg-white dark:bg-gray-700 text-gray-800 dark:text-white w-auto sm:w-1/2 md:w-2/6 lg:w-1/6 px-10 py-5">
-            <!-- Filtro valoraciones -->
-            <div class="mb-4">
-                <span class="font-bold">POR VALORACIÓN</span>
-                <ul>
-                    <li class="pt-1 flex items-center">
-                        <input type="radio" name="stars" value="" id="stars-todo"
-                               class="mr-2 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
-                        <label for="stars-todo" class="text-gray-700 dark:text-white cursor-pointer">Ver
-                            todo</label>
-                    </li>
-                    @for ($i = 4; $i >= 1; $i--)
-                        <li class="py-1 flex items-center">
-                            <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}"
-                                   class="mr-1 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
-                            @for ($j = 1; $j <= 5; $j++)
-                                <label for="{{ $i . '-star' }}" class="cursor-pointer">
-                                    <svg aria-hidden="true"
-                                         class="w-5 h-5 {{ $j <= $i ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}"
-                                         fill="currentColor" viewBox="0 0 20 20"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <title>{{ $i }} star</title>
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                </label>
-                            @endfor
+            <!-- Filtros -->
+            <form action="/" name="form_filtro" method="GET" id="form_filtro">
+                <!-- Filtro valoraciones -->
+                <div class="mb-4">
+                    <span class="font-bold">POR VALORACIÓN</span>
+                    <ul>
+                        <li class="pt-1 flex items-center">
+                            <input type="radio" name="stars" value="" id="stars-todo"
+                                   class="mr-2 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
+                            <label for="stars-todo" class="text-gray-700 dark:text-white cursor-pointer">Ver
+                                todo</label>
                         </li>
-                    @endfor
-                </ul>
-            </div>
-
-            <!-- Filtro precio -->
-            <div class="mb-3">
-                <span class="font-bold">POR PRECIO</span>
-                <div class="flex flex-wrap py-2">
-                    <input type="text" name="precio-min" id="precio-min" min="0" pattern="^[0-9]+"
-                           placeholder="Mín"
-                           class="bg-gray-50 border border-gray-300 text-gray-800 rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
-                    <input type="text" name="precio-max" id="precio-max" min="0" pattern="^[0-9]+"
-                           placeholder="Máx"
-                           class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
-                    <button type="button"
-                            class="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md px-2 focus:ring-2 focus:ring-gray-500 focus:outline-none h-8 my-1">
-                        Ir
-                    </button>
-
+                        @for ($i = 4; $i >= 1; $i--)
+                            <li class="py-1 flex items-center">
+                                <input type="radio" name="stars" id="{{ $i . '-star' }}" value="{{ $i }}"
+                                       class="mr-1 cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600">
+                                @for ($j = 1; $j <= 5; $j++)
+                                    <label for="{{ $i . '-star' }}" class="cursor-pointer">
+                                        <svg aria-hidden="true"
+                                             class="w-5 h-5 {{ $j <= $i ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-500' }}"
+                                             fill="currentColor" viewBox="0 0 20 20"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <title>{{ $i }} star</title>
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                    </label>
+                                @endfor
+                            </li>
+                        @endfor
+                    </ul>
                 </div>
-            </div>
 
-            <!-- Filtro categorías -->
-            <div class="mb-3">
-                <span class="font-bold">POR CATEGORÍA</span>
-                <ul>
-                    @foreach ($categorias as $categoria)
-                        <li class="py-1 flex items-center space-x-1">
-                            <input type="checkbox" name="{{ 'categoria' . $categoria->id }}"
-                                   class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
-                                   id="{{ 'categoria' . $categoria->id }}" value="{{ $categoria->id }}">
-                            <label for="{{ 'categoria' . $categoria->id }}"
-                                   class="text-gray-700 dark:text-white cursor-pointer">
-                                {{ $categoria->nombre }}
-                            </label>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+                <!-- Filtro precio -->
+                <div class="mb-3">
+                    <span class="font-bold">POR PRECIO</span>
+                    <div class="flex flex-wrap py-2">
+                        <input type="text" name="precio_min" id="precio_min" min="0" pattern="^[0-9]+"
+                               placeholder="Mín" value="{{ request()->query('precio_min') }}"
+                               class="bg-gray-50 border border-gray-300 text-gray-800 rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
+                        <input type="text" name="precio_max" id="precio_max" min="0" pattern="^[0-9]+"
+                               placeholder="Máx" value="{{ request()->query('precio_max') }}"
+                               class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
+                        <button type="submit"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md px-2 focus:ring-2 focus:ring-gray-500 focus:outline-none h-8 my-1">
+                            Ir
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Filtro categorías -->
+                <div class="mb-3">
+                    <span class="font-bold">POR CATEGORÍA</span>
+                    <ul>
+                        @foreach ($categorias as $categoria)
+                            <li class="py-1 flex items-center space-x-1">
+                                <input type="checkbox" name="{{ 'categoria' . $categoria->id }}"
+                                       class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-400 dark:border-gray-600"
+                                       id="{{ 'categoria' . $categoria->id }}" value="{{ $categoria->id }}">
+                                <label for="{{ 'categoria' . $categoria->id }}"
+                                       class="text-gray-700 dark:text-white cursor-pointer">
+                                    {{ $categoria->nombre }}
+                                </label>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </form>
         </aside>
-        <section class="pb-20">
+        <section class="w-full">
             <!-- Buscador -->
             <form>
                 <div class="flex px-8 pt-5">
-
-                    <div class="relative w-full">
+                    <div class="relative w-full lg:w-1/2">
                         <label for="producto" class="sr-only">Producto</label>
                         <input type="search" id="producto" name="producto"
                                class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg rounded-l-lg border-l border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-emerald-500"
@@ -96,9 +98,9 @@
             </form>
 
             <!-- Ordenar por precio -->
-            <div class="p-5 mx-3">
+            <div x-data class="p-5 mx-3">
                 <label for="precio_orden" class="sr-only">Ordenar precio</label>
-                <select name="precio_orden" id="precio_orden"
+                <select name="precio_orden" id="precio_orden" form="form_filtro" @change="form_filtro.submit()"
                         class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500">
                     <option value="asc" {{ request()->query('precio_orden') == 'asc' ? 'selected' : '' }}>
                         Precio: menor a mayor
@@ -110,7 +112,7 @@
             </div>
 
             <!-- Catálogo -->
-            <div class="flex flex-row flex-wrap flex-start w-full px-5">
+            <div class="flex flex-row flex-wrap flex-start w-auto px-5">
                 @foreach ($productos as $producto)
                     <div
                         class="bg-white text-gray-800 flex flex-col m-3 p-3 rounded-lg shadow-lg w-full sm:w-80">
@@ -172,10 +174,11 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="bg-slate-300 dark:bg-gray-800 px-6 my-5 py-4 w-full">
+                    {{ $productos->links('vendor.pagination.tailwind') }}
+                </div>
             </div>
-            <div class="flex justify-center">
-                {{ $productos->links('vendor.pagination.tailwind') }}
-            </div>
+
         </section>
     </div>
 
