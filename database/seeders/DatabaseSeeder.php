@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
         // Seeders
         $this->call([
             CategoriaSeeder::class,
+            ImpuestoSeeder::class,
         ]);
 
         // Factorías
-        User::factory(30)->create();
-        Producto::factory(30)->create();
+        //User::factory(30)->create();
+        //Producto::factory(30)->create();
     }
 }

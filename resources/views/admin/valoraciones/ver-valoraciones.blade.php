@@ -1,20 +1,9 @@
 <x-app-layout>
     @section('title', 'Ver valoraciones - ' . $producto->denominacion)
-    <!-- Mensaje de éxito -->
-    <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-        @if (session()->has('success'))
-            <div class="p-3 text-green-700 bg-green-300 rounded mb-4 px-5">
-                {{ session()->get('success') }}
-            </div>
-        @endif
+    <!-- Mensaje redirect -->
+    <x-mensaje/>
 
-        @if (session()->has('error'))
-            <div class="p-3 text-red-700 bg-red-300 rounded mb-4 px-5">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-    </div>
-    <div class="w-full">
+    <div class="w-full mt-16">
         <!-- Volver -->
         <div class="w-full flex justify-center mb-5 pt-5">
             <a href="{{ route('admin.productos') }}"
@@ -75,7 +64,7 @@
                                 <p>Última modificación: {{$valoracion->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}</p>
                                 @endif
                             </footer>
-                            <p class="mb-2 font-light text-gray-500 dark:text-gray-400">{{ $valoracion->comentario }}
+                            <p class="mb-2 font-light text-gray-500 dark:text-white">{{ $valoracion->comentario }}
                             </p>
 
                             <aside>

@@ -21,6 +21,18 @@
                     </div>
                 </div>
 
+                <!-- DNI/NIE -->
+                <div class="text-gray-800 py-2 border-b-2 border-gray-300">
+                    <span class="text-sm text-gray-500">DNI/NIE:</span>
+                    <p>{{ $user->documento }}</p>
+                </div>
+
+                <!-- Fecha de Nacimiento -->
+                <div class="text-gray-800 py-2 border-b-2 border-gray-300">
+                    <span class="text-sm text-gray-500">Fecha de nacimiento:</span>
+                    <p>{{ $user->fecha_nac->format('d-m-Y') }}</p>
+                </div>
+
                 <!-- Teléfono -->
                 <div class="text-gray-800 py-2 border-b-2 border-gray-300">
                     <span class="text-sm text-gray-500">Teléfono:</span>

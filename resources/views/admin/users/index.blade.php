@@ -1,23 +1,11 @@
 <x-app-layout>
     @section('title', 'Usuarios')
-    <!-- Mensaje de éxito -->
-    <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-        @if (session()->has('success'))
-            <div class="p-3 text-green-700 bg-green-300 rounded mb-4 px-5">
-                {{ session()->get('success') }}
-            </div>
-        @endif
+    <!-- Mensaje redirect -->
+    <x-mensaje/>
 
-        @if (session()->has('error'))
-            <div class="p-3 text-red-700 bg-red-300 rounded mb-4 px-5">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-    </div>
-
-    <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
+    <div class="bg-gray-200 border-gray-200 shadow rounded-md sm:mx-5 lg:mx-20 mt-16 mb-5 pb-1">
         <!-- Añadir usuario -->
-        <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
+        <div class="flex items-center justify-center xl:justify-start  bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Usuarios</h1>
             <a href="{{ route('admin.users.create') }}"
                 class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
@@ -50,6 +38,17 @@
                                 value="{{ request()->query('name') }}">
                         </div>
 
+                        <!-- DNI/NIE -->
+                        <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
+                            <label for="documento" class="text-sm font-medium text-gray-100 mr-3 w-24">
+                                DNI/NIE:
+                            </label>
+
+                            <input type="text" name="documento" id="documento"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full flex-auto"
+                                   value="{{ request()->query('documento') }}">
+                        </div>
+
                         <!-- Email -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
                             <label for="email" class="text-sm font-medium text-gray-100 mr-3 w-24">
@@ -61,7 +60,7 @@
                                 value="{{ request()->query('email') }}">
                         </div>
 
-                        <!-- Email -->
+                        <!-- Teléfono -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
                             <label for="telefono" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 Teléfono:
@@ -153,11 +152,19 @@
                             </th>
 
                             <th scope="col" class="px-6 py-3">
+                                <span>DNI/NIE</span>
+                            </th>
+
+                            <th scope="col" class="px-6 py-3">
                                 <a href="{{ route('admin.users') }}?orden=email{!! $tOrdenEmail . $link !!}"
                                     class="flex items-center">
                                     <span>Email</span>
                                     <span class="text-lg"><i class='fas'>{!! $estiloEmail !!}</i></span>
                                 </a>
+                            </th>
+
+                            <th scope="col" class="px-6 py-3">
+                                <span>Fecha Nacimiento</span>
                             </th>
 
                             <th scope="col" class="px-6 py-3">
@@ -191,7 +198,15 @@
                                 </th>
 
                                 <td class="px-6 py-4">
+                                    {{ $user->documento }}
+                                </td>
+
+                                <td class="px-6 py-4">
                                     {{ $user->email }}
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    {{ $user->fecha_nac->format('d-m-Y') }}
                                 </td>
 
                                 <td class="px-6 py-4">

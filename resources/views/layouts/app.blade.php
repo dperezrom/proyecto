@@ -22,7 +22,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="bg-gray-100 dark:bg-gray-900">
+        <div class="bg-gray-100 dark:bg-gray-900 min-h-screen">
 
             @includeWhen(!Auth::check(),'layouts.guest-navigation')
             @includeWhen(Auth::check() && Auth::user()->rol != 'admin','layouts.navigation')
@@ -30,7 +30,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow {{ (Auth::check() && Auth::user()->rol == 'admin') ? 'sm:ml-64 mt-4 sm:mt-16' : '' }}">
+                <header class="bg-white dark:bg-gray-800 shadow mt-16">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
@@ -38,11 +38,13 @@
             @endif
 
             <!-- Page Content -->
-            <main class="{{ (Auth::check() && Auth::user()->rol == 'admin') ? 'sm:ml-64 mt-4 sm:mt-16' : '' }}">
+            <main>
                 {{ $slot }}
             </main>
+
+            <!-- Footer -->
+            @include('layouts.footer')
         </div>
-        <!-- Footer -->
-        @include('layouts.footer')
+
     </body>
 </html>

@@ -13,7 +13,11 @@
                     {{ __("¡Has iniciado sesión con exito!") }}
                 </div>
                 <!-- -->
-
+                <script>
+                    setTimeout(function() {
+                        window.location.href = "/"
+                    }, 3000);
+                </script>
                 <!-- -->
             </div>
         </div>

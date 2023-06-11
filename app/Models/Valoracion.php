@@ -11,11 +11,23 @@ class Valoracion extends Model
 
     protected $table = 'valoraciones';
 
+    protected $fillable = [
+        'user_id',
+        'producto_id',
+        'puntuacion',
+        'titulo',
+        'comentario',
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
 
     public function producto() {
         return $this->belongsTo(Producto::class);
+    }
+
+    public function respuestas() {
+        return $this->hasMany(Respuesta::class);
     }
 }

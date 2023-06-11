@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('denominacion');
             $table->text('descripcion');
             $table->decimal('precio', 7, 2);
-            $table->integer('iva');
+            $table->foreignId('impuesto_id')->constrained('impuestos');
             $table->integer('stock');
             $table->string('activo');
             $table->integer('descuento');

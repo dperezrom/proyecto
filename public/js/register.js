@@ -6,6 +6,8 @@ document.querySelector('#telefono').addEventListener('keyup', validaTelefono);
 document.querySelector('#email').addEventListener('keyup', validaEmail);
 document.querySelector('#password').addEventListener('keyup', validaPassword);
 document.querySelector('#password_confirmation').addEventListener('keyup', comprobarPasswords);
+document.querySelector('#documento').addEventListener('keyup', validaDocumento);
+document.querySelector('#fecha_nac').addEventListener('change', validaFechaNacimiento);
 
 // Validar nombre
 function validaNombre() {
@@ -14,15 +16,15 @@ function validaNombre() {
 
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
-            elemento.setCustomValidity("* El campo Nombre no puede estar vacío.");
+            elemento.setCustomValidity("El campo Nombre no puede estar vacío.");
 
         }
         if (elemento.validity.patternMismatch) {
-            elemento.setCustomValidity("* Formato de nombre incorrecto.");
+            elemento.setCustomValidity("Formato de nombre incorrecto.");
         }
 
         if (elemento.validity.tooLong) {
-            elemento.setCustomValidity("* El Nombre es demasiado largo.");
+            elemento.setCustomValidity("El Nombre es demasiado largo.");
         }
 
         error(elemento);
@@ -40,15 +42,15 @@ function validaTelefono() {
 
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
-            elemento.setCustomValidity("* El campo Teléfono no puede estar vacío.");
+            elemento.setCustomValidity("El campo Teléfono no puede estar vacío.");
 
         }
         if (elemento.validity.patternMismatch) {
-            elemento.setCustomValidity("* Formato de Teléfono incorrecto.");
+            elemento.setCustomValidity("Formato de Teléfono incorrecto.");
         }
 
         if (elemento.validity.tooLong) {
-            elemento.setCustomValidity("* El Teléfono es demasiado largo.");
+            elemento.setCustomValidity("El Teléfono es demasiado largo.");
         }
 
         error(elemento);
@@ -68,15 +70,15 @@ function validaEmail() {
 
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
-            elemento.setCustomValidity("* El campo Email no puede estar vacío.");
+            elemento.setCustomValidity("El campo Email no puede estar vacío.");
 
         }
         if (elemento.validity.typeMismatch) {
-            elemento.setCustomValidity("* Formato de Email incorrecto.");
+            elemento.setCustomValidity("Formato de Email incorrecto.");
         }
 
         if (elemento.validity.tooLong) {
-            elemento.setCustomValidity("* El Email es demasiado largo.");
+            elemento.setCustomValidity("El Email es demasiado largo.");
         }
 
         error(elemento);
@@ -97,11 +99,11 @@ function validaPassword() {
 
     if (!elemento.checkValidity()) {
         if (elemento.validity.valueMissing) {
-            elemento.setCustomValidity("* El campo Contraseña no puede estar vacío.");
+            elemento.setCustomValidity("El campo Contraseña no puede estar vacío.");
         }
 
         if (elemento.validity.patternMismatch) {
-            elemento.setCustomValidity("* Formato de Contraseña incorrecto.");
+            elemento.setCustomValidity("Formato de Contraseña incorrecto.");
 
         }
 
@@ -124,9 +126,8 @@ function comprobarPasswords() {
     if (password1.value == password2.value && password2.value != '') {
         addCheckInput(password2);
         return true;
-    }
-    else {
-        password2.setCustomValidity('* Las contraseñas no coinciden.');
+    } else {
+        password2.setCustomValidity('Las contraseñas no coinciden.');
         error(password2);
         deleteCheckInput(password2);
         return false;
@@ -136,16 +137,16 @@ function comprobarPasswords() {
 // ERROR
 function error(elemento) {
     // DOM
-    const input = document.querySelector("#" + elemento.id);
-    const span = document.createElement('span');
-    span.classList.add("error");
-    span.setAttribute('id', 'error' + elemento.id);
-    span.textContent = elemento.validationMessage;
-    input.insertAdjacentElement("afterend", span);
+    const divInput = document.querySelector("#" + elemento.id).parentNode;
+    const div = document.createElement('div');
+    div.classList.add('error', 'py-1');
+    div.setAttribute('id', 'error' + elemento.id);
+    div.textContent = elemento.validationMessage;
+    divInput.insertAdjacentElement("afterend", div);
 
     // Añadir class error al input
     elemento.classList.add('error');
-    
+
 }
 
 // Borrar ERROR
@@ -155,7 +156,7 @@ function borrarError(elemento) {
     elemento.setCustomValidity('');
 
     // Eliminar mensaje de error
-    mensajeError = document.getElementById("error" + elemento.id);
+    const mensajeError = document.getElementById("error" + elemento.id);
     if (mensajeError) {
         mensajeError.remove();
     }
@@ -166,12 +167,12 @@ function borrarError(elemento) {
 function addCheckInput(elemento) {
     // DOM
     if (!document.querySelector("#check" + elemento.id)) {
-        const input = document.querySelector("#" + elemento.id);
+        const label = document.querySelector("#label_" + elemento.id);
         const icon = document.createElement('i');
         icon.setAttribute('id', 'check' + elemento.id);
         icon.style.color = 'lightgreen';
         icon.classList.add("fa-solid", "fa-check");
-        input.insertAdjacentElement("beforebegin", icon);
+        label.insertAdjacentElement("afterend", icon);
     }
 
 }
@@ -184,4 +185,88 @@ function deleteCheckInput(elemento) {
         check.remove();
     }
 
+}
+
+
+// Validar Documento DNI/NIE
+function validaDocumento() {
+    let elemento = document.forms[0].documento;
+    borrarError(elemento);
+
+    if (!validaDNINIE(elemento.value)) {
+        elemento.setCustomValidity("El DNI/NIE introducido no es valido.");
+    }
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("El campo DNI/NIE no puede estar vacío.");
+
+        }
+        if (elemento.validity.patternMismatch) {
+            elemento.setCustomValidity("Formato de DNI/NIE incorrecto.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+// Validar DNI
+function validaDNINIE(dni) {
+    let numero, letra;
+    let expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+    dni = dni.toUpperCase();
+
+    if (expresion_regular_dni.test(dni) === true) {
+        numero = dni.substring(0, dni.length - 1);
+        numero = numero.replace('X', 0);
+        numero = numero.replace('Y', 1);
+        numero = numero.replace('Z', 2);
+        letra = dni.substring(dni.length - 1);
+        numero = numero % 23;
+
+        return 'TRWAGMYFPDXBNJZSQVHLCKET'.substring(numero, numero + 1) === letra;
+    }
+    return false;
+}
+
+// Validar Fecha de Nacimiento
+function validaFechaNacimiento() {
+    let elemento = document.forms[0].fecha_nac;
+    borrarError(elemento);
+
+    if (!validarEdadLegal(elemento.value)) {
+        elemento.setCustomValidity("No eres mayor de edad.");
+    }
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("El campo Fecha de Nacimiento no puede estar vacío.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+function validarEdadLegal(fecha) {
+    let hoy = new Date();
+    let nacimiento = new Date(fecha);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    let m = hoy.getMonth() - nacimiento.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+        edad--;
+    }
+    return (edad >=18);
 }

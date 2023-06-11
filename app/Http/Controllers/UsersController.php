@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Utilities;
 use App\Mail\NotificarPassword;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
+
 class UsersController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         // Campos buscador
         $campos = [
             'name',
+            'documento',
             'email',
             'telefono',
             'rol',
@@ -48,6 +51,7 @@ class UsersController extends Controller
             'orden',
             'torden',
             'name',
+            'documento',
             'email',
             'telefono',
             'rol',
@@ -59,38 +63,52 @@ class UsersController extends Controller
         ]);
     }
 
-     // Validación
-     public function validar(User $user)
-     {
-        $userId = empty($user->id) ? '' : ','.$user->id;
-
-         $validados = request()->validate([
-             'name' => ['required', 'string','min:2', 'max:35'],
-             'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email'.$userId],
-             'telefono' => ['required', 'digits:9'],
-             'rol' => ['required','in:usuario,admin'],
-
-         ], [
-             'name.required' => 'El campo «Nombre» es obligatorio',
-             'name.min' => 'El campo «Nombre» necesita al menos 2 caracteres',
-             'name.max' => 'El campo «Nombre» solo permite hasta 30 caracteres',
-             'email.required' => 'El campo «Email» es obligatorio',
-             'email.email' => 'El campo «Email» debe contener el formato adecuado',
-             'email.max' => 'El campo «Email» solo permite hasta 50 caracteres',
-             'email.unique' => 'El email ya existe ',
-             'telefono.required' => 'El campo «Teléfono» es obligatorio',
-             'telefono.digits' => 'El campo «Teléfono» debe contener 9 dígitos',
-             'rol.required' => 'El campo «Rol» es obligatorio',
-             'rol.in' => 'El campo «Rol» contiene un valor incorrecto',
-         ]);
-
-         return $validados;
-     }
+    // Validación
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return array
+     */
+    public function validar(User $user): array
+    {
+        $userId = empty($user->id) ? '' : ',' . $user->id;
+
+        return request()->validate([
+            'name' => ['required', 'string', 'min:2', 'max:35'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users,email' . $userId],
+            'telefono' => ['required', 'digits:9'],
+            'rol' => ['required', 'in:usuario,admin'],
+            'documento' => ['required', 'regex:/^[XYZ]?\d{5,8}[A-Z]/', 'unique:users,documento' . $userId,
+                function ($attribute, $value, $fail) {
+                    Utilities::validateDNINIE($value) ?: $fail('El DNI/NIE es incorrecto.');
+                }],
+            'fecha_nac' => ['required', function ($attribute, $value, $fail) {
+                Utilities::validateDate($value, 'Y-m-d') ?: $fail('La fecha de nacimiento es incorrecta.');
+            }, function ($attribute, $value, $fail) {
+                Utilities::validateLegalAge($value, 'Y-m-d') ?: $fail('No eres mayor de edad.');
+            }],
+
+        ], [
+            'name.required' => 'El campo «Nombre» es obligatorio',
+            'name.min' => 'El campo «Nombre» necesita al menos 2 caracteres',
+            'name.max' => 'El campo «Nombre» solo permite hasta 30 caracteres',
+            'email.required' => 'El campo «Email» es obligatorio',
+            'email.email' => 'El campo «Email» debe contener el formato adecuado',
+            'email.max' => 'El campo «Email» solo permite hasta 50 caracteres',
+            'email.unique' => 'El email ya existe ',
+            'telefono.required' => 'El campo «Teléfono» es obligatorio',
+            'telefono.digits' => 'El campo «Teléfono» debe contener 9 dígitos',
+            'documento.required' => 'El campo «DNI/NIE» es obligatorio',
+            'documento.regex' => 'El campo «DNI/NIE» debe contener el formato adecuado',
+            'documento.unique' => 'El DNI/NIE ya existe',
+            'fecha_nac.required' => 'El campo «Fecha de Nacimiento» es obligatorio',
+            'rol.required' => 'El campo «Rol» es obligatorio',
+            'rol.in' => 'El campo «Rol» contiene un valor incorrecto',
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -100,10 +118,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -114,6 +130,8 @@ class UsersController extends Controller
         $pass = Str::random(10);
         $user->password = Hash::make($pass);
         $user->telefono = $validados['telefono'];
+        $user->documento = trim(mb_strtoupper($validados['documento']));
+        $user->fecha_nac = $validados['fecha_nac'];
         $user->rol = $validados['rol'];
 
         $user->save();
@@ -126,10 +144,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
     {
@@ -137,10 +153,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)
     {
@@ -148,11 +162,9 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param User $user
+     * @return RedirectResponse
      */
     public function update(Request $request, User $user)
     {
@@ -160,6 +172,8 @@ class UsersController extends Controller
         $user->name = ucfirst(trim($validados['name']));
         $user->email = trim(mb_strtolower($validados['email']));
         $user->telefono = $validados['telefono'];
+        $user->documento = trim(mb_strtoupper($validados['documento']));
+        $user->fecha_nac = $validados['fecha_nac'];
         $user->rol = $validados['rol'];
 
         $user->save();
@@ -168,10 +182,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return RedirectResponse
      */
     public function destroy(User $user)
     {

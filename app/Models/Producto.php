@@ -25,6 +25,10 @@ class Producto extends Model
         return $this->belongsTo(Categoria::class);
     }
 
+    public function impuesto() {
+        return $this->belongsTo(Impuesto::class);
+    }
+
     public function lineas() {
         return $this->hasMany(Linea::class);
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controladores añadidos
 use \App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ImpuestosController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ValoracionesController;
@@ -14,8 +15,9 @@ use App\Http\Controllers\LineasController;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
+use App\Models\Impuesto;
 
-//use \App\Http\Controllers\ProductosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,7 @@ require __DIR__.'/auth.php';
 
 // Catálogo
 Route::get('/', [ProductosController::class, 'ver_catalogo'])->name('catalogo');
+Route::get('/productos/{producto}', [ProductosController::class, 'ver_producto'])->name('productos.ver-producto');
 
 // Modo usuario
 Route::middleware('auth')->group(function () {
@@ -72,6 +75,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
                 'countCategoria'=>Categoria::count(),
                 'countProducto'=>Producto::count(),
                 'countUser'=>User::count(),
+                'countImpuesto'=>Impuesto::count(),
             ]
         );
     })->name('admin.dashboard');
@@ -83,6 +87,14 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin/categorias/{categoria}/edit', [CategoriasController::class, 'edit'])->name('admin.categorias.edit');
     Route::put('/admin/categorias/{categoria}/edit', [CategoriasController::class, 'update'])->name('admin.categorias.update');
     Route::delete('/admin/categorias/{categoria}', [CategoriasController::class, 'destroy'])->name('admin.categorias.destroy');
+
+    // Rutas Impuestos
+    Route::get('/admin/impuestos', [ImpuestosController::class, 'index'])->name('admin.impuestos');
+    Route::get('/admin/impuestos/create', [ImpuestosController::class, 'create'])->name('admin.impuestos.create');
+    Route::post('/admin/impuestos', [ImpuestosController::class, 'store'])->name('admin.impuestos.store');
+    Route::get('/admin/impuestos/{impuesto}/edit', [ImpuestosController::class, 'edit'])->name('admin.impuestos.edit');
+    Route::put('/admin/impuestos/{impuesto}/edit', [ImpuestosController::class, 'update'])->name('admin.impuestos.update');
+    Route::delete('/admin/impuestos/{impuesto}', [ImpuestosController::class, 'destroy'])->name('admin.impuestos.destroy');
 
     // Rutas Productos
     Route::get('/admin/productos', [ProductosController::class, 'index'])->name('admin.productos');

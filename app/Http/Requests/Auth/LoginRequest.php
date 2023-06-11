@@ -27,8 +27,26 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required',
+                        'string',
+                        'max:50',
+                        'email',
+                        'regex:/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/',
+                ],
             'password' => ['required', 'string'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'password.required' => 'El campo «Contraseña» es obligatorio',
+            'password.string' => 'El campo «Contraseña» debe ser una cadena',
+            'email.required' => 'El campo «Email» es obligatorio',
+            'email.string' => 'El campo «Email» debe ser una cadena',
+            'email.email' => 'El campo «Email» debe contener el formato adecuado',
+            'email.max' => 'El campo «Email» solo permite hasta 50 caracteres',
+            'email.regex' => 'El campo «Nombre» no tiene el formato correcto ',
         ];
     }
 

@@ -1,23 +1,11 @@
 <x-app-layout>
     @section('title', 'Productos')
-    <!-- Mensaje de éxito -->
-    <div x-data="{ showMessage: true }" x-show="showMessage" x-init="setTimeout(() => showMessage = false, 3000)">
-        @if (session()->has('success'))
-            <div class="p-3 text-green-700 bg-green-300 rounded mb-4 px-5">
-                {{ session()->get('success') }}
-            </div>
-        @endif
+    <!-- Mensaje redirect -->
+    <x-mensaje/>
 
-        @if (session()->has('error'))
-            <div class="p-3 text-red-700 bg-red-300 rounded mb-4 px-5">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-    </div>
-
-    <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
+    <div class="bg-gray-200 border-gray-200 shadow rounded-md sm:mx-5 lg:mx-20 mt-16 mb-5 pb-1">
         <!-- Añadir producto -->
-        <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
+        <div class="flex items-center justify-center xl:justify-start bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Productos</h1>
             <a href="{{ route('admin.productos.create') }}"
                 class="text-3xl text-emerald-500 hover:text-emerald-600 transition duration-150 ease-in-out">
@@ -128,16 +116,19 @@
 
                         <!-- IVA -->
                         <div class="mb-2 w-full sm:w-1/2 sm:px-2 lg:w-1/4">
-                            <label for="iva" class="text-sm font-medium text-gray-100 mr-3 w-24">
+                            <label for="impuesto_id" class="text-sm font-medium text-gray-100 mr-3 w-24">
                                 IVA:
                             </label>
 
-                            <select name="iva" id="iva"
+                            <select name="impuesto_id" id="impuesto_id"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-full">
-                                <option value='' {{ request()->query('iva') == '' ? 'selected' : '' }}>-</option>
-                                <option value=21 {{ request()->query('iva') == 21 ? 'selected' : '' }}>21%</option>
-                                <option value=10 {{ request()->query('iva') == 10 ? 'selected' : '' }}>10%</option>
-                                <option value=4 {{ request()->query('iva') == 4 ? 'selected' : '' }}>4%</option>
+                                <option value='' {{ request()->query('impuesto_id') == '' ? 'selected' : '' }}>-</option>
+                                @foreach ($impuestos as $impuesto)
+                                    <option value="{{ $impuesto->id }}"
+                                        {{ request()->query('impuesto_id') == $impuesto->id ? 'selected' : '' }}>
+                                        {{ $impuesto->porcentaje . '% - ' . $impuesto->descripcion }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -332,7 +323,7 @@
                                 </td>
 
                                 <td class="px-6 py-4">
-                                    {{ $producto->iva . '%' }}
+                                    {{ $producto->impuesto->porcentaje . '%' }}
                                 </td>
 
                                 <td class="px-6 py-4 {{ $producto->stock < 1 ? 'text-red-500' : '' }}">

@@ -1,6 +1,14 @@
 <script type="text/javascript" src="{{ asset('js/categorias/form.js')}}" defer></script>
 @csrf
-<div class="sm:mx-5 lg:mx-20 bg-emerald-500 p-5">
+
+<div class="w-full flex justify-center mb-5">
+    <a href="{{ route('admin.categorias') }}"
+       class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
+        <i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver
+    </a>
+</div>
+
+<div class="sm:mx-5 lg:mx-20 bg-emerald-500 p-5 mb-5">
     <div class="bg-gray-700 p-2 rounded-t-xl py-5 border-gray-400 border-b-4">
         <!-- Nombre -->
         <div class="mb-2 p-2">
@@ -63,13 +71,9 @@
     </div>
 
     <!-- Botones -->
-    <div class="flex justify-around bg-gray-800 rounded-b-2xl py-5">
+    <div class="flex justify-center bg-gray-800 rounded-b-2xl py-5">
         <button type="submit"
             class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 font-medium rounded-md px-2 py-1 text-center"><i class="fa-solid fa-floppy-disk pr-1"></i>Guardar</button>
-
-        <a href="{{ route('admin.categorias') }}"
-            class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1"><i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver</a>
-
     </div>
 
 </div>

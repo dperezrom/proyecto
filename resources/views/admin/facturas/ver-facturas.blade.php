@@ -1,14 +1,14 @@
 <x-app-layout>
     @section('title', 'Facturas - ' . $user->name)
     <!-- Volver -->
-    <div class="w-full  text-center pt-5 my-5">
+    <div class="flex justify-center mt-16 py-5">
         <a href="{{ route('admin.users') }}"
-            class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
+           class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
             <i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver
         </a>
     </div>
-    
-    <div class=" bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
+
+    <div class="bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Facturas - {{ $user->name }}</h1>
         </div>
@@ -21,44 +21,44 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-1 sm:mx-5 my-5">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 border-separate">
                     <thead class="text-xs text-white uppercase bg-emerald-950 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                <span>Número</span>
-                            </th>
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            <span>Número</span>
+                        </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                <span>Fecha</span>
-                            </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span>Fecha</span>
+                        </th>
 
-                            <th scope="col" class="px-6 py-3">
-                                <span>Total</span>
-                            </th>
-                        </tr>
+                        <th scope="col" class="px-6 py-3">
+                            <span>Total</span>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach ($paginador as $factura)
-                            <tr class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
-                                <th scope="row"
-                                    class="px-6 py-4 text-gray-900 whitespace-nowrap font-bold dark:text-white">
-                                    <a href="{{ route('admin.lineas.ver-lineas', $factura->id) }}">{{ $factura->id }}</a>
-                                </th>
-                                <td class="px-6 py-4">
+                    @foreach ($paginador as $factura)
+                        <tr class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
+                            <th scope="row"
+                                class="px-6 py-4 text-gray-900 whitespace-nowrap font-bold dark:text-white">
+                                <a href="{{ route('admin.lineas.ver-lineas', $factura->id) }}">{{ $factura->numero }}</a>
+                            </th>
+                            <td class="px-6 py-4">
 
-                                    {{ $factura->fecha->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
-                                </td>
+                                {{ $factura->fecha->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}
+                            </td>
 
-                                <td class="px-6 py-4">
-                                    @php
-                                        $total = 0;
-                                        foreach ($factura->lineas as $linea) {
-                                            $total += $linea->cantidad * $linea->precio * ((100 - $linea->descuento) / 100);
-                                        }
-                                    @endphp
-                                    {{ number_format($total, 2, ',') }}€
-                                </td>
+                            <td class="px-6 py-4">
+                                @php
+                                    $total = 0;
+                                    foreach ($factura->lineas as $linea) {
+                                        $total += $linea->cantidad * $linea->precio * ((100 - $linea->descuento) / 100);
+                                    }
+                                @endphp
+                                {{ number_format($total, 2, ',') }}€
+                            </td>
 
-                            </tr>
-                        @endforeach
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

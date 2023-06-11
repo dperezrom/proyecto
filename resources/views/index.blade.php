@@ -2,8 +2,7 @@
     @section('title', 'Inicio')
 
     <div class="sm:flex">
-        <aside
-            class="bg-white dark:bg-gray-700 text-gray-800 dark:text-white w-auto sm:w-1/2 md:w-2/6 lg:w-1/6 px-10 py-5">
+        <aside class="bg-white dark:bg-gray-700 text-gray-800 dark:text-white w-auto sm:w-1/2 md:w-2/6 lg:w-1/6 px-10 py-5 mt-16">
             <!-- Filtros -->
             <form action="/" name="form_filtro" method="GET" id="form_filtro">
                 <!-- Filtro valoraciones -->
@@ -45,10 +44,10 @@
                 <div class="mb-3">
                     <span class="font-bold">POR PRECIO</span>
                     <div class="flex flex-wrap py-2">
-                        <input type="text" name="precio_min" id="precio_min" min="0" pattern="^[0-9]+"
+                        <input type="text" name="precio_min" id="precio_min" min="0" pattern="^[0-9]+([,\.][0-9]{1,2})?"
                                placeholder="Mín" value="{{ request()->query('precio_min') }}"
                                class="bg-gray-50 border border-gray-300 text-gray-800 rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
-                        <input type="text" name="precio_max" id="precio_max" min="0" pattern="^[0-9]+"
+                        <input type="text" name="precio_max" id="precio_max" min="0" pattern="^[0-9]+([,\.][0-9]{1,2})?"
                                placeholder="Máx" value="{{ request()->query('precio_max') }}"
                                class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-16 h-8 my-1 mr-2">
                         <button type="submit"
@@ -78,7 +77,7 @@
                 </div>
             </form>
         </aside>
-        <section class="w-full">
+        <section class="w-full mt-16">
             <!-- Buscador -->
             <div x-data class="flex px-8 pt-5">
                 <div class="relative w-full lg:w-1/2">
@@ -86,7 +85,7 @@
                     <input type="search" id="producto" name="producto" form="form_filtro"
                            value="{{request()->query('producto')}}"
                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg rounded-l-lg border-l border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-emerald-500"
-                           placeholder="Busca un producto" required>
+                           placeholder="Busca un producto">
                     <button type="submit" @click="form_filtro.submit()"
                             class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-emerald-700 rounded-r-lg border border-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">
                         <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
@@ -118,7 +117,7 @@
                 @foreach ($productos as $producto)
                     <div
                         class="bg-white text-gray-800 flex flex-col m-3 p-3 rounded-lg shadow-lg w-full sm:w-80">
-                        <a href="#">
+                        <a href="{{ route('productos.ver-producto', $producto) }}">
                             <!-- Imagen -->
                             <div class="mb-5">
                                 <img

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
+            $table->string('numero', 250)->unique();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamp('fecha');
             $table->string('nombre', 50);

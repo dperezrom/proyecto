@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Impuesto;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,7 @@ class ProductosController extends Controller
             'activo',
             'precio',
             'precio_signo',
-            'iva',
+            'impuesto_id',
             'stock',
             'stock_signo',
             'descuento',
@@ -42,7 +43,7 @@ class ProductosController extends Controller
         $productos = Producto::orderBy($orden, $torden);
 
         // Filtrado
-        $campos_estandar = ['denominacion', 'descripcion', 'categoria_id', 'activo', 'iva'];
+        $campos_estandar = ['denominacion', 'descripcion', 'categoria_id', 'activo', 'impuesto_id'];
         $campos_numericos = ['precio', 'stock', 'descuento'];
 
         foreach ($campos_estandar as $campo) {
@@ -70,7 +71,7 @@ class ProductosController extends Controller
             'activo',
             'precio',
             'precio_signo',
-            'iva',
+            'impuesto_id',
             'stock',
             'stock_signo',
             'descuento',
@@ -81,6 +82,7 @@ class ProductosController extends Controller
         return view('admin.productos.index', [
             'productos' => $paginador,
             'categorias' => Categoria::all(),
+            'impuestos' => Impuesto::all(),
             'campos' => $campos,
         ]);
     }
@@ -92,7 +94,7 @@ class ProductosController extends Controller
             'denominacion' => 'required|string|max:100',
             'descripcion' => 'required|max:255',
             'precio' => 'required|numeric|regex:/^[\d]{0,4}(\.[\d]{1,2})?$/',
-            'iva' => 'required|integer|between:0,100',
+            'impuesto_id' => 'required|integer',
             'stock' => 'required|integer|between:0,99999',
             'descuento' => 'required|integer|between:0,100',
             'activo' => 'in:t,f',
@@ -106,9 +108,8 @@ class ProductosController extends Controller
             'precio.required' => 'El campo «Precio» es obligatorio',
             'precio.numeric' => 'El campo «Precio» debe ser numérico',
             'precio.regex' => 'El campo «Precio» solo puede contener 4 enteros y 2 decimales',
-            'iva.required' => 'El campo «IVA» es obligatorio',
-            'iva.integer' => 'El campo «IVA» debe ser entero',
-            'iva.between' => 'El campo «IVA» tiene que ser de 0 a 100',
+            'impuesto_id.required' => 'El campo «IVA» es obligatorio',
+            'impuesto_id.integer' => 'El campo «IVA» debe ser un número entero',
             'stock.required' => 'El campo «Stock» es obligatorio',
             'stock.integer' => 'El campo «Stock» debe ser un número entero',
             'stock.between' => 'El campo «Stock» tiene que ser de 0 a 999999',
@@ -132,6 +133,7 @@ class ProductosController extends Controller
         return view('admin.productos.create', [
             'producto' => $producto,
             'categorias' => Categoria::all(),
+            'impuestos' => Impuesto::all(),
         ]);
     }
 
@@ -143,7 +145,7 @@ class ProductosController extends Controller
         $producto->denominacion = ucfirst(trim($validados['denominacion']));
         $producto->descripcion = ucfirst(trim($validados['descripcion']));
         $producto->precio = $validados['precio'];
-        $producto->iva = $validados['iva'];
+        $producto->impuesto_id = $validados['impuesto_id'];
         $producto->stock = $validados['stock'];
         $producto->activo = !empty($validados['activo']) ? 't' : 'f';
         $producto->descuento = $validados['descuento'];
@@ -157,8 +159,11 @@ class ProductosController extends Controller
     // Editar producto
     public function edit(Producto $producto)
     {
-        $categorias = Categoria::all();
-        return view('admin.productos.edit', ['producto' => $producto, 'categorias' => $categorias]);
+        return view('admin.productos.edit', [
+            'producto' => $producto,
+            'categorias' => Categoria::all(),
+            'impuestos' => Impuesto::all(),
+        ]);
     }
 
     public function update(Request $request, Producto $producto)
@@ -167,7 +172,7 @@ class ProductosController extends Controller
         $producto->denominacion = ucfirst(trim($validados['denominacion']));
         $producto->descripcion = ucfirst(trim($validados['descripcion']));
         $producto->precio = $validados['precio'];
-        $producto->iva = $validados['iva'];
+        $producto->impuesto_id = $validados['impuesto_id'];
         $producto->stock = $validados['stock'];
         $producto->activo = !empty($validados['activo']) ? 't' : 'f';
         $producto->descuento = $validados['descuento'];
@@ -265,26 +270,26 @@ class ProductosController extends Controller
 
         // Filtro precio mínimo
         $precio_min = request()->query('precio_min');
-        if($precio_min && is_numeric($precio_min)){
+        if ($precio_min && is_numeric($precio_min)) {
             $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) >= ?', [$precio_min]);
         }
         // Filtro precio máximo
         $precio_max = request()->query('precio_max');
-        if($precio_max && is_numeric($precio_max)){
+        if ($precio_max && is_numeric($precio_max)) {
             $productos->whereRaw('(precio:: FLOAT * ((100 - descuento:: FLOAT) / 100)) <= ?', [$precio_max]);
         }
 
         // Filtro categorías
         $categoria_seleccionadas = request()->query('categoria_seleccionadas');
-        if($categoria_seleccionadas && empty(preg_grep("/\D/", $categoria_seleccionadas))){
-            $productos->whereIn('categoria_id',$categoria_seleccionadas);
+        if ($categoria_seleccionadas && empty(preg_grep("/\D/", $categoria_seleccionadas))) {
+            $productos->whereIn('categoria_id', $categoria_seleccionadas);
         } else {
-            $categoria_seleccionadas= [];
+            $categoria_seleccionadas = [];
         }
 
         // Filtro valoraciones
         $stars = request()->query('stars');
-        if($stars && is_numeric($stars)){
+        if ($stars && is_numeric($stars)) {
             $productos->whereRaw('productos.id IN (SELECT producto_id FROM valoraciones GROUP BY producto_id HAVING AVG(puntuacion) >= ?)', [$stars]);
         }
 
@@ -293,13 +298,13 @@ class ProductosController extends Controller
             $productos->where('productos.denominacion', 'ilike', "%$producto%");
         }
 
-        $precio_orden = in_array(request()->query('precio_orden'),['asc', 'desc'])
+        $precio_orden = in_array(request()->query('precio_orden'), ['asc', 'desc'])
             ? request()->query('precio_orden')
             : 'asc';
 
         $productos = $productos->orderBy('precio', $precio_orden);
 
-        $paginador = $productos->paginate(1);
+        $paginador = $productos->paginate(12);
         $paginador->appends(compact(
             'precio_orden',
             'precio_min',
@@ -313,6 +318,38 @@ class ProductosController extends Controller
             'productos' => $paginador,
             'categorias' => $categorias,
             'categoria_seleccionadas' => $categoria_seleccionadas,
+        ]);
+    }
+
+    public function ver_producto(Producto $producto)
+    {
+        $puntuaciones = array_column($producto->valoraciones->toArray(), 'puntuacion');
+        $totalValoraciones = count($puntuaciones);
+        $valoracionMedia = $totalValoraciones ? (array_sum($puntuaciones) / $totalValoraciones) : 0;
+        $agrupacionValoraciones = array_count_values($puntuaciones);
+
+        $porcentajeValoraciones = array();
+        for ($i = 5; $i >= 1; $i--) {
+            $porcentajeValoraciones[$i] = array_key_exists($i, $agrupacionValoraciones) ? round(((float)$agrupacionValoraciones[$i] * 100) / $totalValoraciones, 0) : 0;
+        }
+
+        // Valoraciones del producto
+        $valoraciones = $producto->valoraciones();
+        $orden = in_array(request()->query('orden'), ['asc', 'desc'])
+            ? request()->query('orden') : 'asc';
+
+        $valoraciones = $valoraciones->orderBy('created_at', $orden);
+        $valoraciones = $valoraciones->paginate(10);
+        $valoraciones->appends(compact(
+            'orden',
+        ));
+
+        return view('productos.ver-producto', [
+            'producto' => $producto,
+            'valoracionMedia' => number_format($valoracionMedia, 1),
+            'totalValoraciones' => $totalValoraciones,
+            'porcentajeValoraciones' => $porcentajeValoraciones,
+            'valoraciones' => $valoraciones,
         ]);
     }
 }

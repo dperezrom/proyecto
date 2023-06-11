@@ -4,6 +4,8 @@
 document.querySelector('#name').addEventListener('keyup', validaNombre);
 document.querySelector('#telefono').addEventListener('keyup', validaTelefono);
 document.querySelector('#email').addEventListener('keyup', validaEmail);
+document.querySelector('#documento').addEventListener('keyup', validaDocumento);
+document.querySelector('#fecha_nac').addEventListener('change', validaFechaNacimiento);
 document.querySelector('#rol').addEventListener('change', validaRol);
 document.user_form.addEventListener('submit', validaSubmit);
 
@@ -117,7 +119,7 @@ function validaRol() {
 
 // Validar Submit
 function validaSubmit(e) {
-    if(validaNombre() && validaEmail() && validaTelefono() && validaRol()){
+    if(validaNombre() && validaEmail() && validaTelefono() && validaDocumento() && validaFechaNacimiento() && validaRol()){
         return true;
     }
     e.preventDefault();
@@ -178,5 +180,88 @@ function deleteCheckInput(elemento) {
         check.remove();
     }
 
+}
+
+// Validar Documento DNI/NIE
+function validaDocumento() {
+    let elemento = document.user_form.documento;
+    borrarError(elemento);
+
+    if (!validaDNINIE(elemento.value)) {
+        elemento.setCustomValidity("El DNI/NIE introducido no es valido.");
+    }
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("El campo DNI/NIE no puede estar vacío.");
+
+        }
+        if (elemento.validity.patternMismatch) {
+            elemento.setCustomValidity("Formato de DNI/NIE incorrecto.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+// Validar DNI
+function validaDNINIE(dni) {
+    let numero, letra;
+    let expresion_regular_dni = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+    dni = dni.toUpperCase();
+
+    if (expresion_regular_dni.test(dni) === true) {
+        numero = dni.substring(0, dni.length - 1);
+        numero = numero.replace('X', 0);
+        numero = numero.replace('Y', 1);
+        numero = numero.replace('Z', 2);
+        letra = dni.substring(dni.length - 1);
+        numero = numero % 23;
+
+        return 'TRWAGMYFPDXBNJZSQVHLCKET'.substring(numero, numero + 1) === letra;
+    }
+    return false;
+}
+
+// Validar Fecha de Nacimiento
+function validaFechaNacimiento() {
+    let elemento = document.user_form.fecha_nac;
+    borrarError(elemento);
+
+    if (!validarEdadLegal(elemento.value)) {
+        elemento.setCustomValidity("No eres mayor de edad.");
+    }
+
+    if (!elemento.checkValidity()) {
+        if (elemento.validity.valueMissing) {
+            elemento.setCustomValidity("El campo Fecha de Nacimiento no puede estar vacío.");
+        }
+
+        error(elemento);
+        deleteCheckInput(elemento);
+
+        return false;
+    }
+
+    addCheckInput(elemento);
+    return true;
+}
+
+function validarEdadLegal(fecha) {
+    let hoy = new Date();
+    let nacimiento = new Date(fecha);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    let m = hoy.getMonth() - nacimiento.getMonth();
+    if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+        edad--;
+    }
+    return (edad >=18);
 }
 
