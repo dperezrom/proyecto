@@ -12,6 +12,7 @@ use App\Http\Controllers\ValoracionesController;
 use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\FacturasController;
 use App\Http\Controllers\LineasController;
+use App\Http\Controllers\CarritosController;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
@@ -62,6 +63,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/direcciones/{direccion}/edit', [DireccionesController::class, 'edit'])->name('direcciones.edit');
     Route::put('/direcciones/{direccion}/edit', [DireccionesController::class, 'update'])->name('direcciones.update');
     Route::delete('/direcciones/{direccion}', [DireccionesController::class, 'destroy'])->name('direcciones.destroy');
+
+    // Carrito
+    Route::get('/carrito', [CarritosController::class, 'ver_carrito'])->name('carritos.ver-carrito');
+    Route::put('/carrito/edit', [CarritosController::class, 'actualizar_carrito'])->name('carritos.actualizar-carrito');
+    Route::delete('/carrito', [CarritosController::class, 'borrar_item_carrito'])->name('carritos.borrar-item-carrito');
+
 });
 
 

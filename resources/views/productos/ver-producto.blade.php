@@ -70,7 +70,9 @@
 
                 <!-- Añadir al carrito -->
                 <div class="px-10 py-5">
-                    <form action="#" name="carrito_form" method="GET" id="carrito_form">
+                    <form action="{{ route('carritos.actualizar-carrito') }}" name="insertar_carrito" method="POST" id="insertar_carrito">
+                        @csrf
+                        @method('PUT')
                         <!-- Stock -->
                         <div>
                             @if($producto->stock > 0)
@@ -79,7 +81,8 @@
                                 <span class="text-lg font-bold text-red-600">Sin stock</span>
                             @endif
                         </div>
-
+                        <input type="hidden" name="modo" id="modo" value="item">
+                        <input type="hidden" name="producto_id" id="producto_id" value="{{ $producto->id }}">
                         <!-- Cantidad -->
                         <div class="mb-3 pb-3 flex items-center">
                             <label for="cantidad" class="text-gray-800 mr-1">
@@ -87,7 +90,6 @@
                             </label>
                             <select name="cantidad" id="cantidad"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500">
-                                <option value=''>-</option>
                                 @for($i = 1; $i <= $producto->stock; $i++)
                                     <option value={{ $i }}>{{ $i }}</option>
                                 @endfor
@@ -96,7 +98,7 @@
 
                         <!-- Botón -->
                         <div>
-                            <button type="submit" id="carrito-submit"
+                            <button type="submit" id="insertar_carrito_submit" value=""
                                     class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1 text-center">
                                 Añadir al carrito
                             </button>
