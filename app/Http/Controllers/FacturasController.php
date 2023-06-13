@@ -11,7 +11,7 @@ class FacturasController extends Controller
     // Ver facturas
     public function ver_facturas(User $user)
     {
-        $paginador = $user->facturas()->paginate(10);
+        $paginador = $user->facturas()->orderBy('id', 'DESC')->paginate(10);
 
         return view('admin.facturas.ver-facturas', [
             'user' => $user,
@@ -21,7 +21,7 @@ class FacturasController extends Controller
 
     public function ver_mis_facturas(Request $request)
     {
-        $paginador = Auth::user()->facturas()->paginate(10);
+        $paginador = Auth::user()->facturas()->orderBy('id', 'DESC')->paginate(10);
 
         return view('facturas.mis-facturas', [
             'user' => Auth::user(),

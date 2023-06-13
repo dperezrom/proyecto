@@ -2,7 +2,7 @@
     @section('title', 'Detalle Factura: ' . $factura->numero)
     <!-- Volver -->
     <div class="flex justify-center mt-16 py-5">
-        <a href="{{ route('admin.facturas.ver-facturas', $factura->user_id) }}"
+        <a href="{{ route('facturas.mis-facturas') }}"
            class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
             <i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver
         </a>

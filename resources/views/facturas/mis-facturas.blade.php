@@ -40,7 +40,7 @@
                         <tr class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
                             <th scope="row"
                                 class="px-6 py-4 text-gray-900 whitespace-nowrap font-bold dark:text-white">
-                                <a href="#">{{ $factura->numero }}</a>
+                                <a href="{{ route('lineas.ver-detalle', $factura) }}">{{ $factura->numero }}</a>
                             </th>
                             <td class="px-6 py-4">
 

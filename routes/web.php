@@ -78,6 +78,9 @@ Route::middleware('auth')->group(function () {
 
     // Facturas
     Route::get('/facturas', [FacturasController::class, 'ver_mis_facturas'])->name('facturas.mis-facturas');
+
+    // Rutas Lineas
+    Route::get('/facturas/{factura}', [LineasController::class, 'ver_detalle'])->name('lineas.ver-detalle');
 });
 
 
