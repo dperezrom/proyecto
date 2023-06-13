@@ -24,6 +24,16 @@
         </div>
 
         <div>
+            <x-input-label :value="__('DNI/NIE')" />
+            <div class="mt-1 block w-full dark:text-white">{{ $user->documento }}</div>
+        </div>
+
+        <div>
+            <x-input-label :value="__('Fecha de nacimiento')" />
+            <div class="mt-1 block w-full dark:text-white">{{ $user->fecha_nac->format('d-m-Y') }}</div>
+        </div>
+
+        <div>
             <x-input-label for="telefono" :value="__('Telefono')" />
             <x-text-input id="telefono" name="telefono" type="text" class="mt-1 block w-full" :value="old('telefono', $user->telefono)" required maxlength="9" pattern="^[1-9]\d{8}$" autofocus autocomplete="telefono" />
             <x-input-error class="mt-2" :messages="$errors->get('telefono')" />

@@ -2,7 +2,7 @@
     @section('title', 'Ver usuario - ' . $user->name)
     <div class="w-full flex flex-wrap justify-center">
         <!-- Volver -->
-        <div class="w-full flex justify-center pt-5">
+        <div class="w-full flex justify-center pt-5 mt-16">
             <a href="{{ route('admin.users') }}"
                 class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
                 <i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver

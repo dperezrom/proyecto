@@ -28,7 +28,7 @@
     </div>
     <div class="w-auto bg-white dark:bg-gray-700 border dark:border-gray-500 border-x p-3 md:p-5 rounded-t-lg">
         <article>
-            <div class="text-xl font-bold text-center">{{ $producto->denominacion }}</div>
+            <div class="text-xl font-bold text-center dark:text-white">{{ $producto->denominacion }}</div>
             <div class="flex flex-wrap">
                 <input type="hidden" name="producto_id" id="producto_id" value="{{ $producto->id }}">
                 <div class="flex items-center mb-1">
