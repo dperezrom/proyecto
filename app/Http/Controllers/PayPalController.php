@@ -116,7 +116,7 @@ class PayPalController extends Controller
 
     private function generarCodigoFactura(){
         $anyo = date("Y");
-        $resultado = DB::table('facturas')->select(DB::raw('substring(numero,7)::INT +1 AS secuencia'))->whereRaw('substring(numero,2,4)::INT = ?', [$anyo])->orderBy('numero', 'DESC')->first();
+        $resultado = DB::table('facturas')->select(DB::raw('substring(numero,7)::INT +1 AS secuencia'))->whereRaw('substring(numero,2,4)::INT = ?', [$anyo])->orderBy('id', 'DESC')->first();
         return empty($resultado->secuencia) ? 'F' . $anyo . '-1' : 'F' . $anyo .'-'. $resultado->secuencia;
     }
 }

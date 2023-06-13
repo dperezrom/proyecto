@@ -1,14 +1,14 @@
 <x-app-layout>
-    @section('title', 'Facturas - ' . $user->name)
+    @section('title', 'Mis compras  - ' . $user->name)
     <!-- Volver -->
     <div class="flex justify-center mt-16 py-5">
-        <a href="{{ route('admin.users') }}"
+        <a href="{{ route('catalogo') }}"
            class="bg-emerald-500 hover:bg-emerald-700 text-white focus:ring-2 focus:ring-emerald-300 font-medium rounded-md px-2 py-1">
             <i class="fa-sharp fa-solid fa-arrow-left pr-1"></i>Volver
         </a>
     </div>
 
-    <div class="bg-gray-200 border-gray-200 shadow rounded-md pb-5 sm:mx-5 lg:mx-20">
+    <div class="bg-gray-200 border-gray-200 shadow rounded-md pb-5 mb-5 sm:mx-5 lg:mx-20">
         <div class="flex items-center bg-white border-b-4 border-emerald-400 py-3">
             <h1 class="text-2xl font-semibold px-3 text-gray-800">Facturas - {{ $user->name }}</h1>
         </div>
@@ -40,7 +40,7 @@
                         <tr class="odd:bg-white even:bg-slate-100 border-b dark:even:bg-gray-900 dark:odd:bg-gray-800 dark:border-gray-700 hover:bg-emerald-50 dark:hover:bg-gray-600 transition duration-150 ease-in-out">
                             <th scope="row"
                                 class="px-6 py-4 text-gray-900 whitespace-nowrap font-bold dark:text-white">
-                                <a href="{{ route('admin.lineas.ver-lineas', $factura->id) }}">{{ $factura->numero }}</a>
+                                <a href="#">{{ $factura->numero }}</a>
                             </th>
                             <td class="px-6 py-4">
 
@@ -50,13 +50,12 @@
                             <td class="px-6 py-4">
                                 @php
                                     $fmt = numfmt_create('es_ES', NumberFormatter::CURRENCY);
-                                    $total = 0;
-                                    foreach ($factura->lineas as $linea) {
-                                        $total += $linea->cantidad * $linea->precio * ((100 - $linea->descuento) / 100);
-                                    }
+                                        $total = 0;
+                                        foreach ($factura->lineas as $linea) {
+                                            $total += $linea->cantidad * $linea->precio * ((100 - $linea->descuento) / 100);
+                                        }
                                 @endphp
                                 {{ numfmt_format_currency($fmt, $total, 'EUR') }}
-
                             </td>
 
                         </tr>

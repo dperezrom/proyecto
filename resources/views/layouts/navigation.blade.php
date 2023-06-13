@@ -58,6 +58,11 @@
                             <i class="fa-solid fa-address-book pr-1"></i>{{ __('Direcciones') }}
                         </x-dropdown-link>
 
+                        <!-- Facturas -->
+                        <x-dropdown-link :href="route('facturas.mis-facturas')">
+                            <i class="fa-sharp fa-solid fa-file-invoice-dollar pr-1"></i>{{ __('Mis compras') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -112,6 +117,11 @@
                 <!-- Direcciones -->
                 <x-responsive-nav-link :href="route('direcciones.mis-direcciones')">
                     <i class="fa-solid fa-address-book pr-1"></i>{{ __('Direcciones') }}
+                </x-responsive-nav-link>
+
+                <!-- Facturas -->
+                <x-responsive-nav-link :href="route('facturas.mis-facturas')">
+                    <i class="fa-sharp fa-solid fa-file-invoice-dollar pr-1"></i>{{ __('Mis compras') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

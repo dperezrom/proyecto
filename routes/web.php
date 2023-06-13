@@ -71,9 +71,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/carrito/edit', [CarritosController::class, 'actualizar_carrito'])->name('carritos.actualizar-carrito');
     Route::delete('/carrito', [CarritosController::class, 'borrar_item_carrito'])->name('carritos.borrar-item-carrito');
 
+    // PayPal
     Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
     Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
     Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+    // Facturas
+    Route::get('/facturas', [FacturasController::class, 'ver_mis_facturas'])->name('facturas.mis-facturas');
 });
 
 
