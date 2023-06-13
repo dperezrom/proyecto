@@ -150,19 +150,47 @@
             <!-- Comentarios del producto -->
             <div class="py-5">
                 <div class="px-5">
-                    <div x-data class="mb-5">
-                        <form action="{{ route('productos.ver-producto', $producto) }}" name="orden_form"
-                              method="get">
-                            <select name="orden" id="orden" @change="orden_form.submit()"
-                                    class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer">
-                                <option value='desc' {{ request()->query('orden') == 'desc' ? 'selected' : '' }}>Más
-                                    recientes
-                                </option>
-                                <option value='asc' {{ request()->query('orden') == 'asc' ? 'selected' : '' }}>Más
-                                    antiguas
-                                </option>
-                            </select>
-                        </form>
+                    <div class="flex">
+                        <div x-data class="mb-5 mr-5">
+                            <form action="{{ route('productos.ver-producto', $producto) }}" name="orden_form"
+                                  method="get">
+                                <select name="orden" id="orden" @change="orden_form.submit()"
+                                        class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer">
+                                    <option value='desc' {{ request()->query('orden') == 'desc' ? 'selected' : '' }}>Más
+                                        recientes
+                                    </option>
+                                    <option value='asc' {{ request()->query('orden') == 'asc' ? 'selected' : '' }}>Más
+                                        antiguas
+                                    </option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Crear valoración -->
+                    <div class="flex flex-row flex-wrap mb-5">
+                        @if(!in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id')))
+                            <div class="py-2">
+                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
+                                   class="p-2 text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1 text-center">
+                                    Añadir valoración
+                                </a>
+                            </div>
+                        @else
+                            <div class="pr-2 py-2">
+                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
+                                   class="p-2 text-gray-800 bg-orange-300 hover:bg-orange-400 focus:ring-2 focus:ring-orange-300 font-medium rounded-md px-2 py-1 text-center">
+                                    Ver o Modificar mi valoración
+                                </a>
+                            </div>
+
+                            <div class="py-2">
+                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
+                                   class="p-2 text-gray-800 bg-red-300 hover:bg-red-400 focus:ring-2 focus:ring-red-300 font-medium rounded-md px-2 py-1 text-center">
+                                    Eliminar mi valoración
+                                </a>
+                            </div>
+                        @endif
                     </div>
 
                     @foreach ($valoraciones as $valoracion)

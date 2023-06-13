@@ -81,6 +81,12 @@ Route::middleware('auth')->group(function () {
 
     // Rutas Lineas
     Route::get('/facturas/{factura}', [LineasController::class, 'ver_detalle'])->name('lineas.ver-detalle');
+
+    // Rutas Valoraciones
+    Route::get('/valoraciones/{producto}/create', [ValoracionesController::class, 'create'])->name('valoraciones.create');
+    Route::post('/valoraciones', [ValoracionesController::class, 'crear_valoracion'])->name('valoraciones.crear-valoracion');
+    //Route::put('/admin/valoraciones/{valoracion}/edit', [ValoracionesController::class, 'modificar_valoracion'])->name('valoraciones.modificar-valoracion');
+    //Route::delete('/admin/valoraciones/{valoracion}', [ValoracionesController::class, 'destroy'])->name('admin.valoraciones.destroy');
 });
 
 
