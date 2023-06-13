@@ -36,7 +36,7 @@ class ValoracionesController extends Controller
     {
         $validados = request()->validate([
             'titulo' => ['required', 'string', 'max:50'],
-            'comentario' => ['required','max:255'],
+            'comentario' => ['required', 'max:255'],
             'puntuacion' => ['required', 'integer', 'between:1,5'],
             'producto_id' => ['required', 'integer'],
 
@@ -85,7 +85,7 @@ class ValoracionesController extends Controller
     // Vista crear valoración
     public function create(Producto $producto)
     {
-        if(empty($producto) || in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id'))){
+        if (empty($producto) || in_array(Auth::id(), array_column($producto->valoraciones->toArray(), 'user_id'))) {
             abort(404);
         }
 
@@ -103,7 +103,7 @@ class ValoracionesController extends Controller
         $validados = $this->validar();
 
         $producto = Producto::find($validados['producto_id']);
-        if(empty($producto) || in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id'))){
+        if (empty($producto) || in_array(Auth::id(), array_column($producto->valoraciones->toArray(), 'user_id'))) {
             abort(404);
         }
 
@@ -120,18 +120,15 @@ class ValoracionesController extends Controller
     }
 
     // Vista modificar valoración
-    public function modificar_valoracion(Producto $producto)
+    public function modificar_valoracion(Valoracion $valoracion)
     {
-        $valoracion = Valoracion::where('producto_id', '=', $producto->id)
-        ->where('user_id' , '=', Auth::id())->first();
-
-        if(empty($valoracion)){
+        if (Auth::id() != $valoracion->user_id) {
             abort(404);
         }
 
         return view('valoraciones.modificar-valoracion', [
             'valoracion' => $valoracion,
-            'producto' => $producto,
+            'producto' => $valoracion->producto,
         ]);
     }
 
@@ -139,7 +136,7 @@ class ValoracionesController extends Controller
     {
         $validados = $this->validar();
 
-        if(Auth::id() != $valoracion->user_id){
+        if (Auth::id() != $valoracion->user_id) {
             abort(404);
         }
 
@@ -152,14 +149,13 @@ class ValoracionesController extends Controller
         return redirect()->route('productos.ver-producto', $valoracion->producto_id)->with('success', 'Valoración modificada con éxito.');
     }
 
-    // Modificar valoración usuario
- /*   public function modificar_valoracion(Producto $producto)
+    public function destroy_valoracion_personal(Valoracion $valoracion)
     {
-        $validados = $this->validar();
+        if (Auth::id() != $valoracion->user_id) {
+            abort(404);
+        }
+        $valoracion->delete();
 
-        $valoracion->titulo = ucfirst(trim($validados['titulo']));
-        $valoracion->comentario = ucfirst(trim($validados['comentario']));
-
-        $valoracion->save()
-    }*/
+        return redirect()->back()->with('success', 'Valoración eliminada con éxito.');
+    }
 }

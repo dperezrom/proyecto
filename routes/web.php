@@ -85,8 +85,9 @@ Route::middleware('auth')->group(function () {
     // Rutas Valoraciones
     Route::get('/valoraciones/{producto}/create', [ValoracionesController::class, 'create'])->name('valoraciones.create');
     Route::post('/valoraciones', [ValoracionesController::class, 'crear_valoracion'])->name('valoraciones.crear-valoracion');
-    Route::get('/valoraciones/{producto}/edit', [ValoracionesController::class, 'modificar_valoracion'])->name('valoraciones.modificar-valoracion');
+    Route::get('/valoraciones/{valoracion}/edit', [ValoracionesController::class, 'modificar_valoracion'])->name('valoraciones.modificar-valoracion');
     Route::put('/valoraciones/{valoracion}/edit', [ValoracionesController::class, 'update_valoracion_personal'])->name('valoraciones.update-valoracion-personal');
+    Route::delete('/valoraciones/{valoracion}', [ValoracionesController::class, 'destroy_valoracion_personal'])->name('valoraciones.destroy-valoracion-personal');
 });
 
 

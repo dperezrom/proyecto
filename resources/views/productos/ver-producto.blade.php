@@ -171,24 +171,41 @@
                     <div class="flex flex-row flex-wrap mb-5">
                         @if(!in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id')))
                             <div class="py-2">
-                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
-                                   class="p-2 text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1 text-center">
-                                    Añadir valoración
+                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_valoracion">
+                                    <button
+                                        class="p-2 text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-2 text-center">
+                                        Añadir valoración
+                                    </button>
                                 </a>
                             </div>
                         @else
+                            @php
+                                $valoracionUsuario = \App\Models\Valoracion::where('producto_id', '=', $producto->id)->where('user_id', '=', Auth::id())->first();
+                            @endphp
+
                             <div class="pr-2 py-2">
-                                <a href="{{ route('valoraciones.modificar-valoracion', $producto->id) }}" id="insertar_carrito_submit"
-                                   class="p-2 text-gray-800 bg-orange-300 hover:bg-orange-400 focus:ring-2 focus:ring-orange-300 font-medium rounded-md px-2 py-1 text-center">
-                                    Ver o Modificar mi valoración
+                                <a href="{{ route('valoraciones.modificar-valoracion', $valoracionUsuario) }}"
+                                   id="modificar_valoracion">
+                                    <button
+                                        class="p-2 text-gray-800 bg-orange-300 hover:bg-orange-400 focus:ring-2 focus:ring-orange-300 font-medium rounded-md px-2 py-2 text-center">
+                                        Ver o Modificar mi valoración
+                                    </button>
                                 </a>
                             </div>
 
                             <div class="py-2">
-                                <a href="{{ route('valoraciones.create', $producto->id) }}" id="insertar_carrito_submit"
-                                   class="p-2 text-gray-800 bg-red-300 hover:bg-red-400 focus:ring-2 focus:ring-red-300 font-medium rounded-md px-2 py-1 text-center">
-                                    Eliminar mi valoración
-                                </a>
+                                <form
+                                    action="{{ route('valoraciones.destroy-valoracion-personal', $valoracionUsuario) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        onclick="return confirm('¿Quieres eliminar tu valoración sobre el producto?')"
+                                        class="p-2 text-gray-800 bg-red-300 hover:bg-red-400 focus:ring-2 focus:ring-red-300 font-medium rounded-md px-2 py-2 text-center"
+                                        type="submit" id="borrar_valoracion">
+                                        Eliminar mi valoración
+                                    </button>
+                                </form>
                             </div>
                         @endif
                     </div>
