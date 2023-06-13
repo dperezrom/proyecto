@@ -10,13 +10,14 @@ class CarritosController extends Controller
     // Ver carrito
     public function ver_carrito()
     {
-        session()->put('cart_item_total', $this->comprobarCantidadTotal());
+        $this->refrescar_carrito();
+        session()->put('cart_item_cantidad_total', $this->comprobar_cantidad_total());
 
         //session()->forget('cart_item');
         return view('carritos.ver-carrito');
     }
 
-    private function comprobarStock(Producto $producto, $cantidadSolicitada)
+    private function comprobar_stock(Producto $producto, $cantidadSolicitada)
     {
         if ($producto->stock <= $cantidadSolicitada) {
             return $producto->stock;
@@ -24,13 +25,37 @@ class CarritosController extends Controller
         return $cantidadSolicitada;
     }
 
-    private function comprobarCantidadTotal()
+    private function comprobar_cantidad_total()
     {
         $carrito = session()->get('cart_item');
-        if(empty($carrito)){
+        if (empty($carrito)) {
             return 0;
         }
         return array_sum(array_column($carrito, 'cantidad'));
+    }
+
+    private function refrescar_carrito()
+    {
+        $carrito = session()->get('cart_item');
+        if(!empty($carrito)){
+            foreach ($carrito as $item) {
+                $producto = Producto::find($item['productoId']);
+                if ($producto->stock > 0 && $producto->stock < $item['cantidad']) {
+                    $carrito[$producto->id]['cantidad'] = $producto->stock;
+                }
+                $carrito[$producto->id]['precio'] = $producto->precio;
+                $carrito[$producto->id]['descuento'] = $producto->descuento;
+                $carrito[$producto->id]['iva'] = $producto->impuesto->porcentaje;
+                $carrito[$producto->id]['denominacion'] = $producto->denominacion;
+                $carrito[$producto->id]['total'] = $carrito[$producto->id]['cantidad']
+                    * ($carrito[$producto->id]['precio'] * ((100 - $carrito[$producto->id]['descuento']) / 100));
+
+                if ($producto->stock == 0) {
+                    unset($carrito[$producto->id]);
+                }
+            }
+            session()->put('cart_item', $carrito);
+        }
     }
 
     public function actualizar_carrito(Request $request)
@@ -52,7 +77,7 @@ class CarritosController extends Controller
                 'productoId' => $productoId,
                 'imagen' => $producto->imagen,
                 'denominacion' => $producto->denominacion,
-                'cantidad' => $this->comprobarStock($producto, $cantidad),
+                'cantidad' => $this->comprobar_stock($producto, $cantidad),
                 'precio' => $producto->precio,
                 'iva' => $producto->impuesto->porcentaje,
                 'descuento' => $producto->descuento,
@@ -68,10 +93,10 @@ class CarritosController extends Controller
         //Modificar cantidad item
         if (is_numeric($productoId) && (($modo === 'cantidad') || ($modo === 'item' && isset($carrito[$productoId])))) {
             if ($modo === 'cantidad') {
-                $carrito[$productoId]['cantidad'] = $this->comprobarStock($producto, $cantidad);
+                $carrito[$productoId]['cantidad'] = $this->comprobar_stock($producto, $cantidad);
             }
             if ($modo === 'item') {
-                $carrito[$productoId]['cantidad'] = $this->comprobarStock($producto, ($carrito[$productoId]['cantidad'] += $cantidad));
+                $carrito[$productoId]['cantidad'] = $this->comprobar_stock($producto, ($carrito[$productoId]['cantidad'] += $cantidad));
             }
             $carrito[$productoId]['stock'] = $producto->stock;
             $carrito[$productoId]['precio'] = $producto->precio;

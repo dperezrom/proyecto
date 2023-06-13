@@ -22,7 +22,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('carritos.ver-carrito')" :active="request()->routeIs('carritos.ver-carrito')">
                         <i class="fa-solid fa-cart-shopping pr-1"></i>
-                        {{ __(session()->get('cart_item_total')?:0) }}
+                        {{ __(session()->get('cart_item_cantidad_total')?:0) }}
                     </x-nav-link>
                 </div>
             </div>

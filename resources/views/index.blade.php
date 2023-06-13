@@ -1,6 +1,7 @@
 <x-app-layout>
     @section('title', 'Inicio')
-
+    <!-- Mensaje redirect -->
+    <x-mensaje/>
     <div class="sm:flex">
         <aside class="bg-white dark:bg-gray-700 text-gray-800 dark:text-white w-auto sm:w-1/2 md:w-2/6 lg:w-1/6 px-10 py-5 mt-16">
             <!-- Filtros -->

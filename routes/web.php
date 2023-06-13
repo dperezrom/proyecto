@@ -13,6 +13,8 @@ use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\FacturasController;
 use App\Http\Controllers\LineasController;
 use App\Http\Controllers\CarritosController;
+use App\Http\Controllers\PayPalController;
+
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\User;
@@ -69,6 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/carrito/edit', [CarritosController::class, 'actualizar_carrito'])->name('carritos.actualizar-carrito');
     Route::delete('/carrito', [CarritosController::class, 'borrar_item_carrito'])->name('carritos.borrar-item-carrito');
 
+    Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+    Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+    Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 });
 
 

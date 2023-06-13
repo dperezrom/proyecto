@@ -24,7 +24,6 @@
     </div>
 
 
-
     <div class="mt-16">
         @if(!empty(session()->get('cart_item')))
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-1 sm:mx-5 my-5">
@@ -138,11 +137,11 @@
                         </tr>
                     @endforeach
                     <tr class="bg-gray-800 text-white">
-                        <td colspan="5" class="px-6 py-4 font-bold text-lg text-center" >
-                            CANTIDAD ARTÍCULOS: {{ session()->get('cart_item_total') }}
+                        <td colspan="5" class="px-6 py-4 font-bold text-lg text-center">
+                            CANTIDAD ARTÍCULOS: {{ session()->get('cart_item_cantidad_total') }}
                         </td>
 
-                        <td  colspan="2" class="px-6 py-4 font-bold text-lg text-center">
+                        <td colspan="2" class="px-6 py-4 font-bold text-lg text-center">
                             IMPORTE TOTAL: {{ numfmt_format_currency($fmt, $importeTotal, 'EUR') }}
                         </td>
                         <td class="px-6 py-4">
@@ -160,12 +159,26 @@
                         </td>
                     </tr>
                     <tr class="bg-gray-800 text-white">
-                        <td colspan="8" class="px-6 py-4 font-bold text-lg text-right" >
+                        <td colspan="6" class="px-6 py-4 text-right">
+                            <label for="direccion" class="font-bold text-lg pr-1">Dirección de envío:</label>
+                            <select name="direccion" id="direccion" required form="formulario-pago"
+                                    class="bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500 w-auto">
+                                @foreach (Auth::user()->direcciones as $direccion)
+                                    <option value="{{ $direccion->id }}"
+                                        {{ old('direccion', $direccion->calle) == $direccion->id ? 'selected' : '' }}>
+                                        {{ $direccion->nombre . ' - ' . $direccion->calle . ', ' . $direccion->ciudad . ', ' . $direccion->provincia . ', ' . $direccion->cp}}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td colspan="2" class="px-6 py-4 font-bold text-lg text-right">
                             <!-- Tramitar pedido -->
-                            <a href="/"
-                               class="bg-yellow-500 hover:bg-yellow-700 text-white focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1">
-                                <i class="fa-brands fa-paypal pr-1"></i>Pagar ({{ numfmt_format_currency($fmt, $importeTotal, 'EUR') }})
-                            </a>
+                            <form method="GET" name="formulario-pago" id="formulario-pago" role="form" action="{{ route('processTransaction') }}">
+                                <button type="submit"
+                                        class="bg-yellow-500 hover:bg-yellow-700 text-white focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1">
+                                    <i class="fa-brands fa-paypal pr-1"></i>Pagar
+                                    ({{ numfmt_format_currency($fmt, $importeTotal, 'EUR') }})
+                                </button>
+                            </form>
                         </td>
                     </tr>
 

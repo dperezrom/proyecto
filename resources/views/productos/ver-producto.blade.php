@@ -69,43 +69,46 @@
                 </div>
 
                 <!-- Añadir al carrito -->
-                <div class="px-10 py-5">
-                    <form action="{{ route('carritos.actualizar-carrito') }}" name="insertar_carrito" method="POST" id="insertar_carrito">
-                        @csrf
-                        @method('PUT')
-                        <!-- Stock -->
-                        <div>
-                            @if($producto->stock > 0)
+                @if($producto->stock > 0)
+                    <div class="px-10 py-5">
+                        <form action="{{ route('carritos.actualizar-carrito') }}" name="insertar_carrito" method="POST"
+                              id="insertar_carrito">
+                            @csrf
+                            @method('PUT')
+                            <!-- Stock -->
+                            <div>
                                 <span class="text-lg font-bold text-green-600">En stock</span>
-                            @else
-                                <span class="text-lg font-bold text-red-600">Sin stock</span>
-                            @endif
-                        </div>
-                        <input type="hidden" name="modo" id="modo" value="item">
-                        <input type="hidden" name="producto_id" id="producto_id" value="{{ $producto->id }}">
-                        <!-- Cantidad -->
-                        <div class="mb-3 pb-3 flex items-center">
-                            <label for="cantidad" class="text-gray-800 mr-1">
-                                Cantidad:
-                            </label>
-                            <select name="cantidad" id="cantidad"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500">
-                                @for($i = 1; $i <= $producto->stock; $i++)
-                                    <option value={{ $i }}>{{ $i }}</option>
-                                @endfor
-                            </select>
-                        </div>
+                            </div>
 
-                        <!-- Botón -->
-                        <div>
-                            <button type="submit" id="insertar_carrito_submit" value=""
-                                    class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1 text-center">
-                                Añadir al carrito
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                            <input type="hidden" name="modo" id="modo" value="item">
+                            <input type="hidden" name="producto_id" id="producto_id" value="{{ $producto->id }}">
+                            <!-- Cantidad -->
+                            <div class="mb-3 pb-3 flex items-center">
+                                <label for="cantidad" class="text-gray-800 mr-1">
+                                    Cantidad:
+                                </label>
+                                <select name="cantidad" id="cantidad"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500">
+                                    @for($i = 1; $i <= $producto->stock; $i++)
+                                        <option value={{ $i }}>{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <!-- Botón -->
+                            <div>
+                                <button type="submit" id="insertar_carrito_submit" value=""
+                                        class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:ring-2 focus:ring-yellow-300 font-medium rounded-md px-2 py-1 text-center">
+                                    Añadir al carrito
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                @endif
+
             </div>
+
 
             <!-- Puntuación -->
             <div class="bg-white dark:bg-gray-700 border m-5 p-5">
@@ -192,7 +195,8 @@
                                     <p>Comentado
                                         en: {{$valoracion->created_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}</p>
                                     @if ($valoracion->created_at != $valoracion->updated_at)
-                                        <p>Última modificación: {{$valoracion->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}</p>
+                                        <p>Última
+                                            modificación: {{$valoracion->updated_at->setTimeZone(new DateTimeZone('Europe/Madrid'))->format('d-m-Y H:i:s') }}</p>
                                     @endif
                                 </div>
                                 <p class="mb-2 font-light text-gray-500 dark:text-white">{{ $valoracion->comentario }}
