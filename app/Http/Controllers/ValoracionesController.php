@@ -119,6 +119,38 @@ class ValoracionesController extends Controller
         return redirect()->route('productos.ver-producto', $valoracion->producto_id)->with('success', 'Valoración creada con éxito.');
     }
 
+    // Vista modificar valoración
+    public function modificar_valoracion(Producto $producto)
+    {
+        $valoracion = Valoracion::where('producto_id', '=', $producto->id)
+        ->where('user_id' , '=', Auth::id())->first();
+
+        if(empty($valoracion)){
+            abort(404);
+        }
+
+        return view('valoraciones.modificar-valoracion', [
+            'valoracion' => $valoracion,
+            'producto' => $producto,
+        ]);
+    }
+
+    public function update_valoracion_personal(Valoracion $valoracion)
+    {
+        $validados = $this->validar();
+
+        if(Auth::id() != $valoracion->user_id){
+            abort(404);
+        }
+
+        $valoracion->puntuacion = $validados['puntuacion'];
+        $valoracion->titulo = ucfirst(trim($validados['titulo']));
+        $valoracion->comentario = ucfirst(trim($validados['comentario']));
+
+        $valoracion->save();
+
+        return redirect()->route('productos.ver-producto', $valoracion->producto_id)->with('success', 'Valoración modificada con éxito.');
+    }
 
     // Modificar valoración usuario
  /*   public function modificar_valoracion(Producto $producto)

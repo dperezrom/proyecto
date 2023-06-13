@@ -178,14 +178,14 @@
                             </div>
                         @else
                             <div class="pr-2 py-2">
-                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
+                                <a href="{{ route('valoraciones.modificar-valoracion', $producto->id) }}" id="insertar_carrito_submit"
                                    class="p-2 text-gray-800 bg-orange-300 hover:bg-orange-400 focus:ring-2 focus:ring-orange-300 font-medium rounded-md px-2 py-1 text-center">
                                     Ver o Modificar mi valoración
                                 </a>
                             </div>
 
                             <div class="py-2">
-                                <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_carrito_submit"
+                                <a href="{{ route('valoraciones.create', $producto->id) }}" id="insertar_carrito_submit"
                                    class="p-2 text-gray-800 bg-red-300 hover:bg-red-400 focus:ring-2 focus:ring-red-300 font-medium rounded-md px-2 py-1 text-center">
                                     Eliminar mi valoración
                                 </a>

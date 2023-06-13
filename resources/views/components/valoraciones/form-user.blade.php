@@ -46,7 +46,7 @@
                     @endfor
                     @endif
                 </div>
-                
+
                 <select name="puntuacion" id="puntuacion" class="text-sm mr-2 bg-gray-50 border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-emerald-500 focus:border-emerald-500" required>
                     <option value = "" {{ $valoracion->puntuacion == '' ? 'selected' : '' }}></option>
                     @for ($i = 1; $i <= 5; $i++)
