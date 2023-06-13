@@ -3,7 +3,7 @@
     <!-- Mensaje redirect -->
     <x-mensaje/>
 
-    <div class="w-full mt-16">
+    <div class="w-full mt-16 pb-5">
         <!-- Volver -->
         <div class="w-full flex justify-center mb-5 pt-5">
             <a href="{{ route('admin.productos') }}"
@@ -29,12 +29,22 @@
                 </div>
 
                 @foreach ($paginador as $valoracion)
+                    @php
+                        $compraVerificada = count(\Illuminate\Support\Facades\DB::table('facturas')
+                         ->join('lineas', 'facturas.id', '=', 'lineas.factura_id')
+                         ->where('facturas.user_id', '=', $valoracion->user_id)
+                         ->where('lineas.producto_id', '=', $producto->id)
+                         ->get()) > 0;
+                    @endphp
                     <div class="w-auto bg-white dark:bg-gray-700 border mb-5 p-3 md:p-5 rounded-lg">
                         <article>
                             <div class="flex items-center space-x-4">
                                 <div class="space-y-1 font-medium dark:text-white">
                                     <p class="break-all">
-                                        <span class="mr-2">{{ $valoracion->user->name }}</span>
+                                        <span class="mr-1">{{ $valoracion->user->name }}</span>
+                                        @if($compraVerificada)
+                                            <span class="text-teal-400" title="Compra verificada"><i class="fa-solid fa-circle-check"></i></span>
+                                        @endif
                                         <a href="{{ route('admin.users.show', $valoracion->user_id) }}">
                                             <span
                                                 class="text-sm text-gray-500 dark:text-gray-200 hover:text-emerald-500 ">({{ $valoracion->user->email }})</span>

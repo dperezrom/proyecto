@@ -32,6 +32,23 @@ class ValoracionesController extends Controller
     }
 
     // Validación
+
+    public function validar_admin()
+    {
+        $validados = request()->validate([
+            'titulo' => ['required', 'string', 'max:50'],
+            'comentario' => ['required', 'max:255'],
+        ], [
+            'titulo.required' => 'El campo «Título» es obligatorio',
+            'titulo.string' => 'El campo «Título» debe ser una cadena',
+            'titulo.max' => 'El campo «Título» solo permite hasta 50 caracteres',
+            'comentario.required' => 'El campo «Comentario» es obligatorio',
+            'comentario.max' => 'El campo «Comentario» solo permite hasta 255 caracteres',
+        ]);
+
+        return $validados;
+    }
+
     public function validar()
     {
         $validados = request()->validate([
@@ -64,7 +81,7 @@ class ValoracionesController extends Controller
 
     public function update(Valoracion $valoracion)
     {
-        $validados = $this->validar();
+        $validados = $this->validar_admin();
 
         $valoracion->titulo = ucfirst(trim($validados['titulo']));
         $valoracion->comentario = ucfirst(trim($validados['comentario']));

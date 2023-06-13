@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- Añadir al carrito -->
-                @if($producto->stock > 0)
+                @if($producto->stock > 0 && Auth::user()->rol != 'admin')
                     <div class="px-10 py-5">
                         <form action="{{ route('carritos.actualizar-carrito') }}" name="insertar_carrito" method="POST"
                               id="insertar_carrito">
@@ -169,7 +169,7 @@
 
                     <!-- Crear valoración -->
                     <div class="flex flex-row flex-wrap mb-5">
-                        @if(!in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id')))
+                        @if(!in_array(Auth::id(), array_column($producto->valoraciones->toArray(),'user_id')) )
                             <div class="py-2">
                                 <a href="{{ route('valoraciones.create', $producto) }}" id="insertar_valoracion">
                                     <button
@@ -211,12 +211,22 @@
                     </div>
 
                     @foreach ($valoraciones as $valoracion)
+                        @php
+                            $compraVerificada = count(\Illuminate\Support\Facades\DB::table('facturas')
+                             ->join('lineas', 'facturas.id', '=', 'lineas.factura_id')
+                             ->where('facturas.user_id', '=', $valoracion->user_id)
+                             ->where('lineas.producto_id', '=', $producto->id)
+                             ->get()) > 0;
+                        @endphp
                         <div class="w-auto bg-white dark:bg-gray-700 border mb-5 p-3 md:p-5 rounded-lg">
                             <article>
                                 <div class="flex items-center space-x-4">
                                     <div class="space-y-1 font-medium dark:text-white">
                                         <p class="break-all">
-                                            <span class="mr-2">{{ $valoracion->user->name }}</span>
+                                            <span class="mr-1">{{ $valoracion->user->name }}</span>
+                                            @if($compraVerificada)
+                                                <span class="text-teal-400" title="Compra verificada"><i class="fa-solid fa-circle-check"></i></span>
+                                            @endif
                                         </p>
                                     </div>
                                 </div>
